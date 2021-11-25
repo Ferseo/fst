@@ -26,7 +26,7 @@
                         <div class="text-center">
                             <h3 class="title-login">Gestión Inventario Teatro Auditorio Vícar</h3>
                         </div>
-                        <form action="../../checkLogin/procesingLogin.php" method="POST">
+                        <form action="/fst/managementProyectTheatre/controller/procesingLogin.php" method="POST">
                             <div class="p-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text bg-secondary"><img src="./img/icons/usuario.png" alt="" srcset=""><i
