@@ -19,8 +19,8 @@
     <title>Gestión Inventario Teatro</title>
 </head>
 <body>
-<div class="container-fluid vh-100" style="margin-top:300px">
-            <div class="" style="margin-top:200px">
+<div class="container-fluid vh-100" style="margin-top:150px">
+            <div class="" style="margin-top:100px">
                 <div class="rounded d-flex justify-content-center">
                     <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
                         <div class="text-center">
