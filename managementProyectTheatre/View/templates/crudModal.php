@@ -137,25 +137,109 @@
       <button type="button" class="btn btn-dark">Añadir</button>
     </div>
   </div>
+    <!--Contenido de la opción para buscar un material-->
+  <div class="tab-pane" id="profile" style="width: 80%; margin-left: 25%; margin-top:0.5%;" role="tabpanel" aria-labelledby="profile-tab">
+    <!--div de opciones para indicar en que tabla buscar-->
+    <div class="typeElement">
+        <label class="input-group-text" for="inputGroupSelect01" style="width: 30%;">Tipo Elemento: </label>
+        <select class="form-select" id="inputGroupSelect01" style="width: 50%;">
+          <option selected>Buscar...</option>
+          <option value="atrezzo">Atrezzo</option>
+          <option value="cableado">Cableado</option>
+          <option value="iluminacion">Iluminación</option>
+          <option value="matMontaje">Material de Montaje</option>
+          <option value="sonido">Sonido</option>
+          <option value="video">Video</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+    <!--div para buscar por codigo de material-->
+    <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Tipo de material: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+    <!--div para buscar por utilidad del material-->  
+    <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Utilidad: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+    <!--div para buscar por ubicación del material-->  
+    <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">ubicación: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+    <!--div para buscar por la marca del material-->  
+    <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Marca: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+    <!--div para buscar por el modelo del material-->  
+    <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Modelo: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+    <!--div para buscar por el año de compra del material-->  
+    <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Año de compra: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+    <!--div para buscar por el tipo de conexión del material-->  
+    <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Tipo de conexión: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <button type="button" class="btn btn-dark" style="margin-left: 10%;">Buscar</button>
+      </div>
+  </div>
+  <!--Contenido de la opción para prestar un material-->
+<div class="tab-pane" id="messages" role="tabpanel" style="width: 80%; margin-left: 25%; margin-top:0.5%;" aria-labelledby="messages-tab">
+  <!--div para indicar que tipo de material es prestado-->
+  <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Tipo de material: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <div style="margin-left: 18.5%;"></div>
+  </div>
+  <!--div para indicar a la persona que se le presta-->
+  <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Persona/Entidad: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+  <!--div para indicar el dia que retiran el material-->
+  <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Día de retirada: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+  <!--div para indicar el dia que devuelven el material-->
+  <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Día de entrega: </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%">
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+  <!--div para indicar el estado del material al prestarlo-->
+  <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Estado del material: </span>
+        <textarea type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%"></textarea>
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+  <!--div para indicar las observaciones pertinentes-->
+  <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Observaciones: </span>
+        <textarea type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%"></textarea>
+        <div style="margin-left: 18.5%;"></div>
+      </div>
+      <button type="button" class="btn btn-dark" style="margin-left: 70%;">Continuar</button>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">profile</div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">messages</div>
+</div>
 </div>
 
 <script>
