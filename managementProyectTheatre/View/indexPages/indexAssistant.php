@@ -8,17 +8,22 @@
     <title>Dashboard Ayudante</title>
 </head>
 <style>
-   .crudContent{
-       padding-right: 0;
-       padding-left: 0;
-   } 
-   .notificationsContent{
-       padding: 0;
-   }
-</style>
-<body>
+    .navbarRow {
+        width: 100%;
+        margin: 0;
+    }
 
-    <div class="row">
+    body {
+        width: 1350px;
+        height: 578.188px;
+        margin-right: 0px;
+    }
+
+
+</style>
+
+<body>
+    <div class="row navbarRow">
         <?php
         include('../templates/header.php');
         ?>
@@ -36,6 +41,8 @@
 
         </div>
     </div>
+    
+
 
 </body>
 

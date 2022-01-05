@@ -1,8 +1,6 @@
 <?php
-include_once('../connection/connection.php');
-//include('../APIquerys/loginQueary.php');
-include_once('../APIquerys/loginQueary.php');
-$queryLogin = new queryLogin;
+include_once '../APIquerys/apiQuerys.php';
+$queryLogin = new apiQuerys;
 $user = $_POST['user'];
 $pass = $_POST['password'];
 //$_SESSION['user'] = $user;
@@ -10,10 +8,11 @@ if ($queryLogin->checkUser($user, $pass)) {
         session_start();
         $data = $queryLogin->checkUser($user, $pass);
         $credencial = $data['categoria'];
+        $nombre = $data['nombre'];
         //print($credencial);
         if ($credencial === "administrador") {
                 echo "<script> alert('Bienvenido " . $user . " !!'); </script>";
-                $_SESSION['user'] = $user;
+                $_SESSION['user'] = $nombre;
 ?>
                 <script type="text/javascript">
                         window.location = "../View/indexPages/indexAdmin.php";
@@ -21,7 +20,7 @@ if ($queryLogin->checkUser($user, $pass)) {
         <?php
         } else if ($credencial === "jefe") {
                 echo "<script> alert('Bienvenido " . $user . " !!'); </script>";
-                $_SESSION['user'] = $user;
+                $_SESSION['user'] = $nombre;
         ?>
                 <script type="text/javascript">
                         window.location = "../View/indexPages/indexBoss.php";
@@ -29,7 +28,7 @@ if ($queryLogin->checkUser($user, $pass)) {
         <?php
         } else if ($credencial === "ayudante") {
                 echo "<script> alert('Bienvenido " . $user . " !!'); </script>";
-                $_SESSION['user'] = $user;
+                $_SESSION['user'] = $nombre;
 
         ?>
                 <script type="text/javascript">
