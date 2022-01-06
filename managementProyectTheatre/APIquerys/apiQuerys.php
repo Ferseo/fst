@@ -50,10 +50,10 @@ class apiQuerys {
 
     /*Consulta que recoge las tareas de un trabajador verificando su nombre y la fecha actual*/
     public function getTask($nombre, $date){
-        $query = "SELECT * FROM tareas WHERE trabajadorDesempenia='$nombre' AND diaTarea='$date'";
+        $query = "SELECT tipoTarea,horarioTarea,lugarTarea,cod_tarea FROM tareas WHERE trabajadorDesempenia='$nombre' AND diaTarea='$date'";
         $result = $this->runQueary($query);
         if($result){
-            $data=$result->Fetch();
+            $data=$result->FetchAll();
             return $data;
                       
         }else {
@@ -62,7 +62,19 @@ class apiQuerys {
     }
 
 
+    /**Método que recibiendo por parametro un numero identificador, elimina de la base de datos 
+     * el registro con el mismo id
+     */
+    public function deleteTask($count){
+        $query = "DELETE * FROM tareas WHERE cod_tarea='$count'";
+        $result = $this->runQueary($query);
+        if($result){
+            return true;
+        }else{
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
 
+    }
     
     
 

@@ -9,7 +9,7 @@
 </head>
 <style>
     .navbarRow {
-        width: 100%;
+        
         margin: 0;
     }
 
