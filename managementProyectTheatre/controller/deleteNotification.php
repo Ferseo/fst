@@ -1,18 +1,16 @@
-<?php 
+<?php
 include_once '../APIquerys/apiQuerys.php';
 $conn = new apiQuerys;
-$count = $_POST['dataString'];
+$count = (int)$_POST['count'];
 $return = $conn->deleteTask($count);
-//print_r($count);
-
-
-
-// https://www.jose-aguilar.com/blog/eliminar-registros-con-jquery-ajax-y-php/
-//url del articulo usado para la peticion ajax de eliminado
-
-//En el archivo de notification hay un ejemplo de funcion
-
-
-
-
+if ($return != null) {
+/*?>
+    <script type="text/javascript">
+        window.location = "/fst/managementProyectTheatre/View/indexPages/indexAssistant.php";
+    </script>
+<?php*/
+}else{
+    throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+}
+//echo '<h1>'.$count. '</h1>';
 ?>

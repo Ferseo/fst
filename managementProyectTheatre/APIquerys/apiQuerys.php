@@ -66,7 +66,7 @@ class apiQuerys {
      * el registro con el mismo id
      */
     public function deleteTask($count){
-        $query = "DELETE * FROM tareas WHERE cod_tarea='$count'";
+        $query = "DELETE FROM tareas WHERE cod_tarea='$count'";
         $result = $this->runQueary($query);
         if($result){
             return true;
