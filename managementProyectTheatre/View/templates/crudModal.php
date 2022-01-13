@@ -69,13 +69,13 @@
 <div class="tab-content navContent">
   <!--Contenido de la opción para añadir material nuevo-->
   <div class="tab-pane active" id="home" style="width: 100%;" role="tabpanel" aria-labelledby="home-tab">
-    <form action="../../controller/addMaterial.php" method="POST" name="addMaterial-form">
+    <form name="addMaterial-form">
       <div class="row">
         <div class="col">
           <!--div del elemento para indicar que tipo de elemento se añade al inventario-->
           <div class="typeElement">
             <label class="input-group-text" for="inputGroupSelect01" style="width: 50%;">Tipo Elemento: </label>
-            <select class="form-control option" id="inputGroupSelect01" style="width: 60%;">
+            <select class="form-control option" id="option" style="width: 60%;">
               <option selected>Buscar...</option>
               <option value="atrezzo">Atrezzo</option>
               <option value="cableado">Cableado</option>
@@ -100,7 +100,7 @@
           <!--div del elemento para indicar el tipo de material-->
           <div class="input-group input-group-sm mb-3" style="margin-top: 2%; width:80%;">
             <span class="input-group-text" id="inputGroup-sizing-sm">Tipo de material: </span>
-            <input type="text" class="form-control tipo_material" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+            <input type="text" class="form-control" id="tipo_material" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
           </div>
         </div>
         <div class="col">
@@ -132,7 +132,7 @@
           <!--div para la cantidad de material existente-->
           <div class="input-group input-group-sm mb-3" style="margin-top: 2%; width:80%;">
             <span class="input-group-text" id="inputGroup-sizing-sm">Cantidad: </span>
-            <input type="text" class="form-control cantidad" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+            <input type="text" class="form-control" id="cantidad" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
           </div>
         </div>
         <div class="col">
@@ -164,7 +164,7 @@
           <!--div para la ubicación del material-->
           <div class="input-group input-group-sm mb-3" style="margin-top: 2%; width:80%;">
             <span class="input-group-text" id="inputGroup-sizing-sm">ubicación: </span>
-            <input type="text" class="form-control ubicacion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+            <input type="text" class="form-control" id="ubicacion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
           </div>
         </div>
         <div class="col">
@@ -184,7 +184,7 @@
           </div>
         </div>
         <div class="col">
-          <button type="submit" class="btn btn-dark " id="add_btn">Añadir</button>
+          <button type="button" class="btn btn-dark " id="add_btn">Añadir</button>
         </div>
       </div>
     </form>
@@ -335,18 +335,19 @@
   </div>
 
 </div>
+<!--Función para las pestañas del modal-->
 <script>
   var firstTabEl = document.querySelector('#myTab li:last-child button')
   var firstTab = new bootstrap.Tab(firstTabEl)
 
   firstTab.show()
 </script>
+<!--Función para activar y desactivar campos de la pestaña añadir del modal-->
 <script>
   $(document).ready(function() {
     $('.option').on('click', function(e) {
       e.preventDefault();
       var option = document.querySelector('.option').value;
-      console.log(option);
       if (option === "iluminacion" | option === "sonido" | option === "video") {
         $('input').prop('disabled', false);
         $("#cod_material").prop('disabled', true);
@@ -375,4 +376,92 @@
       }
     });
   });
+</script>
+<!--Función ajax para recoger los datos de los campos input y enviarlos al archivo de proceso de datos-->
+<script>
+  $(document).ready(function() {
+
+    $('#add_btn').on('click', function(e) {
+      e.preventDefault();
+      var option1 = document.querySelector('.option').value;
+      //console.log(option1);
+      if (option1 === "iluminacion" | option1 === "sonido" | option1 === "video") {
+        let marcaAdd = document.querySelector("#marca").value;
+        let tipoMaterialAdd = document.querySelector("#tipo_material").value;
+        let modeloAdd = document.querySelector("#modelo").value;
+        let cantidadAdd = document.querySelector("#cantidad").value;
+        let anioCompraAdd = document.querySelector("#anio_compra").value;
+        let utilidadAdd = document.querySelector("#utilidad").value;
+        let tipoConexionAdd = document.querySelector("#tipo_conexion").value;
+        let ubicacionAdd = document.querySelector("#ubicacion").value;
+        let ultimaRevisionAdd = document.querySelector("#ultima_revision").value;
+        let observacionesAdd = document.querySelector("#observaciones").value;
+        $.ajax({
+          type: "POST",
+          url: "../../controller/addMaterial.php",
+          data: {
+            option1:option1,
+            /*marcaAdd:marcaAdd,
+            tipoMaterialAdd:tipoMaterialAdd,
+            modeloAdd:modeloAdd,
+            cantidadAdd:cantidadAdd,
+            anioCompraAdd:anioCompraAdd,
+            utilidadAdd:utilidadAdd,
+            tipoConexionAdd:tipoConexionAdd,
+            ubicacionAdd:ubicacionAdd,
+            ultimaRevisionAdd:ultimaRevisionAdd,
+            ultimaRevisionAdd:ultimaRevisionAdd*/
+          },
+          success: function(response) {
+            //alert("Se ha añadido satisfactoriamente");
+            //window.location = "/fst/managementProyectTheatre/View/indexPages/indexAssistant.php";
+            window.location = "/fst/managementProyectTheatre/controller/addMaterial.php";
+          }
+        });
+
+
+      } else if (option1 === "atrezzo" | option1 === "matMontaje" | option1 === "otro") {
+        /*$('input').prop('disabled', false);
+        $("#cod_material").prop('disabled', true);
+        $("#marca").prop('disabled', true);
+        $("#modelo").prop('disabled', true);
+        $("#metros_cable").prop('disabled', true);
+        $("#anio_compra").prop('disabled', true);
+        $("#tipo_conexion").prop('disabled', true);
+        $("#ultima_revision").prop('disabled', true);*/
+      } else if (option1 === "cableado") {
+        /*$('input').prop('disabled', false);
+        $("#cod_material").prop('disabled', true);
+        $("#marca").prop('disabled', true);
+        $("#modelo").prop('disabled', true);
+        $("#anio_compra").prop('disabled', true);
+        $("#tipo_conexion").prop('disabled', true);
+        $("#ultima_revision").prop('disabled', true);
+        $("#observaciones").prop('disabled', true);
+        $("#utilidad").prop('disabled', true);*/
+      } else if (option1 === "Buscar...") {
+        //$('input').prop('disabled', false);
+      }
+    });
+  });
+  /*
+   $(document).ready(function() {
+      $('.delete').on('click', function(e) {
+          e.preventDefault();
+          var parent = $(this).parent().attr('id');
+          var count = $(this).attr('id');
+          console.log(count);
+          $.ajax({
+              type: "POST",
+              url: "../../controller/deleteNotification.php",
+              data: {
+                  count
+              },
+              success: function(response) {
+                  window.location = "/fst/managementProyectTheatre/View/indexPages/indexAssistant.php";
+              }
+          });
+      });
+  });
+  */
 </script>

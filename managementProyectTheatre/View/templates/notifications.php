@@ -78,7 +78,7 @@ $dataTask = $api->getTask($nombre, $date);
             e.preventDefault();
             var parent = $(this).parent().attr('id');
             var count = $(this).attr('id');
-            console.log(count);
+            //console.log(count);
             $.ajax({
                 type: "POST",
                 url: "../../controller/deleteNotification.php",

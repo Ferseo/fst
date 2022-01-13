@@ -27,6 +27,7 @@
         <?php
         include('../templates/header.php');
         ?>
+        
     </div>
     <div class="row">
         <div class="col-9 crudContent">
