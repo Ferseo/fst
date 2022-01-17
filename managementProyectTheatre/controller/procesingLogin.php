@@ -3,6 +3,8 @@ include_once '../APIquerys/apiQuerys.php';
 $queryLogin = new apiQuerys;
 $user = $_POST['user'];
 $pass = $_POST['password'];
+$date = $date = date("j-n-Y");
+$queryLogin->putDateToday($date);
 //$_SESSION['user'] = $user;
 if ($queryLogin->checkUser($user, $pass)) {
         session_start();

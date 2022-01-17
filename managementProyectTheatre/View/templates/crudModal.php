@@ -1,6 +1,5 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <style>
   .nav {
     width: 100%;
@@ -184,7 +183,7 @@
           </div>
         </div>
         <div class="col">
-          <button type="button" class="btn btn-dark " id="add_btn">Añadir</button>
+          <button type="button" class="btn btn-dark btn-add" id="add_btn">Añadir</button>
         </div>
       </div>
     </form>
@@ -335,133 +334,7 @@
   </div>
 
 </div>
-<!--Función para las pestañas del modal-->
-<script>
-  var firstTabEl = document.querySelector('#myTab li:last-child button')
-  var firstTab = new bootstrap.Tab(firstTabEl)
-
-  firstTab.show()
-</script>
-<!--Función para activar y desactivar campos de la pestaña añadir del modal-->
-<script>
-  $(document).ready(function() {
-    $('.option').on('click', function(e) {
-      e.preventDefault();
-      var option = document.querySelector('.option').value;
-      if (option === "iluminacion" | option === "sonido" | option === "video") {
-        $('input').prop('disabled', false);
-        $("#cod_material").prop('disabled', true);
-        $("#metros_cable").prop('disabled', true);
-      } else if (option === "atrezzo" | option === "matMontaje" | option === "otro") {
-        $('input').prop('disabled', false);
-        $("#cod_material").prop('disabled', true);
-        $("#marca").prop('disabled', true);
-        $("#modelo").prop('disabled', true);
-        $("#metros_cable").prop('disabled', true);
-        $("#anio_compra").prop('disabled', true);
-        $("#tipo_conexion").prop('disabled', true);
-        $("#ultima_revision").prop('disabled', true);
-      } else if (option === "cableado") {
-        $('input').prop('disabled', false);
-        $("#cod_material").prop('disabled', true);
-        $("#marca").prop('disabled', true);
-        $("#modelo").prop('disabled', true);
-        $("#anio_compra").prop('disabled', true);
-        $("#tipo_conexion").prop('disabled', true);
-        $("#ultima_revision").prop('disabled', true);
-        $("#observaciones").prop('disabled', true);
-        $("#utilidad").prop('disabled', true);
-      } else if (option === "Buscar...") {
-        $('input').prop('disabled', false);
-      }
-    });
-  });
-</script>
-<!--Función ajax para recoger los datos de los campos input y enviarlos al archivo de proceso de datos-->
-<script>
-  $(document).ready(function() {
-
-    $('#add_btn').on('click', function(e) {
-      e.preventDefault();
-      var option1 = document.querySelector('.option').value;
-      //console.log(option1);
-      if (option1 === "iluminacion" | option1 === "sonido" | option1 === "video") {
-        let marcaAdd = document.querySelector("#marca").value;
-        let tipoMaterialAdd = document.querySelector("#tipo_material").value;
-        let modeloAdd = document.querySelector("#modelo").value;
-        let cantidadAdd = document.querySelector("#cantidad").value;
-        let anioCompraAdd = document.querySelector("#anio_compra").value;
-        let utilidadAdd = document.querySelector("#utilidad").value;
-        let tipoConexionAdd = document.querySelector("#tipo_conexion").value;
-        let ubicacionAdd = document.querySelector("#ubicacion").value;
-        let ultimaRevisionAdd = document.querySelector("#ultima_revision").value;
-        let observacionesAdd = document.querySelector("#observaciones").value;
-        $.ajax({
-          type: "POST",
-          url: "../../controller/addMaterial.php",
-          data: {
-            option1:option1,
-            /*marcaAdd:marcaAdd,
-            tipoMaterialAdd:tipoMaterialAdd,
-            modeloAdd:modeloAdd,
-            cantidadAdd:cantidadAdd,
-            anioCompraAdd:anioCompraAdd,
-            utilidadAdd:utilidadAdd,
-            tipoConexionAdd:tipoConexionAdd,
-            ubicacionAdd:ubicacionAdd,
-            ultimaRevisionAdd:ultimaRevisionAdd,
-            ultimaRevisionAdd:ultimaRevisionAdd*/
-          },
-          success: function(response) {
-            //alert("Se ha añadido satisfactoriamente");
-            //window.location = "/fst/managementProyectTheatre/View/indexPages/indexAssistant.php";
-            window.location = "/fst/managementProyectTheatre/controller/addMaterial.php";
-          }
-        });
-
-
-      } else if (option1 === "atrezzo" | option1 === "matMontaje" | option1 === "otro") {
-        /*$('input').prop('disabled', false);
-        $("#cod_material").prop('disabled', true);
-        $("#marca").prop('disabled', true);
-        $("#modelo").prop('disabled', true);
-        $("#metros_cable").prop('disabled', true);
-        $("#anio_compra").prop('disabled', true);
-        $("#tipo_conexion").prop('disabled', true);
-        $("#ultima_revision").prop('disabled', true);*/
-      } else if (option1 === "cableado") {
-        /*$('input').prop('disabled', false);
-        $("#cod_material").prop('disabled', true);
-        $("#marca").prop('disabled', true);
-        $("#modelo").prop('disabled', true);
-        $("#anio_compra").prop('disabled', true);
-        $("#tipo_conexion").prop('disabled', true);
-        $("#ultima_revision").prop('disabled', true);
-        $("#observaciones").prop('disabled', true);
-        $("#utilidad").prop('disabled', true);*/
-      } else if (option1 === "Buscar...") {
-        //$('input').prop('disabled', false);
-      }
-    });
-  });
-  /*
-   $(document).ready(function() {
-      $('.delete').on('click', function(e) {
-          e.preventDefault();
-          var parent = $(this).parent().attr('id');
-          var count = $(this).attr('id');
-          console.log(count);
-          $.ajax({
-              type: "POST",
-              url: "../../controller/deleteNotification.php",
-              data: {
-                  count
-              },
-              success: function(response) {
-                  window.location = "/fst/managementProyectTheatre/View/indexPages/indexAssistant.php";
-              }
-          });
-      });
-  });
-  */
-</script>
+<script src="../../JS/jquery.js"></script>
+<script src="../../JS/crudModal/addMaterial/activeInput.js"></script>
+<script src="../../JS/crudModal/activateOption.js"></script>
+<script src="../../JS/crudModal/addMaterial/sendDataController.js"></script>

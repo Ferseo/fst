@@ -76,8 +76,112 @@ class apiQuerys {
 
     }
     
-    
+    public function addMaterial($option, $data){
+        if($option === "iluminacion"){
+        $this->conn->beginTransaction();
+        $sql= "INSERT INTO iluminacion (tipoMaterial, marca, modelo, cantidad, utilidad, ubicacion, anioCompra, tipoConexion, ultimaRevision, observaciones) VALUES (?,?,?,?,?,?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]));
+        $this->conn->commit();
+        return true;
+        }
 
+        if($option === "sonido"){
+        $this->conn->beginTransaction();
+        $sql= "INSERT INTO sonido (tipoMaterial, marca, modelo, cantidad, utilidad, ubicacion, anioCompra, tipoConexion, ultimaRevision, observaciones) VALUES (?,?,?,?,?,?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]));
+        $this->conn->commit();
+        return true;
+        }
+        
+        if($option === "video"){
+        $this->conn->beginTransaction();
+        $sql= "INSERT INTO video (tipoMaterial, marca, modelo, cantidad, utilidad, ubicacion, anioCompra, tipoConexion, ultimaRevision, observaciones) VALUES (?,?,?,?,?,?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]));
+        $this->conn->commit();
+        return true;
+        }
+
+        if($option === "atrezzo"){
+        $this->conn->beginTransaction();
+        $sql= "INSERT INTO atrezzo (tipoObjeto,  utilidad,  ubicacion, cantidad, observaciones) VALUES (?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
+        $this->conn->commit();
+        return true;
+        }
+
+        if($option === "matMontaje"){
+        $this->conn->beginTransaction();
+        $sql= "INSERT INTO materialmontaje (tipoMaterial, cantidad, utilidad, ubicacion,  observaciones) VALUES (?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
+        $this->conn->commit();
+        return true;  
+        }
+
+        if($option === "otro"){
+        $this->conn->beginTransaction();
+        $sql= "INSERT INTO otros (tipoObjeto, cantidad, utilidad, ubicacion, observaciones) VALUES (?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
+        $this->conn->commit();
+        return true;   
+        }
+
+        if($option === "cableado"){
+        $this->conn->beginTransaction();
+        $sql= "INSERT INTO cableado (tipoCableado, cantidad, metros, ubicacion) VALUES (?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3]));
+        $this->conn->commit();
+        return true;   
+        }
+
+        return false;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /** Método para que al entrar en la palicacion cambie la fecha de las tareas a la del dia en curso, para que aparezcan en la barra de notificaciones */
+    public function putDateToday($date){
+        $query = "UPDATE tareas SET diaTarea='$date'";
+        $result = $this->runQueary($query);
+        if($result != false){
+           return true;
+                      
+        }else {
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
+    }
 } 
 
 
