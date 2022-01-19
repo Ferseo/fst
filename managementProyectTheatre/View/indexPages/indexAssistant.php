@@ -9,7 +9,7 @@
 </head>
 <style>
     .navbarRow {
-        
+
         margin: 0;
     }
 
@@ -18,8 +18,6 @@
         height: 578.188px;
         margin-right: 0px;
     }
-
-
 </style>
 
 <body>
@@ -27,7 +25,6 @@
         <?php
         include('../templates/header.php');
         ?>
-        
     </div>
     <div class="row">
         <div class="col-9 crudContent">
@@ -39,12 +36,8 @@
             <?php
             include('../templates/notifications.php')
             ?>
-
         </div>
     </div>
-    
-
-
 </body>
 
 </html>
