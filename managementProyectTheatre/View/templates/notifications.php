@@ -50,45 +50,29 @@ $dataTask = $api->getTask($nombre, $date);
 
     </div>
 </div>
+<script src="../../JS/notifications/deleteNotifications.js"></script>
 <script>
-    function activateNotifications(data) {
-        var container = document.getElementById("containerTable");
-        var table = document.createElement("table");
-        var tbody = document.createElement("tbody");
-        for (var i = 0; i < data.length; i++) {
-            var row = document.createElement("tr");
-            row.id = "item";
-            var textNotification = document.createTextNode(data[i].tipoTarea + " | " + data[i].horarioTarea + " |  " + data[i].lugarTarea);
-            var button = document.createElement("a");
-            button.innerHTML = "x";
-            button.className = "btn button delete";
-            button.id = data[i].cod_tarea;
-            row.appendChild(button);
-            row.appendChild(textNotification);
-            tbody.appendChild(row);
-        }
-        table.appendChild(tbody);
-        container.appendChild(table);
+   function activateNotifications(data) {
+    var container = document.getElementById("containerTable");
+    var table = document.createElement("table");
+    var tbody = document.createElement("tbody");
+    for (var i = 0; i < data.length; i++) {
+        var row = document.createElement("tr");
+        row.id = "item";
+        var textNotification = document.createTextNode(data[i].tipoTarea + " | " + data[i].horarioTarea + " |  " + data[i].lugarTarea);
+        var button = document.createElement("a");
+        button.innerHTML = "x";
+        button.className = "btn button delete";
+        button.id = data[i].cod_tarea;
+        row.appendChild(button);
+        row.appendChild(textNotification);
+        tbody.appendChild(row);
     }
-    window.onload = activateNotifications(<?php echo json_encode($dataTask); ?>);
+    table.appendChild(tbody);
+    container.appendChild(table);
+}
+window.onload = activateNotifications(<?php echo json_encode($dataTask); ?>);
 </script>
 <script>
-    $(document).ready(function() {
-        $('.delete').on('click', function(e) {
-            e.preventDefault();
-            var parent = $(this).parent().attr('id');
-            var count = $(this).attr('id');
-            //console.log(count);
-            $.ajax({
-                type: "POST",
-                url: "../../controller/deleteNotification.php",
-                data: {
-                    count
-                },
-                success: function(response) {
-                    window.location = "/fst/managementProyectTheatre/View/indexPages/indexAssistant.php";
-                }
-            });
-        });
-    });
+   
 </script>
