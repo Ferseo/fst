@@ -5,7 +5,9 @@ define ("DB_HOST", "localhost");
 define ("DB_USUARIO", "root");
 define ("DB_PASSWORD", "");
 class apiQuerys {
-    //private $conn;
+    /**
+     *Constructor de la conexión a la base de datos.
+     */
     public function __construct()
     {
         //Intenta crear la conexión.
@@ -21,7 +23,11 @@ class apiQuerys {
 
   
     
-    /*Método que ejecuta cualquier consulta*/
+    /**
+     * Método que ejecuta cualquier consulta
+     * @param [type] $query
+     * @return 
+     */
     public function runQueary($query){
         try{
             $result = null;
@@ -32,7 +38,12 @@ class apiQuerys {
           }
     }
 
-    /**Consulta que comprueba que verifica los datos del login con las credenciales de la bd**/ 
+    /**
+     * Consulta que comprueba que verifica los datos del login con las credenciales de la bd
+     * @param [type] $user
+     * @param [type] $pass
+     * @return 
+     */ 
     public function checkUser($user, $pass){
         $this->conn->beginTransaction();
         $query = "SELECT * FROM credenciales WHERE (user = ? and password = ?) limit 1;";
@@ -48,7 +59,12 @@ class apiQuerys {
     }
   
 
-    /*Consulta que recoge las tareas de un trabajador verificando su nombre y la fecha actual*/
+    /**
+     * Consulta que recoge las tareas de un trabajador verificando su nombre y la fecha actual
+     * @param [type] $nombre
+     * @param [type] $date
+     * @return 
+     */
     public function getTask($nombre, $date){
         $query = "SELECT tipoTarea,horarioTarea,lugarTarea,cod_tarea FROM tareas WHERE trabajadorDesempenia='$nombre' AND diaTarea='$date'";
         $result = $this->runQueary($query);
@@ -62,8 +78,11 @@ class apiQuerys {
     }
 
 
-    /**Método que recibiendo por parametro un numero identificador, elimina de la base de datos 
+    /**
+     * Método que recibiendo por parametro un numero identificador, elimina de la base de datos 
      * el registro con el mismo id
+     * @param [type] $count
+     * @return 
      */
     public function deleteTask($count){
         $query = "DELETE FROM tareas WHERE cod_tarea='$count'";
@@ -76,6 +95,13 @@ class apiQuerys {
 
     }
     
+    /**
+     * Undocumented function
+     *
+     * @param [type] $option
+     * @param [type] $data
+     * @return 
+     */
     public function addMaterial($option, $data){
         if($option === "iluminacion"){
         $this->conn->beginTransaction();
@@ -133,7 +159,7 @@ class apiQuerys {
 
         if($option === "cableado"){
         $this->conn->beginTransaction();
-        $sql= "INSERT INTO cableado (tipoCableado, cantidad, metros, ubicacion) VALUES (?,?,?,?);";
+        $sql= "INSERT INTO cableado (tipoCableado, cantidad, metos, ubicacion) VALUES (?,?,?,?);";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array($data[0], $data[1], $data[2], $data[3]));
         $this->conn->commit();
@@ -182,9 +208,4 @@ class apiQuerys {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
-} 
-
-
-
-
-?>
+}

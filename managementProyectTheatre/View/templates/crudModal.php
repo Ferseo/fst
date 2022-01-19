@@ -183,7 +183,7 @@
           </div>
         </div>
         <div class="col">
-          <button type="button" class="btn btn-dark btn-add" id="add_btn">Añadir</button>
+          <button type="button" class="btn btn-dark btn-add" id="add_btn" >Añadir</button>
         </div>
       </div>
     </form>
