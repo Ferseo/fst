@@ -171,7 +171,7 @@ class apiQuerys {
 
     public function findMaterial($option, $column, $data){
         //$sql = "SELECT FROM '$option' WHERE '$column' LIKE '%$data%';";
-        $query = "SELECT FROM '$option' WHERE '$column' LIKE '%$data%';";
+        $query = "SELECT * FROM $option WHERE $column LIKE '%$data%';";
         $result = $this->runQueary($query);
         if($result){
             $data=$result->FetchAll();

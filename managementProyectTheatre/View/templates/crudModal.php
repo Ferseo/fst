@@ -203,7 +203,7 @@
             <option value="matMontaje">Material de Montaje</option>
             <option value="sonido">Sonido</option>
             <option value="video">Video</option>
-            <option value="otro">Otro</option>
+            <option value="otro">Otros</option>
           </select>
         </div>
       </div>
@@ -267,7 +267,7 @@
     </div>
     <div class="row">
       <div class="col-11" style="text-align: right; margin-top: 3%">
-        <button type="button" class="btn btn-dark" onclick="findMaterial()">Buscar</button>
+        <button type="submit" class="btn btn-dark" onclick="findMaterial()">Buscar</button>
       </div>
       <div class="col-1">
 

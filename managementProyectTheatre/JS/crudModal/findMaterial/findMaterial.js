@@ -39,7 +39,7 @@ function findMaterial(){
         success: function(response) {
             console.log('todo ok');
         //alert("Se ha añadido satisfactoriamente");
-        //$('input[type="text"]').val('');
+        $('input[type="text"]').val('');
         }
         });
     
