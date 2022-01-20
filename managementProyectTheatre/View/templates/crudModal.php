@@ -195,7 +195,7 @@
         <!--div de opciones para indicar en que tabla buscar-->
         <div class="typeElement">
           <label class="input-group-text" for="inputGroupSelect01" style="width: 30%;">Tipo Elemento: </label>
-          <select class="form-control" id="inputGroupSelect01" style="width: 80%;">
+          <select class="form-control" id="selectedOption" style="width: 80%;">
             <option selected>Buscar...</option>
             <option value="atrezzo">Atrezzo</option>
             <option value="cableado">Cableado</option>
@@ -211,7 +211,7 @@
         <!--div para buscar por codigo de material-->
         <div class="input-group input-group-sm mb-3" style="margin-top: 2%; width:80%;">
           <span class="input-group-text" id="inputGroup-sizing-sm">Tipo de material: </span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input type="text" class="form-control" id="tipo_materialFind" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 
         </div>
       </div>
@@ -221,14 +221,14 @@
         <!--div para buscar por utilidad del material-->
         <div class="input-group input-group-sm mb-3" style="margin-top: 2%; width:80%;">
           <span class="input-group-text" id="inputGroup-sizing-sm">Utilidad: </span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input type="text" class="form-control" id="utilidadFind" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
         </div>
       </div>
       <div class="col">
         <!--div para buscar por ubicación del material-->
         <div class="input-group input-group-sm mb-3" style="margin-top: 2%; width:80%;">
           <span class="input-group-text" id="inputGroup-sizing-sm">ubicación: </span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input type="text" class="form-control" id="ubicacionFind" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
         </div>
       </div>
     </div>
@@ -237,14 +237,14 @@
         <!--div para buscar por la marca del material-->
         <div class="input-group input-group-sm mb-3" style="margin-top: 2%; width:80%;">
           <span class="input-group-text" id="inputGroup-sizing-sm">Marca: </span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input type="text" class="form-control" id="marcaFind" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
         </div>
       </div>
       <div class="col">
         <!--div para buscar por el modelo del material-->
         <div class="input-group input-group-sm mb-3" style="margin-top: 2%; width:80%;">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Modelo: </span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Metros: </span>
+          <input type="text" class="form-control" id="metrosFind" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
         </div>
       </div>
     </div>
@@ -253,21 +253,21 @@
         <!--div para buscar por el año de compra del material-->
         <div class="input-group input-group-sm mb-3" style="margin-top: 2%; width:80%;">
           <span class="input-group-text" id="inputGroup-sizing-sm">Año de compra: </span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input type="text" class="form-control" id="anio_compraFind" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
         </div>
       </div>
       <div class="col">
         <!--div para buscar por el tipo de conexión del material-->
         <div class="input-group input-group-sm mb-3" style="margin-top: 2%; width:80%;">
           <span class="input-group-text" id="inputGroup-sizing-sm">Tipo de conexión: </span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input type="text" class="form-control" id="tipo_conexionFind" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-11" style="text-align: right; margin-top: 3%">
-        <button type="button" class="btn btn-dark">Buscar</button>
+        <button type="button" class="btn btn-dark" onclick="findMaterial()">Buscar</button>
       </div>
       <div class="col-1">
 
@@ -336,5 +336,7 @@
 </div>
 <script src="../../JS/jquery.js"></script>
 <script src="../../JS/crudModal/addMaterial/activeInput.js"></script>
+<script src="../../JS/crudModal/findMaterial/activateInputsFind.js"></script>
 <script src="../../JS/crudModal/activateOption.js"></script>
 <script src="../../JS/crudModal/addMaterial/sendDataController.js"></script>
+<script src="../../JS/crudModal/findMaterial/findMaterial.js"></script>
