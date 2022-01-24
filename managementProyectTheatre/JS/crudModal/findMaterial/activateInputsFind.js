@@ -7,7 +7,7 @@ $(document).ready(function() {
         $('input').prop('disabled', false);
         $("#metrosFind").prop('disabled', true);
         $("#anio_compraFind").prop('disabled', true);
-      } else if (option === "atrezzo" | option === "matMontaje" | option === "otro") {
+      } else if (option === "atrezzo" | option === "matMontaje" | option === "otros") {
         $('input').prop('disabled', false);
         $("#metrosFind").prop('disabled', true);
         $("#anio_compraFind").prop('disabled', true);

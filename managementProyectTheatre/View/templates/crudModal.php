@@ -203,7 +203,7 @@
             <option value="matMontaje">Material de Montaje</option>
             <option value="sonido">Sonido</option>
             <option value="video">Video</option>
-            <option value="otro">Otros</option>
+            <option value="otros">Otros</option>
           </select>
         </div>
       </div>
@@ -273,6 +273,7 @@
 
       </div>
     </div>
+    <div id="tableMaterialResult"></div>
   </div>
   <!--Contenido de la opción para prestar un material-->
   <div class=" tab-pane" id="messages" role="tabpanel" style="width: 80%; margin-left: 25%; margin-top:0.5%;" aria-labelledby="messages-tab">
