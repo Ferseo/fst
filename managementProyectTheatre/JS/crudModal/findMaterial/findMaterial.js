@@ -39,31 +39,31 @@ function findMaterial(){
         success: function(response) {
             $('input[type="text"]').val('');
             $('select').val('Buscar...');
-            var data = $.parseJSON(response);        
-            //console.log(data);
+            //var data = $.parseJSON(response);  
+            var data = response;
+            console.log(data);       
             var container = document.getElementById("tableMaterialResult");
             var table = document.createElement("table");
             var thead = document.createElement("thead");
             var titleTHead = document.createTextNode("Material encontrado");
             thead.appendChild(titleTHead);
             var tbody = document.createElement("tbody");
-            for(var i = 0; i < data.length; i++){
+            for(var i = 0; i <= data.length; i++){
                 var row = document.createElement("tr");
-                for(var j = 0; j < data.length; j++){
+                /*var dataRow = [];
+                dataRow.push(data[i]);
+                console.log(dataRow);*/
+                for(var j = 0; j <= dataRow.length ; j++){
                     var column = document.createElement("td");
-                    var textColumn = document.createTextNode(data[i][j] + " | ");
+                    var textColumn = document.createTextNode(data[i][j]);
                     column.appendChild(textColumn);
                     row.appendChild(column);           
                 }
                 tbody.appendChild(row);
-                //console.log(tbody);
             }
             thead.appendChild(tbody);
             table.appendChild(thead);
-            container.appendChild(table);
-            //console.log(data);
-
-        
+            container.appendChild(table);        
         }
         });
     
