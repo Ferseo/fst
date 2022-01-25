@@ -1,6 +1,6 @@
 <?php 
 //include_once "../connection/connection.php";
-define ("DB_NOMBRE", "managementtheatre");
+define ("DB_NOMBRE", "managementheatre");
 define ("DB_HOST", "localhost");
 define ("DB_USUARIO", "root");
 define ("DB_PASSWORD", "");
@@ -169,6 +169,7 @@ class apiQuerys {
         return false;
     }
 
+    
     public function findMaterial($option, $column, $data){
         $query = "SELECT * FROM $option WHERE $column LIKE '%$data%';";
         $result = $this->runQueary($query);
@@ -178,6 +179,16 @@ class apiQuerys {
         }else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
+    }
+
+
+    public function lendMaterial($data){
+        $this->conn->beginTransaction();
+        //$sql= "INSERT INTO materialPrestado (tipoMaterial,      ) VALUES (?,?,?,?,?,?);";
+        $stmt = $this->conn->prepare(/*$sql*/);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5]));
+        $this->conn->commit();
+        return true;
     }
 
 

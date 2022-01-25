@@ -281,7 +281,7 @@
       <!--div para indicar que tipo de material es prestado-->
       <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
         <span class="input-group-text" id="inputGroup-sizing-sm">Tipo de material: </span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <input type="text" class="form-control" id="tipo_materialLend" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
         <div style="margin-left: 18.5%;"></div>
       </div>
     </div>
@@ -289,7 +289,7 @@
       <!--div para indicar a la persona que se le presta-->
       <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
         <span class="input-group-text" id="inputGroup-sizing-sm">Persona/Entidad: </span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <input type="text" class="form-control" id="per_entiLend" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
         <div style="margin-left: 18.5%;"></div>
       </div>
     </div>
@@ -298,7 +298,7 @@
       <!--div para indicar el dia que retiran el material-->
       <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
         <span class="input-group-text" id="inputGroup-sizing-sm">Día de retirada: </span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <input type="text" class="form-control" id="retiradaLend" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
         <div style="margin-left: 18.5%;"></div>
       </div>
     </div>
@@ -306,7 +306,7 @@
       <!--div para indicar el dia que devuelven el material-->
       <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
         <span class="input-group-text" id="inputGroup-sizing-sm">Día de entrega: </span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <input type="text" class="form-control" id="entregaLend" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
         <div style="margin-left: 18.5%;"></div>
       </div>
     </div>
@@ -314,7 +314,7 @@
       <!--div para indicar el estado del material al prestarlo-->
       <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
         <span class="input-group-text" id="inputGroup-sizing-sm">Estado del material: </span>
-        <textarea type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"></textarea>
+        <textarea type="text" class="form-control" id="estado_materialLend" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required></textarea>
         <div style="margin-left: 18.5%;"></div>
       </div>
     </div>
@@ -322,13 +322,13 @@
       <!--div para indicar las observaciones pertinentes-->
       <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
         <span class="input-group-text" id="inputGroup-sizing-sm">Observaciones: </span>
-        <textarea type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%"></textarea>
+        <textarea type="text" class="form-control" id="oberservacionesLend" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%"></textarea>
         <div style="margin-left: 18.5%;"></div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <button type="button" class="btn btn-dark">Continuar</button>
+        <button type="submit" class="btn btn-dark" onclick="lendMatertial()">Continuar</button> <!--añadimos la funcion al atributo onclick-->
       </div>
     </div>
 
@@ -341,3 +341,4 @@
 <script src="../../JS/crudModal/activateOption.js"></script>
 <script src="../../JS/crudModal/addMaterial/sendDataController.js"></script>
 <script src="../../JS/crudModal/findMaterial/findMaterial.js"></script>
+<script src="../../JS/crudModal/lendMaterial/lendMaterial.js"></script> <!--Este escript ha sido añadido recientemente, tambien los ids de los input de la opcion de prestar y el required-->
