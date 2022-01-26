@@ -42,6 +42,17 @@
   .divTitle {
     background-color: #d2d7df;
   }
+  .celda{
+    text-align: center;
+
+  }
+  .titleHead{
+    color:black;
+    font-weight: bold;
+  }
+  td{
+    color: white;
+  }
 </style>
 <nav>
   <div class="row" style="width: 100%;">
