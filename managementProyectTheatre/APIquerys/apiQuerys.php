@@ -96,7 +96,8 @@ class apiQuerys {
     }
     
     /**
-     * Undocumented function
+     * Método que ejecuta la consulta para añadir un material a la bd, con los datos recibidos
+     * com oparámetro
      *
      * @param [type] $option
      * @param [type] $data
@@ -159,7 +160,7 @@ class apiQuerys {
 
         if($option === "cableado"){
         $this->conn->beginTransaction();
-        $sql= "INSERT INTO cableado (tipoCableado, cantidad, metos, ubicacion) VALUES (?,?,?,?);";
+        $sql= "INSERT INTO cableado (tipoMaterial, cantidad, metos, ubicacion) VALUES (?,?,?,?);";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array($data[0], $data[1], $data[2], $data[3]));
         $this->conn->commit();
@@ -169,7 +170,14 @@ class apiQuerys {
         return false;
     }
 
-    
+    /**
+     * Método que ejecuta la consulta de busqueda de la informacion guardada en una tabla especifica y de un material especifico
+     *
+     * @param [type] $option
+     * @param [type] $column
+     * @param [type] $data
+     * @return 
+     */
     public function findMaterial($option, $column, $data){
         $query = "SELECT * FROM $option WHERE $column LIKE '%$data%';";
         $result = $this->runQueary($query);
@@ -180,6 +188,19 @@ class apiQuerys {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
+
+
+    public function deleteMaterial($count, $column){
+        $query = "DELETE FROM $column WHERE codigo='$count';";
+        $result = $this->runQueary($query);
+        if($result){
+            return true;
+        }else{
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
+        
+    }
+
 
 
     public function lendMaterial($data){

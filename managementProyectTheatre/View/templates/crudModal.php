@@ -1,5 +1,5 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <style>
   .nav {
     width: 100%;
@@ -52,6 +52,9 @@
   }
   td{
     color: white;
+  }
+  .tbody{
+    width: 1000px;
   }
 </style>
 <nav>
@@ -278,14 +281,31 @@
     </div>
     <div class="row">
       <div class="col-11" style="text-align: right; margin-top: 3%">
-        <button type="submit" class="btn btn-dark" onclick="findMaterial()">Buscar</button>
+        <button type="submit" class="btn btn-dark" onclick="findMaterial()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Buscar</button>        
       </div>
       <div class="col-1">
 
       </div>
     </div>
-    <div id="tableMaterialResult"></div>
+    
   </div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">MATERIAL ENCONTRADO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div id="tableMaterialResult" ></div>    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
   <!--Contenido de la opción para prestar un material-->
   <div class=" tab-pane" id="messages" role="tabpanel" style="width: 80%; margin-left: 25%; margin-top:0.5%;" aria-labelledby="messages-tab">
     <div class="row">
@@ -346,6 +366,7 @@
   </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="../../JS/jquery.js"></script>
 <script src="../../JS/crudModal/addMaterial/activeInput.js"></script>
 <script src="../../JS/crudModal/findMaterial/activateInputsFind.js"></script>
@@ -353,3 +374,4 @@
 <script src="../../JS/crudModal/addMaterial/sendDataController.js"></script>
 <script src="../../JS/crudModal/findMaterial/findMaterial.js"></script>
 <script src="../../JS/crudModal/lendMaterial/lendMaterial.js"></script> <!--Este escript ha sido añadido recientemente, tambien los ids de los input de la opcion de prestar y el required-->
+<script src="../../JS/crudModal/findMaterial/deleteMaterial.js"></script>
