@@ -2,14 +2,14 @@ function seeLendMatertial(){
     $.ajax({
         type: "POST",
         url: "/fst/managementProyectTheatre/controller/seeLendMaterial.php",
-        data: { 
-            
-    },
+        data: {},
     success: function(response) {
         
         var data = $.parseJSON(response);
+        console.log(data);
         var container = document.getElementById("tableLendMaterial");
         var table = document.createElement("div");
+        table.className = "table table-dark tableLend";
         //Crear el thead 
         var tbody = document.createElement("div");
         if(data !== undefined){
@@ -28,12 +28,20 @@ function seeLendMatertial(){
                 column5.className = "col";
                 var column6 = document.createElement("div");
                 column6.className = "col";
+                var column7 = document.createElement("div");
+                var button = document.createElement("button");
+                column7.className = "col";
+                button.innerHTML = "🗑️";
+                button.className = "btn btn-warning deleteLend";
+                button.setAttribute("onclick", "deleteLend()");
+                button.setAttribute("type", "submit");
+                button.id = data[i].codigo;   
 
-                var texNode1 = document.createTextNode(data[i].tipoMaterial);
-                var texNode2 = document.createTextNode(data[i].per_enti);
-                var texNode3 = document.createTextNode(data[i].dia_retirada);
-                var texNode4 = document.createTextNode(data[i].dia_entrega);
-                var texNode5 = document.createTextNode(data[i].estado_material);
+                var texNode1 = document.createTextNode(data[i].materialPrestado);
+                var texNode2 = document.createTextNode(data[i].personaPrestamo);
+                var texNode3 = document.createTextNode(data[i].diaRetirada);
+                var texNode4 = document.createTextNode(data[i].diaEntrega);
+                var texNode5 = document.createTextNode(data[i].estadoMaterial);
                 var texNode6 = document.createTextNode(data[i].observaciones);
 
                 column1.appendChild(texNode1);
@@ -42,10 +50,21 @@ function seeLendMatertial(){
                 column4.appendChild(texNode4);
                 column5.appendChild(texNode5);
                 column6.appendChild(texNode6);
+                column7.appendChild(button);
+                row.appendChild(column1);
+                row.appendChild(column2);
+                row.appendChild(column3);
+                row.appendChild(column4);
+                row.appendChild(column5);
+                row.appendChild(column6);
+                row.appendChild(column7);
+                tbody.appendChild(row);
             }
 
 
         }
+            table.appendChild(tbody);
+            container.appendChild(table);
     }
 });
 }

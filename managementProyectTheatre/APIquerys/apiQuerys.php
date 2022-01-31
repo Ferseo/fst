@@ -133,7 +133,7 @@ class apiQuerys {
 
         if($option === "atrezzo"){
         $this->conn->beginTransaction();
-        $sql= "INSERT INTO atrezzo (tipoObjeto,  utilidad,  ubicacion, cantidad, observaciones) VALUES (?,?,?,?,?);";
+        $sql= "INSERT INTO atrezzo (tipoMaterial,  utilidad,  ubicacion, cantidad, observaciones) VALUES (?,?,?,?,?);";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
         $this->conn->commit();
@@ -151,7 +151,7 @@ class apiQuerys {
 
         if($option === "otro"){
         $this->conn->beginTransaction();
-        $sql= "INSERT INTO otros (tipoObjeto, cantidad, utilidad, ubicacion, observaciones) VALUES (?,?,?,?,?);";
+        $sql= "INSERT INTO otros (tipoMaterial, cantidad, utilidad, ubicacion, observaciones) VALUES (?,?,?,?,?);";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
         $this->conn->commit();
@@ -197,6 +197,7 @@ class apiQuerys {
             return true;
         }else{
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+            return false;
         }
         
     }
@@ -205,8 +206,8 @@ class apiQuerys {
 
     public function lendMaterial($data){
         $this->conn->beginTransaction();
-        //$sql= "INSERT INTO materialPrestado (tipoMaterial, per_enti, dia_retirada, dia_entrega, estadoMaterial, observaciones) VALUES (?,?,?,?,?,?);";
-        $stmt = $this->conn->prepare(/*$sql*/);
+        $sql= "INSERT INTO materialprestado (materialPrestado, diaRetirada, diaEntrega,  estadoMaterial, observaciones, personaPrestamo) VALUES (?,?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
         $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5]));
         $this->conn->commit();
         return true;
@@ -225,6 +226,18 @@ class apiQuerys {
 
     }
 
+
+    public function deleteLend($count){
+        $query = "DELETE FROM materialprestado WHERE codigo='$count';";
+        $result = $this->runQueary($query);
+        if($result){
+            return true;
+        }else{
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+            return false;
+        }
+        
+    }
 
 
 

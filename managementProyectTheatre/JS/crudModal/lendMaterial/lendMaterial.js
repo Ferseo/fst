@@ -1,11 +1,11 @@
 function lendMaterial(){
-    var tipo_materialLend = document.querySelector("#tipo_materialLend");
-    var per_entiLend = document.querySelector("#per_entiLend");
-    var dia_retirada = document-querySelector("#retiradaLend");
-    var dia_entrega = document.querySelector("#entregaLend");
-    var estado_material = document.querySelector("#estado_materialLend");
+    var tipo_materialLend = document.querySelector("#tipo_materialLend").value;
+    var per_entiLend = document.querySelector("#per_entiLend").value;
+    var dia_retirada = document.querySelector("#retiradaLend").value;
+    var dia_entrega = document.querySelector("#entregaLend").value;
+    var estado_material = document.querySelector("#estado_materialLend").value;
     if(document.querySelector("#observacionesLend") != null){
-        var observacionesLend = document.querySelector("#observacionesLend");
+        var observacionesLend = document.querySelector("#observacionesLend").value;
     }else{
         var observacionesLend = 'No hay reseñas a mostrar, todo está correcto.';
     }
@@ -22,12 +22,7 @@ function lendMaterial(){
             "observaciones":observacionesLend
     },
     success: function(response) {
-        //Aqui colocar la respuesta
-        //window.location.reload();
-        $(document).ready(function() {
-        $('#messages').load("indexAssistant.php"); //Intento de actualizar solo el modal.
-         
-      });
+        window.location.reload();
     }
 });
 }

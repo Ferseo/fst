@@ -42,15 +42,10 @@
         },
         success: function(response) {
             $('input[type="text"]').val('');
-            //$('select').val('Buscar...');
             var data = $.parseJSON(response);     
             var container = document.getElementById("tableMaterialResult");
             var table = document.createElement("div");
             table.className = "table table-dark";
-            /*var thead = document.createElement("thead");
-            var titleTHead = document.createTextNode("Material encontrado");
-            thead.appendChild(titleTHead);
-            thead.className = "titleHead";*/
             var tbody = document.createElement("div");
             if(data !== undefined){
                 for(var i = 0; i <= data.length-1; i++){
@@ -63,7 +58,6 @@
                         var column3 = document.createElement("div");
                         column3.className = "col";
                         var textColumnTipoMaterial = document.createTextNode(data[i].tipoMaterial );
-                        textColumnTipoMaterial.className = "celda";
                         if(data[i].marca){
                             var column4 = document.createElement("div");
                             column4.className = "col";
@@ -87,9 +81,7 @@
                         button.setAttribute("type", "submit");
                         button.id = data[i].codigo;                    
                         var textColumncantidad = document.createTextNode(data[i].cantidad );
-                        textColumncantidad.className = "celda";
                         var textColumnubicacion = document.createTextNode(data[i].ubicacion );
-                        textColumnubicacion.className = "celda";
                         column1.appendChild(textColumnTipoMaterial);
                         column2.appendChild(textColumncantidad);
                         column3.appendChild(textColumnubicacion);
@@ -104,8 +96,15 @@
             //thead.appendChild(tbody);
             table.appendChild(tbody);
             container.appendChild(table);
-
         }
         });
+}
+
+/**
+ * Método asignado al botón de cerrar del modal, que simplemente refresca la pagina para
+ * vaciar el modal.
+ */
+function refreshModal(){
+    window.location.reload();
 }
 

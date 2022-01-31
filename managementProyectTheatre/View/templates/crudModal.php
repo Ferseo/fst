@@ -56,6 +56,9 @@
   .tbody{
     width: 1000px;
   }
+  .tableLend{
+    font-size: 0.75em;
+  }
 </style>
 <nav>
   <div class="row" style="width: 100%;">
@@ -290,7 +293,7 @@
     
   </div>
 <!-- Modal que muestra la tabla con los resultados de la busqueda -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-target="#AvanzaModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -301,7 +304,7 @@
       <div id="tableMaterialResult" ></div>    
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="refreshModal()">Cerrar</button>
       </div>
     </div>
   </div>
@@ -359,10 +362,10 @@
     </div>
     <div class="row">
       <div class="col">
-        <button type="submit" class="btn btn-dark" onclick="lendMatertial()">Continuar</button> <!--añadimos la funcion al atributo onclick-->
+        <button type="submit" class="btn btn-dark" onclick="lendMaterial()">Continuar</button> <!--añadimos la funcion al atributo onclick-->
       </div>
       <div class="col">
-        <button type="submit" class="btn btn-dark" onclick="seeLendMatertial()" data-bs-toggle="modal1" data-bs-target="#staticBackdropNew">Ver Préstamos</button> <!--añadimos el botón para ver materiales prestados-->
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdropNew" onclick="seeLendMatertial()">Ver préstamos</button> <!--añadimos el botón para ver materiales prestados-->
       </div>
     </div>
 
@@ -373,13 +376,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">MATERIAL PRESTADO</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal1" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <div id="tableLendMaterial"></div>    
+       <div id="tableLendMaterial"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal1">Cerrar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="refreshModal()">Cerrar</button>
       </div>
     </div>
   </div>
@@ -392,6 +395,7 @@
 <script src="../../JS/crudModal/activateOption.js"></script>
 <script src="../../JS/crudModal/addMaterial/sendDataController.js"></script>
 <script src="../../JS/crudModal/findMaterial/findMaterial.js"></script>
-<script src="../../JS/crudModal/lendMaterial/lendMaterial.js"></script> <!--Este escript ha sido añadido recientemente, tambien los ids de los input de la opcion de prestar y el required-->
+<script src="../../JS/crudModal/lendMaterial/lendMaterial.js"></script> 
 <script src="../../JS/crudModal/findMaterial/deleteMaterial.js"></script>
-<script src="../../JS/crudModal/lendMaterial/seeLendMaterial.js"></script><!--Añadimos el script del archivo para leer materiales prestados-->
+<script src="../../JS/crudModal/lendMaterial/seeLendMaterial.js"></script>
+<script src="../../JS/crudModal/lendMaterial/deleteLend.js"></script>
