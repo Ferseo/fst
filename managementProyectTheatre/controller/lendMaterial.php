@@ -1,4 +1,5 @@
 <?php
+require('../fpdf/fpdf.php');
 include_once('../APIquerys/apiQuerys.php');
 $conn = new apiQuerys;
 
@@ -12,7 +13,11 @@ $data[5] = $_POST["observaciones"];
 $conn->lendMaterial($data);
 
 //A su vez generar el pdf con los datos de $data
-
+/*$pdf=new FPDF();
+$pdf->AddPage();
+$pdf->SetFont('Arial','B',16);
+$pdf->Cell(40,10,'¡Mi primera página pdf con FPDF!');
+$pdf->Output();*/
 
 
 

@@ -205,11 +205,24 @@ class apiQuerys {
 
     public function lendMaterial($data){
         $this->conn->beginTransaction();
-        //$sql= "INSERT INTO materialPrestado (tipoMaterial,      ) VALUES (?,?,?,?,?,?);";
+        //$sql= "INSERT INTO materialPrestado (tipoMaterial, per_enti, dia_retirada, dia_entrega, estadoMaterial, observaciones) VALUES (?,?,?,?,?,?);";
         $stmt = $this->conn->prepare(/*$sql*/);
         $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5]));
         $this->conn->commit();
         return true;
+    }
+
+    public function getLendMaterial(){
+        $query = "SELECT * FROM materialprestado";
+        $result = $this->runQueary($query);
+        if($result){
+            $data=$result->FetchAll(PDO::FETCH_OBJ);
+            return $data;
+                      
+        }else {
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
+
     }
 
 

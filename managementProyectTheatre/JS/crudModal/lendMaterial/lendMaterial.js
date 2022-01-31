@@ -12,7 +12,7 @@ function lendMaterial(){
 
     $.ajax({
         type: "POST",
-        url: "/fst/managementProyectTheatre/controller/lendMaterial.js",
+        url: "/fst/managementProyectTheatre/controller/lendMaterial.php",
         data: { 
             "tipo_materialLend":tipo_materialLend,
             "per_entiLend":per_entiLend,
@@ -23,6 +23,11 @@ function lendMaterial(){
     },
     success: function(response) {
         //Aqui colocar la respuesta
+        //window.location.reload();
+        $(document).ready(function() {
+        $('#messages').load("indexAssistant.php"); //Intento de actualizar solo el modal.
+         
+      });
     }
 });
 }

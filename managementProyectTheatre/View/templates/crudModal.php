@@ -289,7 +289,7 @@
     </div>
     
   </div>
-<!-- Modal -->
+<!-- Modal que muestra la tabla con los resultados de la busqueda -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -361,10 +361,29 @@
       <div class="col">
         <button type="submit" class="btn btn-dark" onclick="lendMatertial()">Continuar</button> <!--añadimos la funcion al atributo onclick-->
       </div>
+      <div class="col">
+        <button type="submit" class="btn btn-dark" onclick="seeLendMatertial()" data-bs-toggle="modal1" data-bs-target="#staticBackdropNew">Ver Préstamos</button> <!--añadimos el botón para ver materiales prestados-->
+      </div>
     </div>
 
   </div>
-
+  <!-- Modal que muestra los materiales prestados -->
+<div class="modal fade" id="staticBackdropNew" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">MATERIAL PRESTADO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal1" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div id="tableLendMaterial"></div>    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal1">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="../../JS/jquery.js"></script>
@@ -375,3 +394,4 @@
 <script src="../../JS/crudModal/findMaterial/findMaterial.js"></script>
 <script src="../../JS/crudModal/lendMaterial/lendMaterial.js"></script> <!--Este escript ha sido añadido recientemente, tambien los ids de los input de la opcion de prestar y el required-->
 <script src="../../JS/crudModal/findMaterial/deleteMaterial.js"></script>
+<script src="../../JS/crudModal/lendMaterial/seeLendMaterial.js"></script><!--Añadimos el script del archivo para leer materiales prestados-->
