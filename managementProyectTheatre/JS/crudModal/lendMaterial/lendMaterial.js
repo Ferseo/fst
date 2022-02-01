@@ -6,8 +6,9 @@ function lendMaterial(){
     var estado_material = document.querySelector("#estado_materialLend").value;
     if(document.querySelector("#observacionesLend") != null){
         var observacionesLend = document.querySelector("#observacionesLend").value;
+        
     }else{
-        var observacionesLend = 'No hay reseñas a mostrar, todo está correcto.';
+        var observacionesLend = 'No hay contenido a mostrar, todo esta correcto.';
     }
 
     $.ajax({
@@ -22,7 +23,7 @@ function lendMaterial(){
             "observaciones":observacionesLend
     },
     success: function(response) {
-        window.location.reload();
+        //window.location.reload();
     }
 });
 }

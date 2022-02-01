@@ -979,6 +979,7 @@ function SetXY($x, $y)
 
 function Output($dest='', $name='', $isUTF8=false)
 {
+	ob_clean(); 
 	// Output PDF to some destination
 	$this->Close();
 	if(strlen($name)==1 && strlen($dest)!=1)
@@ -993,7 +994,8 @@ function Output($dest='', $name='', $isUTF8=false)
 	if($name=='')
 		$name = 'doc.pdf';
 	switch(strtoupper($dest))
-	{
+	{ 
+		
 		case 'I':
 			// Send to standard output
 			$this->_checkoutput();

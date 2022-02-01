@@ -356,7 +356,7 @@
       <!--div para indicar las observaciones pertinentes-->
       <div class="input-group input-group-sm mb-3" style="margin-top: 1%; width:80%;">
         <span class="input-group-text" id="inputGroup-sizing-sm">Observaciones: </span>
-        <textarea type="text" class="form-control" id="oberservacionesLend" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%"></textarea>
+        <textarea type="text" class="form-control" id="observacionesLend" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%"></textarea>
         <div style="margin-left: 18.5%;"></div>
       </div>
     </div>
