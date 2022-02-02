@@ -189,7 +189,13 @@ class apiQuerys {
         }
     }
 
-
+    /**
+     * Método que recibiendo por parámetro el codigo del elemento a eliminar y el nombre de la 
+     * tabla, para su posterior eliminación de la bd
+     * @param [type] $count
+     * @param [type] $column
+     * @return 
+     */
     public function deleteMaterial($count, $column){
         $query = "DELETE FROM $column WHERE codigo='$count';";
         $result = $this->runQueary($query);
@@ -202,8 +208,11 @@ class apiQuerys {
         
     }
 
-
-
+    /**
+     * Método que recibiendo un objeto con datos, los introduce en la tabla correspondiente
+     * @param [type] $data
+     * @return 
+     */
     public function lendMaterial($data){
         $this->conn->beginTransaction();
         $sql= "INSERT INTO materialprestado (materialPrestado, diaRetirada, diaEntrega,  estadoMaterial, observaciones, personaPrestamo) VALUES (?,?,?,?,?,?);";
@@ -213,6 +222,10 @@ class apiQuerys {
         return true;
     }
 
+    /**
+     * Método de consulta que trae toda la informacion de la bd de la tabla indicada
+     * @return
+     */
     public function getLendMaterial(){
         $query = "SELECT * FROM materialprestado";
         $result = $this->runQueary($query);
@@ -226,7 +239,11 @@ class apiQuerys {
 
     }
 
-
+    /**
+     * Método que recibiendo una variable con el codigo elimina el registro de la bd
+     * @param [type] $count
+     * @return 
+     */
     public function deleteLend($count){
         $query = "DELETE FROM materialprestado WHERE codigo='$count';";
         $result = $this->runQueary($query);
@@ -266,7 +283,7 @@ class apiQuerys {
 
 
 
-    /** Método para que al entrar en la palicacion cambie la fecha de las tareas a la del dia en curso, para que aparezcan en la barra de notificaciones */
+    /** Método para que al entrar en la aplicacion cambia la fecha de las tareas a la del dia en curso, para que aparezcan en la barra de notificaciones */
     public function putDateToday($date){
         $query = "UPDATE tareas SET diaTarea='$date'";
         $result = $this->runQueary($query);

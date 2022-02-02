@@ -1,4 +1,4 @@
-# fst
+# Ferseo91
 Esta aplicación es desarrollada para la gestion del inventario de instalaciones municipales.
 La primera de las funcionalidades es la verificación de categoria al comprobar el login, para asi redirigir al dashboard indicado en cada caso, también
 consta de un panel de interacción con la base de datos, el cual contiene tres pestañas de opciones, añadir, buscar y prestar material. Otra de sus
