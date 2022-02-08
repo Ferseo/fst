@@ -9,12 +9,11 @@ $dataTask = $api->getTask($nombre, $date);
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <style>
     .contentNofifications {
-        width: 95%;
-        margin-left: 2%;
         text-align: center;
         background-color: #bdbbb0;
         border: 10px double #8a897c;
-        height: 500px;
+        height: 86vh;
+        box-shadow: 2px 2px 2px 2px gray;
         /*height: 100vh;*/ /*Si no funciona asi, probar a llamar a la propiedad desde el id*/
     }
 
@@ -46,8 +45,8 @@ $dataTask = $api->getTask($nombre, $date);
         margin: 2%;
     }
 </style>
-<div class="row" style="padding: 0;">
-    <div class="col-4 contentNofifications" style="padding: 0;" id="containerTable">
+<div class="col" style="padding: 0;">
+    <div class="contentNofifications" style="padding: 0;" id="containerTable">
 
     </div>
 </div>

@@ -8,23 +8,21 @@
     <title>Dashboard de Administrador</title>
 </head>
 <style>
-    .navbarRow {
-
-        margin: 0;
-    }
-
-    body {
-        width: 1350px;
-        height: 578.188px;
-        margin-right: 0px;
+    .body{
+        /* background-color: #353535; */
+        background-color: #1f1f1f;
+        width: 99%;
     }
 </style>
+<body class="body">
 
-<body>
-    <div class="row navbarRow">
+   <div class="row">
+        <div class="col-12">
         <?php
         include('../templates/header.php');
         ?>
+        </div>
+        
     </div>
     <div class="row">
         <div class="col-9 crudContent">
@@ -37,7 +35,9 @@
             include('../templates/notifications.php')
             ?>
         </div>
-    </div>
+
+
 </body>
+
 
 </html>
