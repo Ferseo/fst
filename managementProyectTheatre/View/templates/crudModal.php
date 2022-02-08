@@ -22,11 +22,10 @@
     padding-left: 0.5rem;
   }
 
-  /*.titleModal{
-    background-color: #d2d7df;
-  }*/
+  
   .tab-content {
     background-color: #d2d7df;
+    /*height: 100vh;*/
   }
 
   .divOptions {
@@ -55,6 +54,7 @@
   }
   .tbody{
     width: 1000px;
+    
   }
   .tableLend{
     font-size: 0.75em;

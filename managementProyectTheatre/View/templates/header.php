@@ -33,7 +33,10 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
   </div>
   <div class="col-3" style="text-align: right;">
   <img src="../../img/icons/userIcon.png" class="iconUser" alt="">
-    <?php printf('<h6>Bienvenido '.$user.' </h6>' ) ?>
-    
+    <?php printf('<h6>Bienvenido '.$user.' </h6>' ) ?>   <!--<span><?php //printf('<h6>Bienvenido '.$user.' </h6>' ) ?> </span>--> 
+    <!-- 
+       AQUI COLOCAR PRUEBAS PARA HACER ICONO MENU DESPLEGABLE
+      
+  -->
   </div>
 </nav>

@@ -15,6 +15,7 @@ $dataTask = $api->getTask($nombre, $date);
         background-color: #bdbbb0;
         border: 10px double #8a897c;
         height: 500px;
+        /*height: 100vh;*/ /*Si no funciona asi, probar a llamar a la propiedad desde el id*/
     }
 
     tr {
