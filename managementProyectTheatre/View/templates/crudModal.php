@@ -20,7 +20,7 @@
   
   .tab-content {
     background-color: #d2d7df;
-    height: 79vh;
+    height: 80vh;
     
   }
 

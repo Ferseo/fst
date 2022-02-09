@@ -32,7 +32,7 @@ function seeLendMatertial(){
                 var button = document.createElement("button");
                 column7.className = "col";
                 button.innerHTML = "🗑️";
-                button.className = "btn btn-danger deleteLend";
+                button.className = "btn deleteLend";
                 button.setAttribute("onclick", "deleteLend()");
                 button.setAttribute("type", "submit");
                 button.id = data[i].codigo;   

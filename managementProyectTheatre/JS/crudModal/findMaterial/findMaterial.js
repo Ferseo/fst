@@ -76,9 +76,9 @@
                         var button = document.createElement("button");
                         column6.className = "col";
                         button.innerHTML = "🗑️";
-                        button.className = "btn btn-danger deleteMaterial";
+                        button.className = "btn  deleteMaterial";
                         button.setAttribute("onclick", "deleteMaterial()");
-                        button.setAttribute("type", "submit");
+                        //button.setAttribute("type", "submit");
                         button.id = data[i].codigo;                    
                         var textColumncantidad = document.createTextNode(data[i].cantidad );
                         var textColumnubicacion = document.createTextNode(data[i].ubicacion );
@@ -98,6 +98,7 @@
             container.appendChild(table);
         }
         });
+    return true;
 }
 
 /**
