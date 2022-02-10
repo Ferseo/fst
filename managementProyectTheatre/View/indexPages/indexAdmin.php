@@ -35,7 +35,7 @@
             include('../templates/notifications.php')
             ?>
         </div>
-
+        </div>
 
 </body>
 

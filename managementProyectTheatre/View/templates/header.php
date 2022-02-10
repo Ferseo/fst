@@ -40,7 +40,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
   <img type="button" src="../../img/icons/userIcon.png" class="iconUser dropdown-toggle" alt="" style="margin: 2%;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="#"> <img src="../../img/icons/icons8-usuario-hombre-verificado-24.png"> Mi perfil</a></li>
-    <li><a class="dropdown-item" href="#"><img src="../../img/icons/icons8-editar-calendario-24.png">Ver Calendario</a></li>
+    <li><a class="dropdown-item" href="../calendar/indexCalendar.php"><img src="../../img/icons/icons8-editar-calendario-24.png">Ver Calendario</a></li>
     <li><a class="dropdown-item" href="#"> <img src="../../img/icons/icons8-mp3-player-24.png"> Reproductor</a></li>
     <li><a class="dropdown-item" href="#"> <img src="../../img/icons/icons8-configuration-and-setting-panel-in-computer-software-24.png"> Configuración</a></li>
     <li><a class="dropdown-item" href="../login/loginView.php"> <img src="../../img/icons/icons8-exit-24.png"> Cerrar sesión</a></li>

@@ -11,7 +11,7 @@ $dataTask = $api->getTask($nombre, $date);
 <style>
     .contentNofifications {
         text-align: center;
-        height: 77vh;
+        height: 82vh;
         box-shadow: 2px 2px 2px 2px gray;
         /*height: 100vh;*/ /*Si no funciona asi, probar a llamar a la propiedad desde el id*/
     }
@@ -35,16 +35,13 @@ $dataTask = $api->getTask($nombre, $date);
     </div>
 </div> -->
 <div data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="margin-top: 0%;" >
-  <div class="modal-dialog">
     <div class="modal-content">
-
       <div class="modal-body">
       <div class="contentNofifications" id="containerTable">
 
     </div>   
       </div>
     </div>
-  </div>
 </div>
 <script src="../../JS/notifications/deleteNotifications.js"></script>
 <script>

@@ -16,7 +16,7 @@ function deleteMaterial(){
                 //count = "";
                 //console.log(response);
                 alert("Borrado satisfactorio");
-               window.location.reload();
+               //window.location.reload();
             }
         })
 
