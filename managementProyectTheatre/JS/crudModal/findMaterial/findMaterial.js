@@ -76,9 +76,9 @@
                         var button = document.createElement("button");
                         column6.className = "col";
                         button.innerHTML = "🗑️";
-                        button.className = "btn  deleteMaterial";
-                        button.setAttribute("onclick", "deleteMaterial()");
-                        //button.setAttribute("type", "submit");
+                        button.className = "btn deleteMaterial";
+                        button.setAttribute("onclick", "deleteMaterial(this)");
+                        button.setAttribute("type", "submit");
                         button.id = data[i].codigo;                    
                         var textColumncantidad = document.createTextNode(data[i].cantidad );
                         var textColumnubicacion = document.createTextNode(data[i].ubicacion );
@@ -93,7 +93,6 @@
                     tbody.appendChild(row);
                 }
             }
-            //thead.appendChild(tbody);
             table.appendChild(tbody);
             container.appendChild(table);
         }

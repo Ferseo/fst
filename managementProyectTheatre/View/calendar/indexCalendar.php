@@ -26,10 +26,6 @@
     </div>
     <div class="row" style="width: 80%;">
     <iframe src="https://calendar.google.com/calendar/embed?src=teatroauditoriovicar%40gmail.com&ctz=Europe%2FMadrid" style="border: 0; margin-left: 15%; margin-top: 3%;" width="600" height="570" frameborder="1" scrolling="no"></iframe>
-
-
     </div>
-
 </body>
-
 </html>

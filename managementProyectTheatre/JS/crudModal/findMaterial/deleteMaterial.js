@@ -1,10 +1,12 @@
-
-function deleteMaterial(){
-        var count = $(".deleteMaterial").attr('id');
+/**
+ * Funcion que recibiendo el elemento interactuado en el html
+ * saca su id y lo introduce como parámetro para la consulta que elimina el registro
+ * en cuestión.
+ * 
+ */
+function deleteMaterial(data){
+        var count = data.id;
         var option = document.getElementById("selectedOption").value;
-        
-        console.log(count, option);
-
         $.ajax({
             type: "POST",
             url: "/fst/managementProyectTheatre/controller/deleteMaterial.php",
@@ -13,31 +15,8 @@ function deleteMaterial(){
                 "count":count
             },
             success: function(response) {
-                //count = "";
-                //console.log(response);
                 alert("Borrado satisfactorio");
-               //window.location.reload();
+               window.location.reload();
             }
         })
-
    }
-// $('.deleteMaterial').click(function() {
-//     var div = $(this);
-//     var count = div.attr('id');
-//     var option = document.getElementById("selectedOption").value;
-//     console.log(count, option);
-//     $.ajax({
-//                     type: "POST",
-//                     url: "/fst/managementProyectTheatre/controller/deleteMaterial.php",
-//                     data: {
-//                        "option": option,
-//                         "count":count
-//                     },
-//                     success: function(response) {
-//                         //count = "";
-//                         //console.log(response);
-//                         alert("Borrado satisfactorio");
-//                        window.location.reload();
-//                     }
-//                 })
-// });

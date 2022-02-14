@@ -1,6 +1,5 @@
-function deleteLend(){
-     var count = $(".deleteLend").attr("id");
-     //console.log(count);
+function deleteLend(data){
+     var count = data.id;
     $.ajax({
         type: "POST",
         url: "/fst/managementProyectTheatre/controller/deleteLend.php",
@@ -8,8 +7,6 @@ function deleteLend(){
             "count":count
         },
         success: function(response) {
-            //count = "";
-            //console.log(response);
             alert("Borrado satisfactorio");
             window.location.reload();
         }
