@@ -15,6 +15,7 @@ if ($queryLogin->checkUser($user, $pass)) {
         if ($credencial === "administrador") {
                 echo "<script> alert('Bienvenido " . $user . " !!'); </script>";
                 $_SESSION['user'] = $nombre;
+                $_SESSION['categoria'] = $credencial;
 ?>
                 <script type="text/javascript">
                         window.location = "../View/indexPages/indexAdmin.php";
@@ -23,6 +24,7 @@ if ($queryLogin->checkUser($user, $pass)) {
         } else if ($credencial === "jefe") {
                 echo "<script> alert('Bienvenido " . $user . " !!'); </script>";
                 $_SESSION['user'] = $nombre;
+                $_SESSION['categoria'] = $credencial;
         ?>
                 <script type="text/javascript">
                         window.location = "../View/indexPages/indexBoss.php";
@@ -31,6 +33,7 @@ if ($queryLogin->checkUser($user, $pass)) {
         } else if ($credencial === "ayudante") {
                 echo "<script> alert('Bienvenido " . $user . " !!'); </script>";
                 $_SESSION['user'] = $nombre;
+                $_SESSION['categoria'] = $credencial;
 
         ?>
                 <script type="text/javascript">
