@@ -257,6 +257,17 @@ class apiQuerys {
     }
 
 
+    public function getCredencial($user){
+        $query = "SELECT * FROM credenciales WHERE nombre='$user';";
+        $result = $this->runQueary($query);
+        if($result){
+            $data=$result->FetchAll(PDO::FETCH_OBJ);
+            return $data;                      
+        }else {
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
+    }
+
 
 
 

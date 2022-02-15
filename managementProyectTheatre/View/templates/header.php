@@ -38,19 +38,19 @@ if($credencial === "administrador"){
   <div class="col-2">
     <img src="../../img/icons/EscudoVicar.jpg" class="icon" alt="logo vicar" style="margin-left: 4%;" >
   </div>
-  <div class="col-9" style="text-align: center;">
+  <div class="col-8" style="text-align: center;">
   <a class="navbar-brand">Teatro Auditorio Ciudad de Vícar</a>
   </div>
-  <div class="col-1 dropstart" style="text-align: right;">
+  <div class="col-2 dropstart" style="text-align: right;">
   <img type="button" src="../../img/icons/userIcon.png" class="iconUser dropdown-toggle" alt="" style="margin: 2%;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li id="fatherList"><a class="dropdown-item" href='../indexPages/index<?php echo $index ?>.php'> <img src="../../img/icons/icons8-usuario-hombre-verificado-24.png">Dahsboard</a></li>
     <li><a class="dropdown-item" href="../calendar/indexCalendar.php"><img src="../../img/icons/icons8-editar-calendario-24.png">Ver Calendario</a></li>
     <li><a class="dropdown-item" href="#"> <img src="../../img/icons/icons8-mp3-player-24.png"> Reproductor</a></li>
-    <li><a class="dropdown-item" href="#"> <img src="../../img/icons/icons8-configuration-and-setting-panel-in-computer-software-24.png"> Configuración</a></li>
+    <li><a class="dropdown-item" href="../../View/Configurations/configurations.php"> <img src="../../img/icons/icons8-configuration-and-setting-panel-in-computer-software-24.png">Ajustes</a></li>
     <li><a class="dropdown-item" href="../login/loginView.php"> <img src="../../img/icons/icons8-exit-24.png"> Cerrar sesión</a></li>
   </ul>
-  <?php printf('<span style="color: white;">'.$user.' </span>' ) ?>
+  <?php printf('<span style="color: white;">'.$user.'</span>' ) ?>
   </div>
 </nav>
 <!--Funcion que se activa al cargar la pantalla en el que se recoja
