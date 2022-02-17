@@ -273,6 +273,16 @@ class apiQuerys {
         }
     }
 
+
+    /**
+     * Método que recibiendo por parámetros tres variable indicando el valor del campo, el 
+     * id, del campo y el nonmbre del ususario , modifica el dato correspondiente a la 
+     * columna indicada, del usuario indicado     *
+     * @param [type] $value
+     * @param [type] $colunm
+     * @param [type] $nombre
+     * @return 
+     */
     public function editInputConfiguration($value, $colunm, $nombre){
         $query = "UPDATE credenciales SET $colunm='$value' WHERE nombre='$nombre';";
         $result = $this->runQueary($query);

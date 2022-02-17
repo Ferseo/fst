@@ -43,6 +43,7 @@ if($credencial === "administrador"){
   </div>
   <div class="col-2 dropstart" style="text-align: right;">
   <img type="button" src="../../img/icons/userIcon.png" class="iconUser dropdown-toggle" alt="" style="margin: 2%;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li id="fatherList"><a class="dropdown-item" href='../indexPages/index<?php echo $index ?>.php'> <img src="../../img/icons/icons8-usuario-hombre-verificado-24.png">Dahsboard</a></li>
     <li><a class="dropdown-item" href="../calendar/indexCalendar.php"><img src="../../img/icons/icons8-editar-calendario-24.png">Ver Calendario</a></li>
@@ -55,6 +56,7 @@ if($credencial === "administrador"){
 </nav>
 <!--Funcion que se activa al cargar la pantalla en el que se recoja
 con php la variable de sesion con la categoria, y dependiendo de la categoria crear una funcion que añada campos al menu desplegable-->
+
 <script>
   function completedMenu(){
     var categoria = <?php echo json_encode($credencial); ?>;

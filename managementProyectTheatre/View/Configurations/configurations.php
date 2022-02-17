@@ -35,7 +35,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
     </div>
     <div class="row">
         <div class="col-2" >
-        <ul class="modal-content" style="opacity: 60%; font-weight: bold; margin-left:10%;margin-top:2%;" >
+        <ul class="modal-content" style="font-weight: bold; margin-left:10%;margin-top:2%;" >
             <li id="fatherList"><a class="dropdown-item" href="#">Mi perfil</a></li>
             <li><a class="dropdown-item" href="#">Ajustes de audio</a></li>
             <li><a class="dropdown-item" href="#">Sincr. Diputación</a></li>
@@ -44,7 +44,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
         </ul>
         </div>
         <div class="col-10">
-            <div class="container modal-content" style="opacity: 60%; width:80%;">
+            <div class="container modal-content" style=" width:80%;">
                 <!-- <div class="col" style="width:70%;"> -->
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">DNI</span>
@@ -110,6 +110,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
 
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script>
     function dateSetting(){
         var user = <?php echo json_encode($user) ?>; 
