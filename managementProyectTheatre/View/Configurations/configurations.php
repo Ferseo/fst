@@ -49,46 +49,55 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">DNI</span>
                     <input type="text" class="form-control" id="dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <button type="submit" onclick="editInput(this)" id="dni">📝</button>
                     </div>
              
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
                     <input type="text" class="form-control" id="nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <button type="submit" onclick="editInput(this)" id="nombre">📝</button>
                     </div>
 
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Apellidos</span>
                     <input type="text" class="form-control" id="apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <button type="submit" onclick="editInput(this)" id="apellidos">📝</button>
                     </div>
 
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Alias</span>
                     <input type="text" class="form-control" id="user" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <button type="submit" onclick="editInput(this)" id="user">📝</button>
                     </div>
 
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Contraseña</span>
                     <input type="password" class="form-control" id="pass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <button type="submit" onclick="editInput(this)" id="pass">📝</button>
                     </div>
 
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Puesto</span>
                     <input type="text" class="form-control" id="categoria" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <button type="submit" onclick="editInput(this)" id="categoria">📝</button>
                     </div>
 
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Año de ingreso</span>
                     <input type="text" class="form-control" id="anio_ingreso" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <button type="submit" onclick="editInput(this)" id="anio_ingreso">📝</button>
                     </div>
 
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Direccion</span>
                     <input type="text" class="form-control" id="direccion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <button type="submit" onclick="editInput(this)" id="direccion">📝</button>
                     </div>
 
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Teléfono</span>
                     <input type="text" class="form-control" id="telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <button type="submit" onclick="editInput(this)" id="telefono">📝</button>
                     </div>
                 <!-- </div> -->
                 <!-- <div class="col" style="float: right;">
@@ -136,3 +145,4 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
     }
     window.onload = dateSetting();
 </script>
+<script src="../../JS/configurations/configurations.js"></script>

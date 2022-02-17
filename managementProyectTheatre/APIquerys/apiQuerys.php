@@ -256,7 +256,12 @@ class apiQuerys {
         
     }
 
-
+    /**
+     * Método de consulta que recibiendo la categoria del usuario, trae de la base 
+     * de datos su informacion de usuario 
+     * @param [type] $user
+     * @return 
+     */
     public function getCredencial($user){
         $query = "SELECT * FROM credenciales WHERE nombre='$user';";
         $result = $this->runQueary($query);
@@ -268,6 +273,16 @@ class apiQuerys {
         }
     }
 
+    public function editInputConfiguration($value, $colunm, $nombre){
+        $query = "UPDATE credenciales SET $colunm='$value' WHERE nombre='$nombre';";
+        $result = $this->runQueary($query);
+        if($result){
+            return true;
+        }else{
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+            return false;
+        }
+    }
 
 
 
