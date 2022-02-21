@@ -80,7 +80,12 @@
                 <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Teléfono</span>
                     <input type="text" class="form-control" id="telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+
                 </div>
+
+                    <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
+                    <button type="submit" onclick="registerNewUser()" class="btn btn-secondary">Registrar</button>
+                    </div>
             </div>
         </div>
 

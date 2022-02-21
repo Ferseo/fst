@@ -1,10 +1,10 @@
 function addTasks(){
-    var tipo_tarea = document.getElementById("tipo_tarea");
-    var traba_tarea = document.getElementById("traba_tarea");
-    var dia_tarea = document.getElementById("dia_tarea");
-    var horario_tarea = document.getElementById("horario_tarea");
-    var lugar_tarea = document.getElementById("lugar_tarea");
-
+    var tipo_tarea = document.getElementById("tipo_tarea").value;
+    var traba_tarea = document.getElementById("traba_tarea").value;
+    var dia_tarea = document.getElementById("dia_tarea").value;
+    var horario_tarea = document.getElementById("horario_tarea").value;
+    var lugar_tarea = document.getElementById("lugar_tarea").value;
+    console.log(tipo_tarea);
     $.ajax({
         type: "POST",
         url: "../../controller/addTasks.php",

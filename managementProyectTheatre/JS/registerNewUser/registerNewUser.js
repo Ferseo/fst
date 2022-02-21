@@ -1,13 +1,13 @@
 function registerNewUser(){
-    var dni = document.getElementById('dni');
-    var nombre = document.getElementById('nombre');
-    var apellidos = document.getElementById('apellidos');
-    var alias = document.getElementById('user');
-    var password = document.getElementById('pass');
-    var puesto = document.getElementById('categoria');
-    var anio_ingreso = document.getElementById('anio_ingreso');
-    var direccion = document.getElementById('direccion');
-    var telefono = document.getElementById('telefono');
+    var dni = document.getElementById('dni').value;
+    var nombre = document.getElementById('nombre').value;
+    var apellidos = document.getElementById('apellidos').value;
+    var alias = document.getElementById('user').value;
+    var password = document.getElementById('pass').value;
+    var puesto = document.getElementById('categoria').value;
+    var anio_ingreso = document.getElementById('anio_ingreso').value;
+    var direccion = document.getElementById('direccion').value;
+    var telefono = document.getElementById('telefono').value;
     $.ajax({
         type: "POST",
         url: "../../controller/registerNewUser.php",
