@@ -295,6 +295,14 @@ class apiQuerys {
     }
 
 
+    public function addTask($data){
+        $this->conn->beginTransaction();
+        $sql= "INSERT INTO tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea) VALUES (?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
+        $this->conn->commit();
+        return true;
+    }
 
 
 

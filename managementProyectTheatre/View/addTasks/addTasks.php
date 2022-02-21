@@ -26,51 +26,37 @@
     <div class="container modal-content" style="align-content: center; width: 60%;">
                  <div class="col" style="width: 60%; margin-left:25%;">
                  <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Tipo</span>
-                    <input type="text" class="form-control" id="dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Tipo de tarea</span>
+                    <input type="text" class="form-control" id="tipo_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
                     </div>
              
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
-                    <input type="text" class="form-control" id="nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >      
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Trabajador</span>
+                    <input type="text" class="form-control" id="traba_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >      
                     </div>
 
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Apellidos</span>
-                    <input type="text" class="form-control" id="apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Día</span>
+                    <input type="text" class="form-control" id="dia_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
                     </div>
 
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Alias</span>
-                    <input type="text" class="form-control" id="user" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Horario</span>
+                    <input type="text" class="form-control" id="horario_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
                     </div>
 
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Contraseña</span>
-                    <input type="password" class="form-control" id="pass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Lugar</span>
+                    <input type="password" class="form-control" id="lugar_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
                     </div>
 
+                    
                     <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Puesto</span>
-                    <input type="text" class="form-control" id="categoria" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
-                    </div>
-
-                    <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Año de ingreso</span>
-                    <input type="text" class="form-control" id="anio_ingreso" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
-                    </div>
-
-                    <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Direccion</span>
-                    <input type="text" class="form-control" id="direccion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
-                    </div>
-
-                    <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Teléfono</span>
-                    <input type="text" class="form-control" id="telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
+                    <button type="submit">Añadir tarea</button>
                     </div>
                  </div>
 
             </div>
 </body>
 </html>
+<script src="../../JS/addTasks/addTasks.js"></script>
