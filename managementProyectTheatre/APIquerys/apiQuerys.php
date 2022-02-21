@@ -305,6 +305,14 @@ class apiQuerys {
     }
 
 
+    public function addNewUser($data){
+        $this->conn->beginTransaction();
+        $sql= "INSERT INTO credenciales (dni, nombre, apellidos, user, password, categoria, anio_ingreso, direccion, telefono) VALUES (?,?,?,?,?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]));
+        $this->conn->commit();
+        return true;
+    }
 
 
 
