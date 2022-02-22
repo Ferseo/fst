@@ -31,7 +31,7 @@ if($credencial === "administrador"){
   }
  
  .dropdown-menu{
-   background-color: #1f1f1f;
+   background-color: white;
  }
 </style>
 <nav class="row navbar navbar-dark">
@@ -56,7 +56,8 @@ if($credencial === "administrador"){
 </nav>
 <!--Funcion que se activa al cargar la pantalla en el que se recoja
 con php la variable de sesion con la categoria, y dependiendo de la categoria crear una funcion que añada campos al menu desplegable-->
-
+<script src="../../JS/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script>
   function completedMenu(){
     var categoria = <?php echo json_encode($credencial); ?>;

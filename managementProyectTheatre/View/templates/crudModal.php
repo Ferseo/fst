@@ -2,9 +2,6 @@
 
 <style>
 
-.global{
-  margin-left: 2%;
-}
   .nav {
     width: 100%;
     height: 100%;
@@ -27,7 +24,6 @@
   .divOptions {
     background-color: #d2d7df;
     padding: 0;
-    height: 100%;
   }
 
   .settings {
@@ -76,9 +72,9 @@
     width: 25%;
   }
 </style>
-<div class="global">
+<div class="modal-content">
   
-<nav style="margin-left: 1.25%; box-shadow: 2px 2px 2px 2px gray; " >
+<nav style="box-shadow: 2px 2px 2px 2px gray; " class="modal-content">
   <div class="row" style="width: 100%;">
     <div class="col-8 divTitle">
       <h2 class="titleModal">Gestión de inventario</h2>
@@ -103,8 +99,7 @@
 <!--Contenedor general de las tres pestañas de opciones-->
 <div class="tab-content navContent">
   <!--Contenido de la opción para añadir material nuevo-->
-  <div class="tab-pane active" id="home" style="width: 100%; margin-left: 5%; margin-top: 4%;" role="tabpanel" aria-labelledby="home-tab">
-    <form name="addMaterial-form">
+  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab" style="margin-top: 2%;">
       <div class="row">
         <div class="col">
           <!--div del elemento para indicar que tipo de elemento se añade al inventario-->
@@ -226,7 +221,7 @@
         <button type="button" class="btn btn-dark btn-add" id="add_btn" >Añadir</button>
         </div>
       </div>
-    </form>
+
   </div>
   <!--Contenido de la opción para buscar un material-->
   <div class="tab-pane" id="profile" style="width: 100%; margin-top:2%; margin-left: 17%" role="tabpanel" aria-labelledby="profile-tab">
