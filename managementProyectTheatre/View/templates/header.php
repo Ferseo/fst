@@ -47,7 +47,7 @@ if($credencial === "administrador"){
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li id="fatherList"><a class="dropdown-item" href='../indexPages/index<?php echo $index ?>.php'> <img src="../../img/icons/icons8-usuario-hombre-verificado-24.png">Dahsboard</a></li>
     <li><a class="dropdown-item" href="../calendar/indexCalendar.php"><img src="../../img/icons/icons8-editar-calendario-24.png">Ver Calendario</a></li>
-    <li><a class="dropdown-item" href="#"> <img src="../../img/icons/icons8-mp3-player-24.png"> Reproductor</a></li>
+    <li><a class="dropdown-item" href="../media-player/mediaPlayer.php"> <img src="../../img/icons/icons8-mp3-player-24.png"> Reproductor</a></li>
     <li><a class="dropdown-item" href="../../View/Configurations/configurations.php"> <img src="../../img/icons/icons8-configuration-and-setting-panel-in-computer-software-24.png">Ajustes</a></li>
     <li><a class="dropdown-item" href="../login/loginView.php"> <img src="../../img/icons/icons8-exit-24.png"> Cerrar sesión</a></li>
   </ul>

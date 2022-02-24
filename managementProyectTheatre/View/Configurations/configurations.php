@@ -1,10 +1,15 @@
 <?php
-// include_once('../../APIquerys/apiQuerys.php');
-// $conn = new apiQuerys;
 session_start(['read_and_close'  => true,]);
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
-//$credencial = isset($_SESSION['categoria']) ? $_SESSION['categoria'] : 'Categoria';
-// $data = $conn->getCredencial($user);
+// header('Access-Control-Allow-Origin: *');
+// header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+// header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+// header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+// $method = $_SERVER['REQUEST_METHOD'];
+// if($method == "OPTIONS") {
+//     die();
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
