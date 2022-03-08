@@ -1,5 +1,5 @@
 <?php
-session_start();
+//ession_start();
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
 $credencial = isset($_SESSION['categoria']) ? $_SESSION['categoria'] : 'Categoria';
 if($credencial === "administrador"){
@@ -9,7 +9,9 @@ if($credencial === "administrador"){
 }else if($credencial === "ayudante"){
   $index = "Assistant";
 }
+session_write_close();
 ?>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <style>
   .navbar {
