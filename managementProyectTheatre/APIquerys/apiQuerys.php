@@ -8,20 +8,47 @@ class apiQuerys {
     /**
      *Constructor de la conexión a la base de datos.
      */
-    public function __construct()
-    {
-        //Intenta crear la conexión.
-        try{
-            $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-            $this->conn = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NOMBRE,DB_USUARIO,DB_PASSWORD,$opc);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //Y si no puede crearse la conexión, muestra el error.
-        }catch (Exception $ex){
-            throw $ex;
-        }
-    }
+//     public function __construct()
+//     {
+//         //Intenta crear la conexión.
+//         try{
+//             $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
+//             $this->conn = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NOMBRE,DB_USUARIO,DB_PASSWORD,$opc);
+//             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//         //Y si no puede crearse la conexión, muestra el error.
+//         }catch (Exception $ex){
+//             throw $ex;
+//         }
+//     }
 
-  
+      public function __construct() 
+    { 
+     $dsn = "mysql:host=".DB_HOST;
+     try 
+      {
+       $this->conn= new PDO($dsn, DB_USUARIO); // Nueva instancia de PDO
+       $sql='SHOW DATABASES LIKE "'.DB_NOMBRE.'";'; //SQL que comprueba si existe la base de datos
+       $resultado = $this->conn->query($sql); //Realiza la consulta
+       if ($resultado->fetch()) //Si encuentra la base de datos
+         { //Realiza la conexion
+          $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"); //Opciones conexion
+            $this->conn = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NOMBRE,DB_USUARIO,DB_PASSWORD,$opc); //Crea una instancia PDO intentando la conexion
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Añade los atributos
+         }else{
+             //Si no, lee el archivo sql que contiene la sentencia que crea la base de datos
+                $sql = file_get_contents('../SQL/baseDatos.sql');
+                $result=$this->conn->prepare($sql);
+                $result->execute();
+                $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"); //Opciones conexion
+              $this->conn = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NOMBRE,DB_USUARIO,DB_PASSWORD,$opc); //Crea una instancia PDO intentando la conexion
+              $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+              } 
+      } 
+     catch (Exception $ex) 
+      {
+       throw $ex;
+      }
+    }
     
     /**
      * Método que ejecuta cualquier consulta
