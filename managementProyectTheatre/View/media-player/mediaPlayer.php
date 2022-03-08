@@ -232,7 +232,8 @@
                     
                 </div>
                 <div class="container-audio">
-                    <audio controls  loop autoplay>
+                    <audio controls  loop autoplay> 
+                        <!-- Esta es la cancion -->
                             <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/new_year_dubstep_minimix.ogg" type="audio/ogg">
                             Your browser dose not Support the audio Tag
                 </audio>
