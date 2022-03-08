@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 4.9.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 31-01-2022 a las 17:13:20
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.11
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,14 +14,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `managementtheatre`
 --
-CREATE DATABASE IF NOT EXISTS `managementtheatre` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `managementtheatre`;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `atrezzo`
---
+CREATE DATABASE  `managementtheatre`;
+USE  `managementtheatre`;
 
 CREATE TABLE `atrezzo` (
   `tipoMaterial` varchar(50) NOT NULL,
@@ -47,7 +34,6 @@ INSERT INTO `atrezzo` (`tipoMaterial`, `utilidad`, `ubicacion`, `cantidad`, `obs
 ('difraces reyes', 'complemento en la cabalgata', 'habitacion disfraces', '12', 'han de ir a la tintoreria', 1),
 ('difraces DE MAGO', 'COMPLEMENTO ESPECTACULO DE MAGIA', 'habitacion disfraces', '2', 'uno presenta rotura', 2),
 ('mueble negro', 'complemento', 'sala posdcat', '1', '', 3),
-('perchero', 'complemento teatral', 'sala disfraces', '1', '', 4),
 ('sombreros mexicanos', 'complemento mexicano', 'sala disfraces', '4', '', 5),
 ('sombrero ingles', 'complemento ingles', 'sala disfraces', '2', '', 6),
 ('gafas hippies', 'complemento hippie', 'sala disfraces', '3', '', 7),
@@ -72,15 +58,11 @@ CREATE TABLE `cableado` (
 --
 
 INSERT INTO `cableado` (`tipoMaterial`, `cantidad`, `metos`, `ubicacion`, `codigo`) VALUES
-('dmx 5 pines', '2', '10', 'escenario', 1),
 ('alargadera', '2', '10', 'escenaio', 2),
-('xlr ', '20', '5 metros', 'escenario', 3),
-('xlr', '12', '5', 'escenario', 4),
-('dmx 5 pines', '18', '1', 'escenario', 5),
-('powercom', '15', '1-2 metros', 'escenario', 6),
-('regletas 4 conexiones', '2', '5 metros', 'escenario', 7),
-('regletas 4 conexiones', '1', '2 metro', 'escenario', 8),
-('regleta 2 conexiones', '2', '5 metros', 'escenario', 9);
+('regleta 2 conexiones', '2', '5 metros', 'escenario', 9),
+('xlr', '20', '5', 'escenario', 10),
+('regleta 5 conexiones', '2', '5', 'escenario', 12),
+('alargaderas', '7', '2 metros', 'escenario', 13);
 
 -- --------------------------------------------------------
 
@@ -94,17 +76,21 @@ CREATE TABLE `credenciales` (
   `apellidos` varchar(50) NOT NULL,
   `user` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `categoria` varchar(50) NOT NULL
+  `categoria` varchar(50) NOT NULL,
+  `anio_ingreso` varchar(20) NOT NULL,
+  `direccion` varchar(50) NOT NULL,
+  `telefono` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `credenciales`
 --
 
-INSERT INTO `credenciales` (`dni`, `nombre`, `apellidos`, `user`, `password`, `categoria`) VALUES
-('11224455J', 'Pepe', 'Ruiz Garrido', 'peponido79', 'peponido.ruiz1', 'jefe'),
-('15425698N', 'Fernando', 'Sierra Tomás', 'ferseo91', 'ferseoadministrador.', 'administrador'),
-('22663388S', 'Sergio', 'Alonso Latorre', 'sergitoL25', 'sergito.latorre', 'ayudante');
+INSERT INTO `credenciales` (`dni`, `nombre`, `apellidos`, `user`, `password`, `categoria`, `anio_ingreso`, `direccion`, `telefono`) VALUES
+('11224455J', 'Pepe', 'Ruiz Garrido', 'peponido79', 'peponido.ruiz1', 'jefe', '2002', 'Calle azabache 68', '672 24 87 08'),
+('123456789M', 'Luz Divina', 'Vargas', 'luzdi10', 'luzdi.vargas10', 'jefe', '2002', 'calle almeria 1', '664725588'),
+('15425699N', 'Fernando', 'Sierra  tomas', 'ferseo91', 'ferseoadministrador.', 'administrador', '2010', 'Calle Bacares 2,1º 13', '633 32 72 15'),
+('21165588S', 'Sergio', 'Alonso Latorre', 'sergitoL25', 'sergito.latorre', 'ayudante', '2018', ' Calle Capitán 2, 4 D', '633 25 88 99');
 
 -- --------------------------------------------------------
 
@@ -131,13 +117,11 @@ CREATE TABLE `iluminacion` (
 --
 
 INSERT INTO `iluminacion` (`codigo`, `tipoMaterial`, `marca`, `modelo`, `cantidad`, `utilidad`, `ubicacion`, `anioCompra`, `tipoConexion`, `ultimaRevision`, `Observaciones`) VALUES
-(54669, 'foco  wash', 'pangeant', '150', '12', 'lleno de color el escenario', 'escenario', '2017', 'dmx 3 y 5 pines', '2021', 'todo ok'),
-(54670, 'foco spot', 'varie lite', 's3000', '4', 'juego de luces', 'escenario', '2021', 'dmx 5 pines', '2021', 'alguno presenta rotura, pero funcionana bien'),
-(54671, 'foco spot', 'pointe', '1520', '4', 'juego de luces', 'escenario', '2018', 'dmx 3 y 5 pines', '2021', 'todo ok'),
 (54672, 'mesa luces', 'grandMA', 'ma3', '1', 'gestion y manejo de luces', 'control', '2020', 'dmx 5 pines', '2021', 'necesita actualizar el software'),
-(54673, 'foco pc', 'Strandligthing', '154', '10', 'relleno iluminacion en escenario', 'escenario', '2017', 'dimmer', '2021', 'un par necesitan reparacio'),
-(54674, 'foco fresnel', 'strandligthing', '154', '4', 'relleno de luz en escenario', 'escenario', '2007', 'dimmer', '2021', 'todo ok'),
-(54675, 'foco recorte', 'etc', '1200', '6', 'luz frontal a escenario y luz puntual', 'puente frontal', '2018', 'dimmer', '2021', 'todo ok');
+(54677, 'foco spot', 'pointe', 's500', '4', 'juego de luces', 'escenario ', '2020', 'dmx 5 pines', '', ''),
+(54679, 'foco spot', 'vari lite', 's3000', '4', 'juego de luces', 'escenario', '2021', 'dmx 5 pines', '2022', 'todo ok'),
+(54681, 'foco recorte', 'standlighting', '15/32', '4', 'luces puntuales', 'escenario y puente frontal', '2007', 'dimmer', '2021', 'todo ok'),
+(54682, 'foco wash', 'pageant', 's159', '12', 'relleno de iluminacion en el escenario ', 'escenario', '2018', 'dmx 3 y 5 pines', '2021', 'las carcasas presentan manchas');
 
 -- --------------------------------------------------------
 
@@ -161,9 +145,7 @@ CREATE TABLE `materialmontaje` (
 INSERT INTO `materialmontaje` (`tipoMaterial`, `cantidad`, `utilidad`, `ubicacion`, `observaciones`, `codigo`) VALUES
 ('biombos', '20', 'delimitar zonas ', 'habitacion parking  puerta blanca', 'algunos necesitan soldaduras nuevas', 1),
 ('calles de hierro', '8', 'cuelgue de focos en las calles de la escenografia ', 'sotano debajo de escenario, junto a peanas de hier', 'necesitan un pintado', 2),
-('tarimas ', '15', 'formar un escenario de 40 cm de alto', 'hall sotano', 'algunas tarimas estan partidas', 3),
 ('escenario desmontable', '1', 'escenario para actos', 'palacio de deportes', 'el tamaño es 8x6 metros', 4),
-('jennis', '2', 'soportar barras de truss', 'sala parking', 'todo ok', 5),
 ('truss', '4', 'colgar focos o demas parafernalia en bolos exterio', 'sala parking', 'son un total de 8 metros', 6);
 
 -- --------------------------------------------------------
@@ -187,7 +169,9 @@ CREATE TABLE `materialprestado` (
 --
 
 INSERT INTO `materialprestado` (`codigo`, `materialPrestado`, `diaRetirada`, `diaEntrega`, `estadoMaterial`, `observaciones`, `personaPrestamo`) VALUES
-(11223, 'mesas tablero con patas de hierro', '26/10/2021', '2/11/2021', 'las mesas presentan varios rayajos en la parte superior y una de las patas de hierro esta suelta', 'revisar bien mesas cuando se devuelvan, posiblemente no se cuiden donde van.', '');
+(11256, 'micro', '1 de enero', '12 de diciembre', 'se va perfecto', 'No hay reseñas a mostrar, todo está correcto.', 'luis'),
+(11298, 'altavoz activo bateria', '14-2-2022', '20-3-2022', 'todo ok', 'incluye micro diadema y micro inhalambrico', 'aleju'),
+(11299, 'mesa de luces grandMA3', '22-2-2022', '1-3-2022', 'todo ok', 'No hay contenido a mostrar, todo esta correcto.', 'tjl producciones');
 
 -- --------------------------------------------------------
 
@@ -240,14 +224,9 @@ CREATE TABLE `sonido` (
 --
 
 INSERT INTO `sonido` (`codigo`, `tipoMaterial`, `marca`, `modelo`, `cantidad`, `utilidad`, `ubicacion`, `anioCompra`, `tipoConexion`, `ultimaRevision`, `Observaciones`) VALUES
-(112238, 'altavoces activos', 'beringuer', 'xms', '2', 'amplificacion de sonido en calle', 'nuestra habitacion en sotano', '2021', 'xlr, rca', '2022', 'estan en perfecto estado'),
 (112239, 'mesa de sonido', 'yamaha', 'tf3', '1', 'gestion y mezcla del sonido del teatro', 'cabina', '2018', 'xlr, rca, rj45, jack 6.5', '2021', 'le falta un fader'),
-(112240, 'microfono', 'senheisser', 'ew500', '1', 'amplificacion de voz', 'escenario', '2007', 'inhalambrica', '2022', 'todo ok'),
-(112241, 'microfono', 'shure', 'sm 58', '2', 'amplificacion de voz', 'escenario', '2018', 'inhalambrica', '2022', 'uno suena metalico'),
-(112242, 'altavoces activos', 'hk', '1500', '2', 'seildfiel y espectaculos ne calle', 'escenario', '2015', 'xlr', '2022', 'todo ok'),
 (112243, 'altavoces PA', 'easte', '1000', '1', 'sonido general de teatro', 'escenario', '2007', 'espeakon', '2022', 'conta de dos medios agudos y dos graves'),
-(112244, 'microfono', 'shure', 'sm 50', '8', 'amplificacion de voz o instrumentos', 'armario sonido en escenario', '2007-2022', 'xlr', '2022', 'todo ok'),
-(112245, 'microfono', 'shure', 'sm57', '5', 'amplificacion de guitarra', 'armario sonido en escenario', '2007-2022', 'xlr', '2022', 'todo ok');
+(112246, 'microfono', 'senheiser', 's400e', '1', 'amplificacion de voz', 'escenario', '2021', 'inhalambrica', '2021', 'todo ok');
 
 -- --------------------------------------------------------
 
@@ -269,13 +248,13 @@ CREATE TABLE `tareas` (
 --
 
 INSERT INTO `tareas` (`tipoTarea`, `trabajadorDesempenia`, `diaTarea`, `horarioTarea`, `lugarTarea`, `cod_tarea`) VALUES
-('probar micros', 'fernando', '31-1-2022', '9.00-11.00am', 'teatro', 4),
-('papeleo casa juventud', 'pepe', '31-1-2022', '9.00-11.00am', 'casa juventud', 6),
-('Llevar sillas', 'sergio', '31-1-2022', '9.00-10.00am', 'biblioteca cabañuelas', 10),
-('montar sonido', 'fernando', '31-1-2022', '12.00-15.00am', 'teatro', 21),
-('reunion jefas', 'pepe', '31-1-2022', '8.00-9.00am', 'casa de la juventud', 27),
-('irecoger folletos', 'sergio', '31-1-2022', '9.00-9.30am', 'copisteria alpe', 29),
-('repartir corazones', 'sergio', '31-1-2022', 'toda la mañana', 'negocios vicar', 30);
+('papeleo casa juventud', 'pepe', '8-3-2022', '9.00-11.00am', 'casa juventud', 6),
+('montar sonido', 'fernando', '8-3-2022', '12.00-15.00am', 'teatro', 21),
+('reunion jefas', 'pepe', '8-3-2022', '8.00-9.00am', 'casa de la juventud', 27),
+('Montar sillas', 'sergio', '8-3-2022', '11.00-12.00am', 'hall teatro', 34),
+('limpiar bancos', 'sergio', '8-3-2022', '8.00-9.00am', 'ubicacion bancos', 35),
+('recoger mesas', 'fernando', '8-3-2022', '10.00', 'palacio', 36),
+('recoger sillas', 'pepe', '8-3-2022', '11.00am-11.30am', 'pabellon ', 37);
 
 -- --------------------------------------------------------
 
@@ -303,7 +282,6 @@ CREATE TABLE `video` (
 
 INSERT INTO `video` (`codigo`, `tipoMaterial`, `marca`, `modelo`, `cantidad`, `utilidad`, `ubicacion`, `anioCompra`, `tipoConexion`, `ultimaRevision`, `Observaciones`) VALUES
 (99858, 'pantallas de led', 'philips', '100', '2', 'visionado de videos e imagenes', 'nuestra habitacion del sotano', '2021', 'hdmi, vga', '2021', 'estan nuevas'),
-(99859, 'mesa realizacion', 'magic', 'X', '1', 'gestion del video ', 'control', '2021', 'rj45', '2022', 'todo ok'),
 (99860, 'camara video', 'logitech', '130', '2', 'grabacion en directo y streming', 'control y escenario', '2021', 'rj45', '2021', 'todo ok'),
 (99861, 'software mezcla de video', 'resolumen', '6', '1', 'software de realizacion en pc', 'ordenador de video', '2021', '', '2021', 'todo ok');
 
@@ -385,13 +363,13 @@ ALTER TABLE `atrezzo`
 -- AUTO_INCREMENT de la tabla `cableado`
 --
 ALTER TABLE `cableado`
-  MODIFY `codigo` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `codigo` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `iluminacion`
 --
 ALTER TABLE `iluminacion`
-  MODIFY `codigo` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54676;
+  MODIFY `codigo` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54683;
 
 --
 -- AUTO_INCREMENT de la tabla `materialmontaje`
@@ -403,7 +381,7 @@ ALTER TABLE `materialmontaje`
 -- AUTO_INCREMENT de la tabla `materialprestado`
 --
 ALTER TABLE `materialprestado`
-  MODIFY `codigo` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11224;
+  MODIFY `codigo` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11300;
 
 --
 -- AUTO_INCREMENT de la tabla `otros`
@@ -415,13 +393,13 @@ ALTER TABLE `otros`
 -- AUTO_INCREMENT de la tabla `sonido`
 --
 ALTER TABLE `sonido`
-  MODIFY `codigo` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112246;
+  MODIFY `codigo` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112248;
 
 --
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `cod_tarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `cod_tarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `video`
