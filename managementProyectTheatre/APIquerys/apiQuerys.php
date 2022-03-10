@@ -8,19 +8,6 @@ class apiQuerys {
     /**
      *Constructor de la conexión a la base de datos.
      */
-//     public function __construct()
-//     {
-//         //Intenta crear la conexión.
-//         try{
-//             $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-//             $this->conn = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NOMBRE,DB_USUARIO,DB_PASSWORD,$opc);
-//             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//         //Y si no puede crearse la conexión, muestra el error.
-//         }catch (Exception $ex){
-//             throw $ex;
-//         }
-//     }
-
       public function __construct() 
     { 
      $dsn = "mysql:host=".DB_HOST;
@@ -298,6 +285,39 @@ class apiQuerys {
         }else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
+    }
+
+    /**
+     * Método de consulta trae de la base de datos el nombre de los usuarios registrados   
+     * @return 
+     */
+    public function getUserName(){
+        $query = "SELECT nombre FROM credenciales ";
+        $result = $this->runQueary($query);
+        if($result){
+            $data=$result->FetchAll(PDO::FETCH_OBJ);
+            return $data;                      
+        }else {
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
+    }
+
+    /**
+     * Método que recibiendo por parametro el dato ddel nombre, elimina el registro 
+     * de la base de datos
+     * @param [type] $nombre
+     * @return 
+     */
+    public function deleteUser($nombre){
+        $query = "DELETE FROM credenciales WHERE nombre='$nombre';";
+        $result = $this->runQueary($query);
+        if($result){
+            return true;
+        }else{
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+            return false;
+        }
+        
     }
 
 
