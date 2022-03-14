@@ -139,6 +139,18 @@ class apiQuerys
         }
     }
 
+    function getHistoricTasks(){
+        
+        $query = "SELECT * FROM historico_tareas";
+        $result = $this->runQueary($query);
+        if ($result) {
+            $data = $result->FetchAll(PDO::FETCH_OBJ);
+            return $data;
+        } else {
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
+    }
+
     /**
      * Método que ejecuta la consulta para añadir un material a la bd, con los datos recibidos
      * com oparámetro

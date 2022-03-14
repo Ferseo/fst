@@ -42,7 +42,8 @@
         },
         success: function(response) {
             $('input[type="text"]').val('');
-            var data = $.parseJSON(response);     
+            var data = $.parseJSON(response);
+            console.log(data);     
             var container = document.getElementById("tableMaterialResult");
             var table = document.createElement("div");
             table.className = "table table-dark";
