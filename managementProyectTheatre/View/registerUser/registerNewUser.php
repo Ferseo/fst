@@ -22,8 +22,27 @@
         width: 90%;
     }
     .box{
-        width: 100%;
-        display: inline;
+        margin: 0px;
+        padding: 0px;
+        
+        /*display: inline !important;*/
+        float:left;
+        height:auto;
+    }
+    .modal-content{
+        display: block !important;
+    }
+    .rigth{
+        margin-top: 5%; 
+        border: 1px solid black;
+    }
+
+    .row > p{
+        width: 70%;
+    }
+
+    .row > button{
+        width:30%;
     }
 </style>
 
@@ -39,7 +58,7 @@
         <!-- <div class="col"> -->
             <div class="container modal-content" style=" width:80%; text-align:center;">
               
-                <div class="col-8 box">
+                <div class="col-7 box">
                 <h3>Registro de usuario</h3>
                 <div class="input-group input-group-sm mb-3" style="padding:1%; width:75%; ">
                     <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 20%;">DNI</span>
@@ -96,9 +115,14 @@
                     </div>
                 </div>
                 </div>
-                <div class="col-4 box"  >
-                    <div id="parent" >
-
+                <div class="col-5 box "  >
+                    <h5>Usuarios registrados</h5>
+                    <div id="parent" class="rigth" >
+                        <!-- <div class="row"><p>Fernando </p><button class="btn">🗑️</button></div>
+                        <div class="row"><p>Sergio </p><button button class="btn">🗑️</button></div>
+                        <div class="row"><p>Jose Francisco </p><button button class="btn">🗑️</button></div>
+                        <div class="row"><p>Vanesa </p><button button class="btn">🗑️</button></div>
+                        <div class="row"><p>Luz Divina </p><button button class="btn">🗑️</button></div> -->
                     </div>
                 </div>
             </div>
