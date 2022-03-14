@@ -1,55 +1,54 @@
-<?php 
+<?php
 //include_once "../connection/connection.php";
-define ("DB_NOMBRE", "managementtheatre");
-define ("DB_HOST", "localhost");
-define ("DB_USUARIO", "root");
-define ("DB_PASSWORD", "");
-class apiQuerys {
+define("DB_NOMBRE", "managementtheatre");
+define("DB_HOST", "localhost");
+define("DB_USUARIO", "root");
+define("DB_PASSWORD", "");
+class apiQuerys
+{
     /**
      *Constructor de la conexión a la base de datos.
      */
-      public function __construct() 
-    { 
-     $dsn = "mysql:host=".DB_HOST;
-     try 
-      {
-       $this->conn= new PDO($dsn, DB_USUARIO); // Nueva instancia de PDO
-       $sql='SHOW DATABASES LIKE "'.DB_NOMBRE.'";'; //SQL que comprueba si existe la base de datos
-       $resultado = $this->conn->query($sql); //Realiza la consulta
-       if ($resultado->fetch()) //Si encuentra la base de datos
-         { //Realiza la conexion
-          $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"); //Opciones conexion
-            $this->conn = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NOMBRE,DB_USUARIO,DB_PASSWORD,$opc); //Crea una instancia PDO intentando la conexion
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Añade los atributos
-         }else{
-             //Si no, lee el archivo sql que contiene la sentencia que crea la base de datos
+    public function __construct()
+    {
+        $dsn = "mysql:host=" . DB_HOST;
+        try {
+            $this->conn = new PDO($dsn, DB_USUARIO); // Nueva instancia de PDO
+            $sql = 'SHOW DATABASES LIKE "' . DB_NOMBRE . '";'; //SQL que comprueba si existe la base de datos
+            $resultado = $this->conn->query($sql); //Realiza la consulta
+            if ($resultado->fetch()) //Si encuentra la base de datos
+            { //Realiza la conexion
+                $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"); //Opciones conexion
+                $this->conn = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NOMBRE, DB_USUARIO, DB_PASSWORD, $opc); //Crea una instancia PDO intentando la conexion
+                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Añade los atributos
+            } else {
+                //Si no, lee el archivo sql que contiene la sentencia que crea la base de datos
                 $sql = file_get_contents('../SQL/baseDatos.sql');
-                $result=$this->conn->prepare($sql);
+                $result = $this->conn->prepare($sql);
                 $result->execute();
                 $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"); //Opciones conexion
-              $this->conn = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NOMBRE,DB_USUARIO,DB_PASSWORD,$opc); //Crea una instancia PDO intentando la conexion
-              $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-              } 
-      } 
-     catch (Exception $ex) 
-      {
-       throw $ex;
-      }
+                $this->conn = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NOMBRE, DB_USUARIO, DB_PASSWORD, $opc); //Crea una instancia PDO intentando la conexion
+                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            }
+        } catch (Exception $ex) {
+            throw $ex;
+        }
     }
-    
+
     /**
      * Método que ejecuta cualquier consulta
      * @param [type] $query
      * @return 
      */
-    public function runQueary($query){
-        try{
+    public function runQueary($query)
+    {
+        try {
             $result = null;
-            if(isset($this->conn)) $result = $this->conn->query($query);
+            if (isset($this->conn)) $result = $this->conn->query($query);
             return $result;
-        }catch (Exception $ex){
+        } catch (Exception $ex) {
             throw $ex;
-          }
+        }
     }
 
     /**
@@ -57,8 +56,9 @@ class apiQuerys {
      * @param [type] $user
      * @param [type] $pass
      * @return 
-     */ 
-    public function checkUser($user, $pass){
+     */
+    public function checkUser($user, $pass)
+    {
         $this->conn->beginTransaction();
         $query = "SELECT * FROM credenciales WHERE (user = ? and password = ?) limit 1;";
         $result = $this->conn->prepare($query);
@@ -71,7 +71,7 @@ class apiQuerys {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
-  
+
 
     /**
      * Consulta que recoge las tareas de un trabajador verificando su nombre y la fecha actual
@@ -79,18 +79,42 @@ class apiQuerys {
      * @param [type] $date
      * @return 
      */
-    public function getTask($nombre, $date){
+    public function getTask($nombre, $date)
+    {
         $query = "SELECT tipoTarea,horarioTarea,lugarTarea,cod_tarea FROM tareas WHERE trabajadorDesempenia='$nombre' AND diaTarea='$date'";
         $result = $this->runQueary($query);
-        if($result){
-            $data=$result->FetchAll();
+        if ($result) {
+            $data = $result->FetchAll();
             return $data;
-                      
-        }else {
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
 
+
+    public function getAllTask($count)
+    {
+        $query = "SELECT * FROM tareas WHERE cod_tarea='$count'";
+        $result = $this->runQueary($query);
+        if ($result) {
+            $data = $result->FetchAll(PDO::FETCH_OBJ);
+            return $data;
+        } else {
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
+    }
+
+
+    public function insertTask($tasks)
+    {
+        $tasks = json_decode($tasks, true);
+        $this->conn->beginTransaction();
+        $sql = "INSERT INTO historico_tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea) VALUES (?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($tasks[0]["tipoTarea"], $tasks[0]["trabajadorDesempenia"], $tasks[0]["diaTarea"], $tasks[0]["horarioTarea"], $tasks[0]["lugarTarea"]));
+        $this->conn->commit();
+        return true;
+    }
 
     /**
      * Método que recibiendo por parametro un numero identificador, elimina de la base de datos 
@@ -98,17 +122,23 @@ class apiQuerys {
      * @param [type] $count
      * @return 
      */
-    public function deleteTask($count){
-        $query = "DELETE FROM tareas WHERE cod_tarea='$count'";
-        $result = $this->runQueary($query);
-        if($result){
-            return true;
-        }else{
+    public function deleteTask($count)
+    {
+        $tasks = $this->getAllTask($count);
+        $return = $this->insertTask(json_encode($tasks));
+        if ($return) {
+            $query = "DELETE FROM tareas WHERE cod_tarea='$count'";
+            $result = $this->runQueary($query);
+            if ($result) {
+                return true;
+            } else {
+                throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+            }
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
-
     }
-    
+
     /**
      * Método que ejecuta la consulta para añadir un material a la bd, con los datos recibidos
      * com oparámetro
@@ -117,68 +147,69 @@ class apiQuerys {
      * @param [type] $data
      * @return 
      */
-    public function addMaterial($option, $data){
-        if($option === "iluminacion"){
-        $this->conn->beginTransaction();
-        $sql= "INSERT INTO iluminacion (tipoMaterial, marca, modelo, cantidad, utilidad, ubicacion, anioCompra, tipoConexion, ultimaRevision, observaciones) VALUES (?,?,?,?,?,?,?,?,?,?);";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]));
-        $this->conn->commit();
-        return true;
+    public function addMaterial($option, $data)
+    {
+        if ($option === "iluminacion") {
+            $this->conn->beginTransaction();
+            $sql = "INSERT INTO iluminacion (tipoMaterial, marca, modelo, cantidad, utilidad, ubicacion, anioCompra, tipoConexion, ultimaRevision, observaciones) VALUES (?,?,?,?,?,?,?,?,?,?);";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]));
+            $this->conn->commit();
+            return true;
         }
 
-        if($option === "sonido"){
-        $this->conn->beginTransaction();
-        $sql= "INSERT INTO sonido (tipoMaterial, marca, modelo, cantidad, utilidad, ubicacion, anioCompra, tipoConexion, ultimaRevision, observaciones) VALUES (?,?,?,?,?,?,?,?,?,?);";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]));
-        $this->conn->commit();
-        return true;
-        }
-        
-        if($option === "video"){
-        $this->conn->beginTransaction();
-        $sql= "INSERT INTO video (tipoMaterial, marca, modelo, cantidad, utilidad, ubicacion, anioCompra, tipoConexion, ultimaRevision, observaciones) VALUES (?,?,?,?,?,?,?,?,?,?);";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]));
-        $this->conn->commit();
-        return true;
+        if ($option === "sonido") {
+            $this->conn->beginTransaction();
+            $sql = "INSERT INTO sonido (tipoMaterial, marca, modelo, cantidad, utilidad, ubicacion, anioCompra, tipoConexion, ultimaRevision, observaciones) VALUES (?,?,?,?,?,?,?,?,?,?);";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]));
+            $this->conn->commit();
+            return true;
         }
 
-        if($option === "atrezzo"){
-        $this->conn->beginTransaction();
-        $sql= "INSERT INTO atrezzo (tipoMaterial,  utilidad,  ubicacion, cantidad, observaciones) VALUES (?,?,?,?,?);";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
-        $this->conn->commit();
-        return true;
+        if ($option === "video") {
+            $this->conn->beginTransaction();
+            $sql = "INSERT INTO video (tipoMaterial, marca, modelo, cantidad, utilidad, ubicacion, anioCompra, tipoConexion, ultimaRevision, observaciones) VALUES (?,?,?,?,?,?,?,?,?,?);";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]));
+            $this->conn->commit();
+            return true;
         }
 
-        if($option === "matMontaje"){
-        $this->conn->beginTransaction();
-        $sql= "INSERT INTO materialmontaje (tipoMaterial, cantidad, utilidad, ubicacion,  observaciones) VALUES (?,?,?,?,?);";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
-        $this->conn->commit();
-        return true;  
+        if ($option === "atrezzo") {
+            $this->conn->beginTransaction();
+            $sql = "INSERT INTO atrezzo (tipoMaterial,  utilidad,  ubicacion, cantidad, observaciones) VALUES (?,?,?,?,?);";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
+            $this->conn->commit();
+            return true;
         }
 
-        if($option === "otro"){
-        $this->conn->beginTransaction();
-        $sql= "INSERT INTO otros (tipoMaterial, cantidad, utilidad, ubicacion, observaciones) VALUES (?,?,?,?,?);";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
-        $this->conn->commit();
-        return true;   
+        if ($option === "matMontaje") {
+            $this->conn->beginTransaction();
+            $sql = "INSERT INTO materialmontaje (tipoMaterial, cantidad, utilidad, ubicacion,  observaciones) VALUES (?,?,?,?,?);";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
+            $this->conn->commit();
+            return true;
         }
 
-        if($option === "cableado"){
-        $this->conn->beginTransaction();
-        $sql= "INSERT INTO cableado (tipoMaterial, cantidad, metos, ubicacion) VALUES (?,?,?,?);";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($data[0], $data[1], $data[2], $data[3]));
-        $this->conn->commit();
-        return true;   
+        if ($option === "otro") {
+            $this->conn->beginTransaction();
+            $sql = "INSERT INTO otros (tipoMaterial, cantidad, utilidad, ubicacion, observaciones) VALUES (?,?,?,?,?);";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
+            $this->conn->commit();
+            return true;
+        }
+
+        if ($option === "cableado") {
+            $this->conn->beginTransaction();
+            $sql = "INSERT INTO cableado (tipoMaterial, cantidad, metos, ubicacion) VALUES (?,?,?,?);";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(array($data[0], $data[1], $data[2], $data[3]));
+            $this->conn->commit();
+            return true;
         }
 
         return false;
@@ -192,13 +223,14 @@ class apiQuerys {
      * @param [type] $data
      * @return 
      */
-    public function findMaterial($option, $column, $data){
+    public function findMaterial($option, $column, $data)
+    {
         $query = "SELECT * FROM $option WHERE $column LIKE '%$data%';";
         $result = $this->runQueary($query);
-        if($result){
-            $data=$result->FetchAll(PDO::FETCH_OBJ);
-            return $data;        
-        }else {
+        if ($result) {
+            $data = $result->FetchAll(PDO::FETCH_OBJ);
+            return $data;
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
@@ -210,16 +242,16 @@ class apiQuerys {
      * @param [type] $column
      * @return 
      */
-    public function deleteMaterial($count, $column){
+    public function deleteMaterial($count, $column)
+    {
         $query = "DELETE FROM $column WHERE codigo='$count';";
         $result = $this->runQueary($query);
-        if($result){
+        if ($result) {
             return true;
-        }else{
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
             return false;
         }
-        
     }
 
     /**
@@ -227,9 +259,10 @@ class apiQuerys {
      * @param [type] $data
      * @return 
      */
-    public function lendMaterial($data){
+    public function lendMaterial($data)
+    {
         $this->conn->beginTransaction();
-        $sql= "INSERT INTO materialprestado (materialPrestado, diaRetirada, diaEntrega,  estadoMaterial, observaciones, personaPrestamo) VALUES (?,?,?,?,?,?);";
+        $sql = "INSERT INTO materialprestado (materialPrestado, diaRetirada, diaEntrega,  estadoMaterial, observaciones, personaPrestamo) VALUES (?,?,?,?,?,?);";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5]));
         $this->conn->commit();
@@ -240,17 +273,16 @@ class apiQuerys {
      * Método de consulta que trae toda la informacion de la bd de la tabla indicada
      * @return
      */
-    public function getLendMaterial(){
+    public function getLendMaterial()
+    {
         $query = "SELECT * FROM materialprestado";
         $result = $this->runQueary($query);
-        if($result){
-            $data=$result->FetchAll(PDO::FETCH_OBJ);
+        if ($result) {
+            $data = $result->FetchAll(PDO::FETCH_OBJ);
             return $data;
-                      
-        }else {
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
-
     }
 
     /**
@@ -258,16 +290,16 @@ class apiQuerys {
      * @param [type] $count
      * @return 
      */
-    public function deleteLend($count){
+    public function deleteLend($count)
+    {
         $query = "DELETE FROM materialprestado WHERE codigo='$count';";
         $result = $this->runQueary($query);
-        if($result){
+        if ($result) {
             return true;
-        }else{
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
             return false;
         }
-        
     }
 
     /**
@@ -276,13 +308,14 @@ class apiQuerys {
      * @param [type] $user
      * @return 
      */
-    public function getCredencial($user){
+    public function getCredencial($user)
+    {
         $query = "SELECT * FROM credenciales WHERE nombre='$user';";
         $result = $this->runQueary($query);
-        if($result){
-            $data=$result->FetchAll(PDO::FETCH_OBJ);
-            return $data;                      
-        }else {
+        if ($result) {
+            $data = $result->FetchAll(PDO::FETCH_OBJ);
+            return $data;
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
@@ -291,13 +324,14 @@ class apiQuerys {
      * Método de consulta trae de la base de datos el nombre de los usuarios registrados   
      * @return 
      */
-    public function getUserName(){
+    public function getUserName()
+    {
         $query = "SELECT nombre FROM credenciales ";
         $result = $this->runQueary($query);
-        if($result){
-            $data=$result->FetchAll(PDO::FETCH_OBJ);
-            return $data;                      
-        }else {
+        if ($result) {
+            $data = $result->FetchAll(PDO::FETCH_OBJ);
+            return $data;
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
@@ -308,16 +342,16 @@ class apiQuerys {
      * @param [type] $nombre
      * @return 
      */
-    public function deleteUser($nombre){
+    public function deleteUser($nombre)
+    {
         $query = "DELETE FROM credenciales WHERE nombre='$nombre';";
         $result = $this->runQueary($query);
-        if($result){
+        if ($result) {
             return true;
-        }else{
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
             return false;
         }
-        
     }
 
 
@@ -330,21 +364,23 @@ class apiQuerys {
      * @param [type] $nombre
      * @return 
      */
-    public function editInputConfiguration($value, $colunm, $nombre){
+    public function editInputConfiguration($value, $colunm, $nombre)
+    {
         $query = "UPDATE credenciales SET $colunm='$value' WHERE nombre='$nombre';";
         $result = $this->runQueary($query);
-        if($result){
+        if ($result) {
             return true;
-        }else{
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
             return false;
         }
     }
 
 
-    public function addTask($data){
+    public function addTask($data)
+    {
         $this->conn->beginTransaction();
-        $sql= "INSERT INTO tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea) VALUES (?,?,?,?,?);";
+        $sql = "INSERT INTO tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea) VALUES (?,?,?,?,?);";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
         $this->conn->commit();
@@ -352,9 +388,10 @@ class apiQuerys {
     }
 
 
-    public function addNewUser($data){
+    public function addNewUser($data)
+    {
         $this->conn->beginTransaction();
-        $sql= "INSERT INTO credenciales (dni, nombre, apellidos, user, password, categoria, anio_ingreso, direccion, telefono) VALUES (?,?,?,?,?,?,?,?,?);";
+        $sql = "INSERT INTO credenciales (dni, nombre, apellidos, user, password, categoria, anio_ingreso, direccion, telefono) VALUES (?,?,?,?,?,?,?,?,?);";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]));
         $this->conn->commit();
@@ -383,13 +420,13 @@ class apiQuerys {
 
 
     /** Método para que al entrar en la aplicacion cambia la fecha de las tareas a la del dia en curso, para que aparezcan en la barra de notificaciones */
-    public function putDateToday($date){
+    public function putDateToday($date)
+    {
         $query = "UPDATE tareas SET diaTarea='$date'";
         $result = $this->runQueary($query);
-        if($result != false){
-           return true;
-                      
-        }else {
+        if ($result != false) {
+            return true;
+        } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }

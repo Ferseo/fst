@@ -118,11 +118,7 @@
                 <div class="col-5 box "  >
                     <h5>Usuarios registrados</h5>
                     <div id="parent" class="rigth" >
-                        <!-- <div class="row"><p>Fernando </p><button class="btn">🗑️</button></div>
-                        <div class="row"><p>Sergio </p><button button class="btn">🗑️</button></div>
-                        <div class="row"><p>Jose Francisco </p><button button class="btn">🗑️</button></div>
-                        <div class="row"><p>Vanesa </p><button button class="btn">🗑️</button></div>
-                        <div class="row"><p>Luz Divina </p><button button class="btn">🗑️</button></div> -->
+                        
                     </div>
                 </div>
             </div>

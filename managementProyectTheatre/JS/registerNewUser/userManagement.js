@@ -20,6 +20,7 @@ function userManagement(){
                 var textButton = document.createTextNode("🗑️");
                 button.className = "btn";
                 button.id = data[i].nombre;
+                button.setAttribute("onclick", "deleteUser(this)");
                 button.appendChild(textButton);
                 p.appendChild(textP);
                 row.appendChild(p);

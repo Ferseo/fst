@@ -56,7 +56,7 @@ $dataTask = $api->getTask($nombre, $date);
         var button = document.createElement('button');
         button.innerHTML = "check_circle_outline";
         button.className = "material-icons deleteNotifications";
-        button.setAttribute("onclick", "deleteNotifications()");
+        button.setAttribute("onclick", "deleteNotifications(this)");
         button.id = data[i].cod_tarea;
         row.appendChild(button);
         row.appendChild(textNotification);
