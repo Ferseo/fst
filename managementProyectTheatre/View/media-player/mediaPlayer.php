@@ -208,6 +208,16 @@
             background-color: cornflowerblue;
         }
     }
+        label {
+    cursor: pointer;
+    border: 1px solid #939393;
+    padding: 1px 6px;
+    background-color: #efefef;
+    }
+
+    #file{
+        visibility: hidden !important;
+    }
 
 </style>
 
@@ -222,7 +232,8 @@
     <div class="row">
         <div class="col-2">
             <div class="col">
-                <button type="submit" class="btn btn-secondary" style="margin: 5%; margin-left:40%;">Añadir track</button>
+                <label for="file" onclick="readFile()"  class="btn btn-secondary" style="margin: 5%; margin-left:30%;">Añadir track</label>
+                <input id="file" type="file" />
             </div>
 
         </div>
@@ -234,7 +245,7 @@
                 <div class="container-audio">
                     <audio controls  loop autoplay> 
                         <!-- Esta es la cancion 2 -->
-                            <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/new_year_dubstep_minimix.ogg" type="audio/ogg">
+                            <source src="" type="audio/ogg">
                             Your browser dose not Support the audio Tag
                 </audio>
                 </div>
@@ -253,4 +264,18 @@
 </body>
 
 </html>
+<script>
+    function readFile(){
+        var audio = document.getElementById("file").value;
+        console.log(audio);
+        //if(audio != null){
+        const audio_html = new Audio("https://s3-us-west-2.amazonaws.com/allmetalmixtapes/Saxon%20-%201984%20-%20Crusader/01%20-%20Crusader%20Prelude.mp3");
+        audio_html.play();
+        // }else{
+        //     alert("no hay track");
+        // }
+        //console.log(audio);
+    }
+    window.onload = readFile();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
