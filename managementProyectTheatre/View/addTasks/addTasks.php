@@ -66,7 +66,7 @@
                     <div class="row">
                         <div class="col-5"><button type="submit" onclick="addTasks()" class="btn btn-secondary">Añadir tarea</button></div>
                         <div class="col-2"></div>
-                        <div class="col-5"><button type="submit" onclick="findTasks()" class="btn btn-secondary">ver histórico</button></div>
+                        <!-- <div class="col-5"><button type="submit" onclick="findTasks()" class="btn btn-secondary">ver histórico</button></div> -->
                     </div>
                     
                  </div>
@@ -74,7 +74,7 @@
 
                  
  <!-- Modal que muestra la tabla con los resultados de la busqueda -->
- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-target="#AvanzaModal">
+ <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-target="#AvanzaModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -89,7 +89,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 

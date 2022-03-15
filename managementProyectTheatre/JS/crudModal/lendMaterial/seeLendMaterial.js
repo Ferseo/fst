@@ -31,9 +31,11 @@ function seeLendMatertial(){
                 var column7 = document.createElement("div");
                 var button = document.createElement("button");
                 column7.className = "col";
+                // var column8 =document.createElement("div");
+                // column6.className = "col";
                 button.innerHTML = "🗑️";
                 button.className = "btn deleteLend";
-                button.setAttribute("onclick", "deleteLend(this)");
+                button.setAttribute("onclick", "returnedLend(this)");
                 button.setAttribute("type", "submit");
                 button.id = data[i].codigo;   
 
@@ -43,6 +45,7 @@ function seeLendMatertial(){
                 var texNode4 = document.createTextNode(data[i].diaEntrega);
                 var texNode5 = document.createTextNode(data[i].estadoMaterial);
                 var texNode6 = document.createTextNode(data[i].observaciones);
+                // var textNode7 = document.createTextNode(data[i].trabajador_presta);
 
                 column1.appendChild(texNode1);
                 column2.appendChild(texNode2);
@@ -50,13 +53,16 @@ function seeLendMatertial(){
                 column4.appendChild(texNode4);
                 column5.appendChild(texNode5);
                 column6.appendChild(texNode6);
+                // column8.appendChild(textNode7);
                 column7.appendChild(button);
+                
                 row.appendChild(column1);
                 row.appendChild(column2);
                 row.appendChild(column3);
                 row.appendChild(column4);
                 row.appendChild(column5);
                 row.appendChild(column6);
+                // row.appendChild(column8);
                 row.appendChild(column7);
                 tbody.appendChild(row);
             }

@@ -90,8 +90,6 @@ class apiQuerys
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
-
-
     //FUNCION MODIFICADA PARA NUEVA FORMA DE MOSTRAR Y ELIMINAR TAREAS, SE AÑADE EL CONDICIONAL A LA SENTENCIA, PARA QUE RECOJA SOLO DATOS
     //DE LAS TAREAS REALIZADAS, DEL TRABAJADOR INDICADO.
     // public function getTask($nombre, $date)
@@ -108,6 +106,8 @@ class apiQuerys
 
 
     
+
+
     public function getAllTask($count)
     {
         $query = "SELECT * FROM tareas WHERE cod_tarea='$count'";
@@ -141,9 +141,9 @@ class apiQuerys
      */
     public function deleteTask($count)
     {
-        $tasks = $this->getAllTask($count);
-        $return = $this->insertTask(json_encode($tasks));
-        if ($return) {
+        // $tasks = $this->getAllTask($count);
+        // $return = $this->insertTask(json_encode($tasks));
+        //if ($return) {
             $query = "DELETE FROM tareas WHERE cod_tarea='$count'";
             $result = $this->runQueary($query);
             if ($result) {
@@ -151,28 +151,29 @@ class apiQuerys
             } else {
                 throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
             }
-        } else {
-            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
-        }
+        // } else {
+        //     throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        // }
     }
 
 
     //FUNCION MODIFICADA PARA NUEVA FORMA DE MOSTRAR Y ELIMINAR TAREAS, SECAMBIA LA SENTENCIA, QUE EN LUGAR DE ELMINAR EL REGISTRO DE LA REGISTRO
     //BASE DE DATOS, ACTUALIZA LA COLUMNA REALIZADA PARA INDICAR LA TAREA COMO HECHA.
-    // public function deleteTask($count)
-    // {
-    //         $query = "UPDATE tareas SET realizada = 'true' WHERE  cod_tarea='$count'";
-    //         $result = $this->runQueary($query);
-    //         if ($result) {
-    //             return true;
-    //         } else {
-    //             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
-    //         }
-    // }
+    public function tasksRealice($count)
+    {
+            $query = "UPDATE tareas SET realizada = 'true' WHERE  cod_tarea='$count'";
+            $result = $this->runQueary($query);
+            if ($result) {
+                return true;
+            } else {
+                throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+            }
+    }
+
+
 
 
     function getHistoricTasks(){
-        
         $query = "SELECT * FROM historico_tareas";
         $result = $this->runQueary($query);
         if ($result) {
@@ -182,6 +183,36 @@ class apiQuerys
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
+    //FUNCION MODIFICADA PARA TRAER DE LA BASE DE DATOS LOS REGISTROS DE TAREA QUE ESTAN REALIZADAS
+    // function getHistoricTasks(){  
+    //     $query = "SELECT * FROM tareas WHERE realizada='true' ORDER BY diaTarea ASC;";
+    //     $result = $this->runQueary($query);
+    //     if ($result) {
+    //         $data = $result->FetchAll(PDO::FETCH_OBJ);
+    //         return $data;
+    //     } else {
+    //         throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+    //     }
+    // }
+
+
+
+    /*****
+     * Consulta que trae todos los registros de la tabla material prestado, que tienen
+     * como condicion que la tabla devuelto sea true
+     */
+         function getHistoricLend(){  
+        $query = "SELECT * FROM materialprestado WHERE devuelto='true' ORDER BY diaEntrega ASC;";
+        $result = $this->runQueary($query);
+        if ($result) {
+            $data = $result->FetchAll(PDO::FETCH_OBJ);
+            return $data;
+        } else {
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
+    }
+    
+
 
 
     /**
@@ -314,13 +345,16 @@ class apiQuerys
         return true;
     }
 
+
+
     /**
-     * Método de consulta que trae toda la informacion de la bd de la tabla indicada
+     * Método de consulta que recoge todos los registros de tareas con la condicion 
+     * de que en la tabla devueltos sea false, para ver los materiales prestados aun sin devolver
      * @return
      */
     public function getLendMaterial()
     {
-        $query = "SELECT * FROM materialprestado";
+        $query = "SELECT * FROM materialprestado WHERE devuelto='false'";
         $result = $this->runQueary($query);
         if ($result) {
             $data = $result->FetchAll(PDO::FETCH_OBJ);
@@ -329,6 +363,18 @@ class apiQuerys
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
+    //FUNCION MODIFICADA PARA TRAER REGISTROS DE MATERIALPRESTADO
+    // public function getHistoricLendMaterial()
+    // {
+    //     $query = "SELECT * FROM materialprestado WHERE devuelto='true'";
+    //     $result = $this->runQueary($query);
+    //     if ($result) {
+    //         $data = $result->FetchAll(PDO::FETCH_OBJ);
+    //         return $data;
+    //     } else {
+    //         throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+    //     }
+    // }
 
     /**
      * Método que recibiendo una variable con el codigo elimina el registro de la bd
@@ -345,6 +391,21 @@ class apiQuerys
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
             return false;
         }
+    }
+
+    /*********
+     * Consulta creada que actualiza el valor de la columna devuelto a true 
+     * para que pase a ser historico
+     */
+    public function returnedLend($count)
+    {
+            $query = "UPDATE materialprestado SET devuelto = 'true' WHERE  codigo='$count'";
+            $result = $this->runQueary($query);
+            if ($result) {
+                return true;
+            } else {
+                throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+            }
     }
 
     /**
@@ -431,7 +492,16 @@ class apiQuerys
         $this->conn->commit();
         return true;
     }
-
+    //FUNCION MODIFICADA PARA AÑADIR UNA TAREA Y QUE POR DEFECTO SEA FALSE EN LA COLUMNA REALIZADA
+    // public function addTask($data)
+    // {
+    //     $this->conn->beginTransaction();
+    //     $sql = "INSERT INTO tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea, realizada) VALUES (?,?,?,?,?,?);";
+    //     $stmt = $this->conn->prepare($sql);
+    //     $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5]));
+    //     $this->conn->commit();
+    //     return true;
+    // }
 
     public function addNewUser($data)
     {

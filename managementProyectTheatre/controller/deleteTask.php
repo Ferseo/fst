@@ -4,6 +4,6 @@ $conn = new apiQuerys;
 $count = $_POST['count'];
 
 //print_r($count);
-$return = $conn->deleteLend($count);
+$return = $conn->deleteTask($count);
 print_r($return);
 ?>

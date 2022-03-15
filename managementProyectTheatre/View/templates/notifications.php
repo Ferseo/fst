@@ -43,7 +43,7 @@ $dataTask = $api->getTask($nombre, $date);
       </div>
     </div>
 </div>
-<script src="../../JS/notifications/deleteNotifications.js"></script>
+<script src="../../JS/notifications/realiceNotifications.js"></script>
 <script>
    function activateNotifications(data) {
     var container = document.getElementById("containerTable");
@@ -56,7 +56,8 @@ $dataTask = $api->getTask($nombre, $date);
         var button = document.createElement('button');
         button.innerHTML = "check_circle_outline";
         button.className = "material-icons deleteNotifications";
-        button.setAttribute("onclick", "deleteNotifications(this)");
+        button.setAttribute("onclick", "realiceNotifications(this)");
+        //button.setAttribute("type", "submit");
         button.id = data[i].cod_tarea;
         row.appendChild(button);
         row.appendChild(textNotification);

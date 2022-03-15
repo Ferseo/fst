@@ -4,11 +4,11 @@
  * en cuestión.
  * 
  */
-function deleteLend(data){
+function returnedLend(data){
      var count = data.id;
     $.ajax({
         type: "POST",
-        url: "/fst/managementProyectTheatre/controller/deleteLend.php",
+        url: "/fst/managementProyectTheatre/controller/returnedLend.php",
         data: {
             "count":count
         },

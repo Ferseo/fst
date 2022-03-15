@@ -388,4 +388,4 @@
 <script src="../../JS/crudModal/lendMaterial/lendMaterial.js"></script> 
 <script src="../../JS/crudModal/findMaterial/deleteMaterial.js"></script>
 <script src="../../JS/crudModal/lendMaterial/seeLendMaterial.js"></script>
-<script src="../../JS/crudModal/lendMaterial/deleteLend.js"></script>
+<script src="../../JS/crudModal/lendMaterial/returnedLend.js"></script>

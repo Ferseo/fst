@@ -11,7 +11,11 @@ $data[2] = $_POST["dia_entrega"];
 $data[3] = $_POST["estado_material"];
 $data[4] = $_POST["observaciones"];
 $data[5] = $_POST["per_entiLend"];
-$conn->lendMaterial($data);
+// $data[6] = "false";
+// $data[7] = "";                        //Descomentar al hacer las pruebas
+// $data[8] = $employee;
+// $data[9] = "";
+ $conn->lendMaterial($data);
 
 /**
  * Generar un pdf con los datos recibidos de js

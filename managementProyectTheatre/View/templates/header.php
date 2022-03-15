@@ -49,6 +49,7 @@ session_write_close();
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li id="fatherList"><a class="dropdown-item" href='../indexPages/index<?php echo $index ?>.php'> <img src="../../img/icons/icons8-usuario-hombre-verificado-24.png">Dahsboard</a></li>
     <li><a class="dropdown-item" href="../calendar/indexCalendar.php"><img src="../../img/icons/icons8-editar-calendario-24.png">Ver Calendario</a></li>
+    <!-- <li><a class="dropdown-item" href="../historicDatas/historicLend/indexHistoricLend.php"><img src="../../img/icons/icons-prestamo-devuelto.png">Prestamos devueltos</a></li> -->
     <li><a class="dropdown-item" href="../media-player/mediaPlayer.php"> <img src="../../img/icons/icons8-mp3-player-24.png"> Reproductor</a></li>
     <li><a class="dropdown-item" href="../../View/Configurations/configurations.php"> <img src="../../img/icons/icons8-configuration-and-setting-panel-in-computer-software-24.png">Ajustes</a></li>
     <li><a class="dropdown-item" href="../login/loginView.php"> <img src="../../img/icons/icons8-exit-24.png"> Cerrar sesión</a></li>
@@ -76,6 +77,7 @@ con php la variable de sesion con la categoria, y dependiendo de la categoria cr
       a.appendChild(texto);
       li.appendChild(a);
       container.appendChild(li);
+
       var li2 = document.createElement("li");
       var a2 = document.createElement("a");
       a2.className = "dropdown-item";
@@ -87,6 +89,20 @@ con php la variable de sesion con la categoria, y dependiendo de la categoria cr
       a2.appendChild(texto1);
       li2.appendChild(a2);
       container.appendChild(li2);
+
+      // var li3 = document.createElement("li");
+      // var a3 = document.createElement("a");
+      // a3.className = "dropdown-item";
+      // a3.href = "../historicDatas/historicTask/indexHistoricTasks.php";
+      // var img2 = document.createElement("img");
+      // img2.src = "../../img/icons/checkmark.png";
+      // var texto2 = document.createTextNode("Histórico tareas");
+
+      // a3.appendChild(img2);
+      // a3.appendChild(texto2);
+      // li3.appendChild(a3);
+      // container.appendChild(li3);
+
     }else if(categoria === "jefe"){
       var container = document.getElementById("fatherList");
       var li = document.createElement("li");
