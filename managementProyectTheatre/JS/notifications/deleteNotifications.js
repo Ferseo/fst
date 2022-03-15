@@ -5,8 +5,8 @@ function deleteNotifications(data){
     // var parent = $(this).parent().attr('id');
             // var count = $(".deleteNotifications").attr('id');
             var count = data.id;
-            console.log(parent);
-            console.log(count);
+            // console.log(parent);
+            // console.log(count);
     
             $.ajax({
                 type: "POST",

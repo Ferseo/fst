@@ -92,6 +92,22 @@ class apiQuerys
     }
 
 
+    //FUNCION MODIFICADA PARA NUEVA FORMA DE MOSTRAR Y ELIMINAR TAREAS, SE AÑADE EL CONDICIONAL A LA SENTENCIA, PARA QUE RECOJA SOLO DATOS
+    //DE LAS TAREAS REALIZADAS, DEL TRABAJADOR INDICADO.
+    // public function getTask($nombre, $date)
+    // {
+    //     $query = "SELECT tipoTarea,horarioTarea,lugarTarea,cod_tarea FROM tareas WHERE trabajadorDesempenia='$nombre' AND diaTarea='$date' AND realizada='false'";
+    //     $result = $this->runQueary($query);
+    //     if ($result) {
+    //         $data = $result->FetchAll();
+    //         return $data;
+    //     } else {
+    //         throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+    //     }
+    // }
+
+
+    
     public function getAllTask($count)
     {
         $query = "SELECT * FROM tareas WHERE cod_tarea='$count'";
@@ -116,6 +132,7 @@ class apiQuerys
         return true;
     }
 
+    
     /**
      * Método que recibiendo por parametro un numero identificador, elimina de la base de datos 
      * el registro con el mismo id
@@ -139,6 +156,21 @@ class apiQuerys
         }
     }
 
+
+    //FUNCION MODIFICADA PARA NUEVA FORMA DE MOSTRAR Y ELIMINAR TAREAS, SECAMBIA LA SENTENCIA, QUE EN LUGAR DE ELMINAR EL REGISTRO DE LA REGISTRO
+    //BASE DE DATOS, ACTUALIZA LA COLUMNA REALIZADA PARA INDICAR LA TAREA COMO HECHA.
+    // public function deleteTask($count)
+    // {
+    //         $query = "UPDATE tareas SET realizada = 'true' WHERE  cod_tarea='$count'";
+    //         $result = $this->runQueary($query);
+    //         if ($result) {
+    //             return true;
+    //         } else {
+    //             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+    //         }
+    // }
+
+
     function getHistoricTasks(){
         
         $query = "SELECT * FROM historico_tareas";
@@ -150,6 +182,7 @@ class apiQuerys
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
+
 
     /**
      * Método que ejecuta la consulta para añadir un material a la bd, con los datos recibidos
