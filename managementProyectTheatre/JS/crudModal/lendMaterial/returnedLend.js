@@ -6,15 +6,23 @@
  */
 function returnedLend(data){
      var count = data.id;
-    $.ajax({
-        type: "POST",
-        url: "/fst/managementProyectTheatre/controller/returnedLend.php",
-        data: {
-            "count":count
-        },
-        success: function(response) {
-            alert("Borrado satisfactorio");
-            window.location.reload();
-        }
-    })
+     var text = prompt("Estado del material a su llegada:", "Todo ok");
+    //  if (text == null || text == "") {
+    //     window.reload()
+    //   } else {
+        $.ajax({
+            type: "POST",
+            url: "/fst/managementProyectTheatre/controller/returnedLend.php",
+            data: {
+                "count":count,
+                "text":text
+            },
+            success: function(response) {
+                // alert("Borrado satisfactorio");
+                window.location.reload();
+            }
+        })
+ 
+    //   }
+  
 }

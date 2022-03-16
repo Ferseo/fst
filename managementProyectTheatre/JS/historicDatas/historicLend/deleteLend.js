@@ -1,5 +1,6 @@
 function deleteLend(data){
-    var count = data.id;
+    if(confirm("¿Desea eliminar este registro de forma permanente?")){
+        var count = data.id;
     $.ajax({
         type: "POST",
         url: "../../controller/deleteLend.php",
@@ -14,4 +15,7 @@ function deleteLend(data){
             }
         }
     });
+    }else{
+        window.reload();
+    }
 }

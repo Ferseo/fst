@@ -1,4 +1,5 @@
 function deleteTask(data){
+   if(confirm("¿Desea eliminar este registro de forma permanente?")){
     var count = data.id;
     $.ajax({
         type: "POST",
@@ -14,4 +15,7 @@ function deleteTask(data){
             }
         }
     });
+   }else{
+       window.reload();
+   }
 }

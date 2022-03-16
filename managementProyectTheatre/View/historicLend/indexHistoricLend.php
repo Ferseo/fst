@@ -20,7 +20,8 @@
         width: 99%;
     }
     .container{
-        height: 70vh;
+        /* height: 70vh; */
+        height: auto;
     }
     
     .border{

@@ -17,7 +17,8 @@
   
   .tab-content {
     background-color: #d2d7df;
-    height: 80vh;
+    /* height: 80vh;  */
+    height: auto;
     
   }
 
@@ -350,10 +351,10 @@
     </div>
     <div class="row ">
       <div class="col">
-        <button type="submit" class="btn btn-dark" onclick="lendMaterial()">Continuar</button> <!--añadimos la funcion al atributo onclick-->
+        <button type="submit" class="btn btn-dark" onclick="lendMaterial()" style="margin-bottom: 6%;">Continuar</button> <!--añadimos la funcion al atributo onclick-->
       </div>
       <div class="col">
-      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdropNew" onclick="seeLendMatertial()">Ver préstamos</button> <!--añadimos el botón para ver materiales prestados-->
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdropNew" onclick="seeLendMatertial()" style="margin-bottom: 6%;">Ver préstamos</button> <!--añadimos el botón para ver materiales prestados-->
       </div>
     </div>
 

@@ -399,9 +399,9 @@ class apiQuerys
      * Consulta creada que actualiza el valor de la columna devuelto a true 
      * para que pase a ser historico
      */
-    public function returnedLend($count)
+    public function returnedLend($count,$text,$user)
     {
-            $query = "UPDATE materialprestado SET devuelto = 'true' WHERE  codigo='$count'";
+            $query = "UPDATE materialprestado SET devuelto = 'true', estado_devolucion='$text',trabajador_recibe='$user' WHERE  codigo='$count'";
             $result = $this->runQueary($query);
             if ($result) {
                 return true;
