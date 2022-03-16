@@ -23,6 +23,16 @@
         height: 70vh;
     }
     
+    .border{
+        border: 1px solid black !important;
+    }
+    .col{
+        width: 1%;
+        padding: 0px !important;
+    }
+    #bold{
+        font-weight: bold;
+    }
 </style>
 <body class="body">
    <div class="row">
@@ -33,13 +43,13 @@
         </div>    
     </div>
     
-    <div class="container modal-content" style="align-content: center; width: 60%;">
-       <h2>Histórico de materiales prestaods</h2>          
+    <div class="container modal-content" id="container" style="align-content: center; width: 80%;text-align:center;">
+       <h2>Histórico de materiales prestados</h2>          
            
     </div>
 
            
 </body>
 </html>
-<script src="../../../JS/historicDatas/historicLend/findHistoricLend.js"></script>
-<script src="../../../JS/historicDatas/historicLend/deleteLend.js"></script>
+<script src="../../JS/historicDatas/historicLend/findHistoricLend.js"></script>
+<script src="../../JS/historicDatas/historicLend/deleteLend.js"></script>

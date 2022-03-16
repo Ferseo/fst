@@ -79,22 +79,9 @@ class apiQuerys
      * @param [type] $date
      * @return 
      */
-    public function getTask($nombre, $date)
-    {
-        $query = "SELECT tipoTarea,horarioTarea,lugarTarea,cod_tarea FROM tareas WHERE trabajadorDesempenia='$nombre' AND diaTarea='$date'";
-        $result = $this->runQueary($query);
-        if ($result) {
-            $data = $result->FetchAll();
-            return $data;
-        } else {
-            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
-        }
-    }
-    //FUNCION MODIFICADA PARA NUEVA FORMA DE MOSTRAR Y ELIMINAR TAREAS, SE AÑADE EL CONDICIONAL A LA SENTENCIA, PARA QUE RECOJA SOLO DATOS
-    //DE LAS TAREAS REALIZADAS, DEL TRABAJADOR INDICADO.
     // public function getTask($nombre, $date)
     // {
-    //     $query = "SELECT tipoTarea,horarioTarea,lugarTarea,cod_tarea FROM tareas WHERE trabajadorDesempenia='$nombre' AND diaTarea='$date' AND realizada='false'";
+    //     $query = "SELECT tipoTarea,horarioTarea,lugarTarea,cod_tarea FROM tareas WHERE trabajadorDesempenia='$nombre' AND diaTarea='$date'";
     //     $result = $this->runQueary($query);
     //     if ($result) {
     //         $data = $result->FetchAll();
@@ -103,17 +90,14 @@ class apiQuerys
     //         throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
     //     }
     // }
-
-
-    
-
-
-    public function getAllTask($count)
+    //FUNCION MODIFICADA PARA NUEVA FORMA DE MOSTRAR Y ELIMINAR TAREAS, SE AÑADE EL CONDICIONAL A LA SENTENCIA, PARA QUE RECOJA SOLO DATOS
+    //DE LAS TAREAS REALIZADAS, DEL TRABAJADOR INDICADO.
+    public function getTask($nombre, $date)
     {
-        $query = "SELECT * FROM tareas WHERE cod_tarea='$count'";
+        $query = "SELECT tipoTarea,horarioTarea,lugarTarea,cod_tarea FROM tareas WHERE trabajadorDesempenia='$nombre' AND diaTarea='$date' AND realizada='false';";
         $result = $this->runQueary($query);
         if ($result) {
-            $data = $result->FetchAll(PDO::FETCH_OBJ);
+            $data = $result->FetchAll();
             return $data;
         } else {
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
@@ -121,16 +105,31 @@ class apiQuerys
     }
 
 
-    public function insertTask($tasks)
-    {
-        $tasks = json_decode($tasks, true);
-        $this->conn->beginTransaction();
-        $sql = "INSERT INTO historico_tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea) VALUES (?,?,?,?,?);";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($tasks[0]["tipoTarea"], $tasks[0]["trabajadorDesempenia"], $tasks[0]["diaTarea"], $tasks[0]["horarioTarea"], $tasks[0]["lugarTarea"]));
-        $this->conn->commit();
-        return true;
-    }
+    
+
+    // public function getAllTask($count)
+    // {
+    //     $query = "SELECT * FROM tareas WHERE cod_tarea='$count'";
+    //     $result = $this->runQueary($query);
+    //     if ($result) {
+    //         $data = $result->FetchAll(PDO::FETCH_OBJ);
+    //         return $data;
+    //     } else {
+    //         throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+    //     }
+    // }
+
+
+    // public function insertTask($tasks)
+    // {
+    //     $tasks = json_decode($tasks, true);
+    //     $this->conn->beginTransaction();
+    //     $sql = "INSERT INTO historico_tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea) VALUES (?,?,?,?,?);";
+    //     $stmt = $this->conn->prepare($sql);
+    //     $stmt->execute(array($tasks[0]["tipoTarea"], $tasks[0]["trabajadorDesempenia"], $tasks[0]["diaTarea"], $tasks[0]["horarioTarea"], $tasks[0]["lugarTarea"]));
+    //     $this->conn->commit();
+    //     return true;
+    // }
 
     
     /**
@@ -157,7 +156,7 @@ class apiQuerys
     }
 
 
-    //FUNCION MODIFICADA PARA NUEVA FORMA DE MOSTRAR Y ELIMINAR TAREAS, SECAMBIA LA SENTENCIA, QUE EN LUGAR DE ELMINAR EL REGISTRO DE LA REGISTRO
+    //FUNCION MODIFICADA PARA NUEVA FORMA DE MOSTRAR Y ELIMINAR TAREAS, SECAMBIA LA SENTENCIA, ////QUE EN LUGAR DE ELMINAR EL REGISTRO DE LA REGISTRO
     //BASE DE DATOS, ACTUALIZA LA COLUMNA REALIZADA PARA INDICAR LA TAREA COMO HECHA.
     public function tasksRealice($count)
     {
@@ -173,19 +172,8 @@ class apiQuerys
 
 
 
-    function getHistoricTasks(){
-        $query = "SELECT * FROM historico_tareas";
-        $result = $this->runQueary($query);
-        if ($result) {
-            $data = $result->FetchAll(PDO::FETCH_OBJ);
-            return $data;
-        } else {
-            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
-        }
-    }
-    //FUNCION MODIFICADA PARA TRAER DE LA BASE DE DATOS LOS REGISTROS DE TAREA QUE ESTAN REALIZADAS
-    // function getHistoricTasks(){  
-    //     $query = "SELECT * FROM tareas WHERE realizada='true' ORDER BY diaTarea ASC;";
+    // function getHistoricTasks(){
+    //     $query = "SELECT * FROM historico_tareas";
     //     $result = $this->runQueary($query);
     //     if ($result) {
     //         $data = $result->FetchAll(PDO::FETCH_OBJ);
@@ -194,6 +182,18 @@ class apiQuerys
     //         throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
     //     }
     // }
+    //FUNCION MODIFICADA PARA TRAER DE LA BASE DE DATOS LOS REGISTROS DE TAREA QUE ESTAN REALIZADAS
+    function getHistoricTasks()
+    {  
+        $query = "SELECT * FROM tareas WHERE realizada='true' ORDER BY diaTarea ASC;";
+        $result = $this->runQueary($query);
+        if ($result) {
+            $data = $result->FetchAll(PDO::FETCH_OBJ);
+            return $data;
+        } else {
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
+    }
 
 
 
@@ -201,7 +201,8 @@ class apiQuerys
      * Consulta que trae todos los registros de la tabla material prestado, que tienen
      * como condicion que la tabla devuelto sea true
      */
-         function getHistoricLend(){  
+         function getHistoricLend()
+         {  
         $query = "SELECT * FROM materialprestado WHERE devuelto='true' ORDER BY diaEntrega ASC;";
         $result = $this->runQueary($query);
         if ($result) {
@@ -338,9 +339,9 @@ class apiQuerys
     public function lendMaterial($data)
     {
         $this->conn->beginTransaction();
-        $sql = "INSERT INTO materialprestado (materialPrestado, diaRetirada, diaEntrega,  estadoMaterial, observaciones, personaPrestamo) VALUES (?,?,?,?,?,?);";
+        $sql = "INSERT INTO materialprestado (materialPrestado, diaRetirada, diaEntrega,  estadoMaterial, observaciones, personaPrestamo, devuelto ,  estado_devolucion , trabajador_presta ,  trabajador_recibe ) VALUES (?,?,?,?,?,?,?,?,?,?);";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5]));
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8],$data[9]));
         $this->conn->commit();
         return true;
     }
@@ -363,18 +364,19 @@ class apiQuerys
             throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
         }
     }
+
     //FUNCION MODIFICADA PARA TRAER REGISTROS DE MATERIALPRESTADO
-    // public function getHistoricLendMaterial()
-    // {
-    //     $query = "SELECT * FROM materialprestado WHERE devuelto='true'";
-    //     $result = $this->runQueary($query);
-    //     if ($result) {
-    //         $data = $result->FetchAll(PDO::FETCH_OBJ);
-    //         return $data;
-    //     } else {
-    //         throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
-    //     }
-    // }
+    public function getHistoricLendMaterial()
+    {
+        $query = "SELECT * FROM materialprestado WHERE devuelto='true'";
+        $result = $this->runQueary($query);
+        if ($result) {
+            $data = $result->FetchAll(PDO::FETCH_OBJ);
+            return $data;
+        } else {
+            throw new Exception($this->conn->errorInfo()[2], $this->conn->errorInfo()[1]);
+        }
+    }
 
     /**
      * Método que recibiendo una variable con el codigo elimina el registro de la bd
@@ -483,26 +485,27 @@ class apiQuerys
     }
 
 
-    public function addTask($data)
-    {
-        $this->conn->beginTransaction();
-        $sql = "INSERT INTO tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea) VALUES (?,?,?,?,?);";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
-        $this->conn->commit();
-        return true;
-    }
-    //FUNCION MODIFICADA PARA AÑADIR UNA TAREA Y QUE POR DEFECTO SEA FALSE EN LA COLUMNA REALIZADA
     // public function addTask($data)
     // {
     //     $this->conn->beginTransaction();
-    //     $sql = "INSERT INTO tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea, realizada) VALUES (?,?,?,?,?,?);";
+    //     $sql = "INSERT INTO tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea) VALUES (?,?,?,?,?);";
     //     $stmt = $this->conn->prepare($sql);
-    //     $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5]));
+    //     $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4]));
     //     $this->conn->commit();
     //     return true;
     // }
+    //FUNCION MODIFICADA PARA AÑADIR UNA TAREA Y QUE POR DEFECTO SEA FALSE EN LA COLUMNA REALIZADA
+    public function addTask($data)
+    {
+        $this->conn->beginTransaction();
+        $sql = "INSERT INTO tareas (tipoTarea, trabajadorDesempenia, diaTarea, horarioTarea, lugarTarea, realizada) VALUES (?,?,?,?,?,?);";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5]));
+        $this->conn->commit();
+        return true;
+    }
 
+    
     public function addNewUser($data)
     {
         $this->conn->beginTransaction();
@@ -537,7 +540,7 @@ class apiQuerys
     /** Método para que al entrar en la aplicacion cambia la fecha de las tareas a la del dia en curso, para que aparezcan en la barra de notificaciones */
     public function putDateToday($date)
     {
-        $query = "UPDATE tareas SET diaTarea='$date'";
+        $query = "UPDATE tareas SET diaTarea='$date' WHERE realizada='false'";
         $result = $this->runQueary($query);
         if ($result != false) {
             return true;

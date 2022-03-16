@@ -22,7 +22,16 @@
     .container{
         height: 70vh;
     }
-    
+    .border{
+        border: 1px solid black;
+    }
+    .col{
+        width: 1%;
+        padding: 0px !important;
+    }
+    #bold{
+        font-weight: bold;
+    }
 </style>
 <body class="body">
    <div class="row">
@@ -33,7 +42,7 @@
         </div>    
     </div>
     
-    <div class="container modal-content" style="align-content: center; width: 60%;">
+    <div class="container modal-content" id="container" style="align-content: center; width: 80%;text-align:center;">
        <h2>Histórico de tareas realizadas</h2>          
            
     </div>
@@ -41,5 +50,5 @@
            
 </body>
 </html>
-<script src="../../../JS/historicDatas/historicTask/findHistoricTasks.js"></script>
-<script src="../../../JS/historicDatas/historicTask/deleteTasks.js"></script>
+<script src="../../JS/historicDatas/historicTask/findHistoricTasks.js"></script>
+<script src="../../JS/historicDatas/historicTask/deleteTasks.js"></script>

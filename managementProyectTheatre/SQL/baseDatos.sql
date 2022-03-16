@@ -161,17 +161,21 @@ CREATE TABLE `materialprestado` (
   `diaEntrega` varchar(50) NOT NULL,
   `estadoMaterial` varchar(250) NOT NULL,
   `observaciones` varchar(250) NOT NULL,
-  `personaPrestamo` varchar(50) NOT NULL
+  `personaPrestamo` varchar(50) NOT NULL,
+  `devuelto` varchar(50) NOT NULL,               
+  `estado_devolucion` varchar(250) NOT NULL,      
+  `trabajador_presta` varchar(50) NOT NULL,        
+  `trabajador_recibe` varchar(50) NOT NULL        
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `materialprestado`
 --
 
-INSERT INTO `materialprestado` (`codigo`, `materialPrestado`, `diaRetirada`, `diaEntrega`, `estadoMaterial`, `observaciones`, `personaPrestamo`) VALUES
-(11256, 'micro', '1 de enero', '12 de diciembre', 'se va perfecto', 'No hay reseñas a mostrar, todo está correcto.', 'luis'),
-(11298, 'altavoz activo bateria', '14-2-2022', '20-3-2022', 'todo ok', 'incluye micro diadema y micro inhalambrico', 'aleju'),
-(11299, 'mesa de luces grandMA3', '22-2-2022', '1-3-2022', 'todo ok', 'No hay contenido a mostrar, todo esta correcto.', 'tjl producciones');
+INSERT INTO `materialprestado` (`codigo`, `materialPrestado`, `diaRetirada`, `diaEntrega`, `estadoMaterial`, `observaciones`, `personaPrestamo`, `devuelto`, `estado_devolucion`,`trabajador_presta`, `trabajador_recibe` ) VALUES
+(11256, 'micro', '1 de enero', '12 de diciembre', 'se va perfecto', 'No hay reseñas a mostrar, todo está correcto.', 'luis', 'false', NULL, 'sergio', NULL),
+(11298, 'altavoz activo bateria', '14-2-2022', '20-3-2022', 'todo ok', 'incluye micro diadema y micro inhalambrico', 'aleju', 'false' , NULL, 'sergio', NULL),
+(11299, 'mesa de luces grandMA3', '22-2-2022', '1-3-2022', 'todo ok', 'No hay contenido a mostrar, todo esta correcto.', 'tjl producciones', 'false', NULL, 'fernando', NULL);
 
 -- --------------------------------------------------------
 
@@ -240,21 +244,22 @@ CREATE TABLE `tareas` (
   `diaTarea` varchar(50) NOT NULL,
   `horarioTarea` varchar(50) NOT NULL,
   `lugarTarea` varchar(50) NOT NULL,
-  `cod_tarea` int(11) NOT NULL
+  `cod_tarea` int(11) NOT NULL,
+  `realizada` varchar(10) NOT NULL               
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tareas`
 --
 
-INSERT INTO `tareas` (`tipoTarea`, `trabajadorDesempenia`, `diaTarea`, `horarioTarea`, `lugarTarea`, `cod_tarea`) VALUES
-('papeleo casa juventud', 'pepe', '8-3-2022', '9.00-11.00am', 'casa juventud', 6),
-('montar sonido', 'fernando', '8-3-2022', '12.00-15.00am', 'teatro', 21),
-('reunion jefas', 'pepe', '8-3-2022', '8.00-9.00am', 'casa de la juventud', 27),
-('Montar sillas', 'sergio', '8-3-2022', '11.00-12.00am', 'hall teatro', 34),
-('limpiar bancos', 'sergio', '8-3-2022', '8.00-9.00am', 'ubicacion bancos', 35),
-('recoger mesas', 'fernando', '8-3-2022', '10.00', 'palacio', 36),
-('recoger sillas', 'pepe', '8-3-2022', '11.00am-11.30am', 'pabellon ', 37);
+INSERT INTO `tareas` (`tipoTarea`, `trabajadorDesempenia`, `diaTarea`, `horarioTarea`, `lugarTarea`, `cod_tarea`, `realizada`) VALUES
+('papeleo casa juventud', 'pepe', '8-3-2022', '9.00-11.00am', 'casa juventud', 6 , 'false'),
+('montar sonido', 'fernando', '8-3-2022', '12.00-15.00am', 'teatro', 21, 'false'),
+('reunion jefas', 'pepe', '8-3-2022', '8.00-9.00am', 'casa de la juventud', 27, 'false'),
+('Montar sillas', 'sergio', '8-3-2022', '11.00-12.00am', 'hall teatro', 34, 'false'),
+('limpiar bancos', 'sergio', '8-3-2022', '8.00-9.00am', 'ubicacion bancos', 35, 'false'),
+('recoger mesas', 'fernando', '8-3-2022', '10.00', 'palacio', 36, 'false'),
+('recoger sillas', 'pepe', '8-3-2022', '11.00am-11.30am', 'pabellon ', 37, 'false');
 
 -- --------------------------------------------------------
 
