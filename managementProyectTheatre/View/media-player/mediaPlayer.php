@@ -233,7 +233,7 @@
         <div class="col-2">
             <div class="col">
                 <label for="file" onclick="readFile()"  class="btn btn-secondary" style="margin: 5%; margin-left:30%;">Añadir track</label>
-                <input id="file" type="file" />
+                <input type="file" id="files" name="files[]" multiple />     <!-- Aqui es donde se abre el explorador-->
             </div>
 
         </div>
@@ -241,15 +241,17 @@
             <div class="container modal-content" style="align-content: center; width: 100%;">
                 <div class="container">
                     
+                    <!-- <output id="list"></output>                                      Supongo que es donde se colocan los temas -->
                 </div>
                 <div class="container-audio">
                     <audio controls  loop autoplay> 
                         <!-- Esta es la cancion 2 -->
-                            <source src="" type="audio/ogg">
-                            Your browser dose not Support the audio Tag
-                </audio>
+                            <!-- <source src="" type="audio/ogg">
+                            Your browser dose not Support the audio Tag -->
+                    </audio>
                 </div>
             </div>
+            
         </div>
         <div class="col-2">
             <div class="col">
@@ -264,18 +266,58 @@
 </body>
 
 </html>
+<!-- LINKS DE ARTICULOS QUE PUEDEN VALER PARA EL REPRODUCTOR -->
+<!-- https://www.html5rocks.com/es/tutorials/file/dndfiles// -->
+<!-- https://oscargascon.es/reproductor-de-audio-html5-con-javascript-un-ejemplo-aplicando-modelo-vista-controlador-y-programacion-orientada-a-objetos/ -->
+<!-- http://www.jplayer.org/download/ -->
 <script>
-    function readFile(){
-        var audio = document.getElementById("file").value;
-        console.log(audio);
-        //if(audio != null){
-        const audio_html = new Audio("https://s3-us-west-2.amazonaws.com/allmetalmixtapes/Saxon%20-%201984%20-%20Crusader/01%20-%20Crusader%20Prelude.mp3");
-        audio_html.play();
-        // }else{
-        //     alert("no hay track");
-        // }
-        //console.log(audio);
-    }
-    window.onload = readFile();
+    //FUNCION QUE PIDE UN ARCHIVO POR PANTALLA, COMPRUEBA QUE NO SEA UNA IMAGEN, Y LO COLOCA EN HTML
+//     function handleFileSelect(evt) {
+//     var files = evt.target.files; // FileList object
+
+//     // Loop through the FileList and render image files as thumbnails.
+//     for (var i = 0, f; f = files[i]; i++) {
+
+//       // Only process image files.
+//       if (!f.type.match('image.*')) {
+//         continue;
+//       }
+
+//       var reader = new FileReader();
+
+//       // Closure to capture the file information.
+//       reader.onload = (function(theFile) {
+//         return function(e) {
+//           // Render thumbnail.
+//           var span = document.createElement('span');
+//           span.innerHTML = ['<img class="thumb" src="', e.target.result,
+//                             '" title="', escape(theFile.name), '"/>'].join('');
+//           document.getElementById('list').insertBefore(span, null);
+//         };
+//       })(f);
+
+//       // Read in the image file as a data URL.
+//       reader.readAsDataURL(f);
+//     }
+//   }
+
+//   document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+
+
+    //FUNCION QUE PIDE UN ARCHIVO AL CLIENTE Y EN TEORIA LO DEBERIA GUARDAR EN UNA VARIABLE, PERO NO LO HACE
+    // function readFile(){
+    //     var audio = document.getElementById("file").value;
+    //     console.log(audio);
+    //     //if(audio != null){
+    //     const audio_html = new Audio("https://s3-us-west-2.amazonaws.com/allmetalmixtapes/Saxon%20-%201984%20-%20Crusader/01%20-%20Crusader%20Prelude.mp3");
+    //     audio_html.play();
+    //     // }else{
+    //     //     alert("no hay track");
+    //     // }
+    //     //console.log(audio);
+    // }
+    // window.onload = readFile();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
