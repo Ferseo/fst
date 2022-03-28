@@ -5,6 +5,8 @@ session_start();
 $employee = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
 $conn = new apiQuerys;
 $date = $date = date("j-n-Y");
+// $dibujo = $_POST["dibujo"];
+// print_r($dibujo);
 $data[0] = $_POST["tipo_materialLend"];
 $data[1] = $_POST["dia_retirada"];
 $data[2] = $_POST["dia_entrega"];
@@ -12,7 +14,7 @@ $data[3] = $_POST["estado_material"];
 $data[4] = $_POST["observaciones"];
 $data[5] = $_POST["per_entiLend"];
 $data[6] = "false";
-$data[7] = "";                        //Descomentar al hacer las pruebas
+$data[7] = "";                        
 $data[8] = $employee;
 $data[9] = "";
  $conn->lendMaterial($data);

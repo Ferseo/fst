@@ -1,8 +1,12 @@
+ 
+
 /**
  * Funcion que que recoge los datos de los campos y los envia a travéz de Ajax
  * al archivo controlador para el trato de datos.
  */
-function lendMaterial(){
+function lendMaterial(data){
+    var dibujo = data;
+    console.log(dibujo);
     var tipo_materialLend = document.querySelector("#tipo_materialLend").value;
     var per_entiLend = document.querySelector("#per_entiLend").value;
     var dia_retirada = document.querySelector("#retiradaLend").value;
@@ -17,6 +21,7 @@ function lendMaterial(){
         type: "POST",
         url: "/fst/managementProyectTheatre/controller/lendMaterial.php",
         data: { 
+            "dibujo":dibujo,
             "tipo_materialLend":tipo_materialLend,
             "per_entiLend":per_entiLend,
             "dia_retirada":dia_retirada,
@@ -25,7 +30,8 @@ function lendMaterial(){
             "observaciones":observacionesLend
     },
     success: function(response) {
-        window.location.reload();
+        //window.location.reload();
     }
 });
 }
+

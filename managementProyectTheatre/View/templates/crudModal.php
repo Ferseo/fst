@@ -72,6 +72,12 @@
     height: 30%;
     width: 25%;
   }
+
+  canvas {
+        width:90%;
+        height:60%;
+        background-color:#0D0909;
+    } 
 </style>
 <div class="modal-content">
   
@@ -347,7 +353,9 @@
         <span class="input-group-text spanLend" id="inputGroup-sizing-sm">Observaciones: </span>
         <textarea type="text" class="form-control inputLend" id="observacionesLend" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%"></textarea>
         <div style="margin-left: 18.5%;"></div>
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdropNew1"  style="margin-bottom: 6%;">firmar</button> 
       </div>
+
     </div>
     <div class="row ">
       <div class="col">
@@ -359,6 +367,28 @@
     </div>
 
   </div>
+    <!-- modal de firma -->
+    <div class="modal fade" id="staticBackdropNew1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Firma</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <canvas id="pizarra"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+        onclick="refreshModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
   <!-- Modal que muestra los materiales prestados -->
 <div class="modal fade" id="staticBackdropNew" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -378,9 +408,111 @@
 </div>
 </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="../../JS/jquery.js"></script>
+<script>
+   //======================================================================
+// VARIABLES
+//======================================================================
+let miCanvas = document.querySelector('#pizarra');
+let lineas = [];
+let correccionX = 0;
+let correccionY = 0;
+let pintarLinea = false;
+// Marca el nuevo punto
+let nuevaPosicionX = 0;
+let nuevaPosicionY = 0;
+
+let posicion = miCanvas.getBoundingClientRect()
+correccionX = posicion.x;
+correccionY = posicion.y;
+
+miCanvas.width = 500;
+miCanvas.height = 500;
+
+//======================================================================
+// FUNCIONES
+//======================================================================
+
+/**
+ * Funcion que empieza a dibujar la linea
+ */
+function empezarDibujo() {
+    pintarLinea = true;
+    lineas.push([]);
+};
+
+/**
+ * Funcion que guarda la posicion de la nueva línea
+ */
+function guardarLinea() {
+    lineas[lineas.length - 1].push({
+        x: nuevaPosicionX,
+        y: nuevaPosicionY
+    });
+    
+}
+
+/**
+ * Funcion dibuja la linea
+ */
+function dibujarLinea(event) {
+    event.preventDefault();
+    if (pintarLinea) {
+        let ctx = miCanvas.getContext('2d')
+        // Estilos de linea
+        ctx.lineJoin = ctx.lineCap = 'round';
+        ctx.lineWidth = 10;
+        // Color de la linea
+        ctx.strokeStyle = "#ffffff";
+        // Marca el nuevo punto
+        if (event.changedTouches == undefined) {
+            // Versión ratón
+            nuevaPosicionX = event.layerX;
+            nuevaPosicionY = event.layerY;
+        } else {
+            // Versión touch, pantalla tactil
+            nuevaPosicionX = event.changedTouches[0].pageX - correccionX;
+            nuevaPosicionY = event.changedTouches[0].pageY - correccionY;
+        }
+        // Guarda la linea
+        guardarLinea();
+        // Redibuja todas las lineas guardadas
+        ctx.beginPath();
+        lineas.forEach(function (segmento) {
+            ctx.moveTo(segmento[0].x, segmento[0].y);
+            segmento.forEach(function (punto, index) {
+                ctx.lineTo(punto.x, punto.y);
+            });
+        });
+        ctx.stroke();
+        
+    }
+    
+}
+
+/**
+ * Funcion que deja de dibujar la linea
+ */
+function pararDibujar () {
+    pintarLinea = false;
+    guardarLinea();
+    lendMaterial(lineas);
+}
+
+//======================================================================
+// EVENTOS
+//======================================================================
+
+// Eventos raton
+miCanvas.addEventListener('mousedown', empezarDibujo, false);
+miCanvas.addEventListener('mousemove', dibujarLinea, false);
+miCanvas.addEventListener('mouseup', pararDibujar, false);
+
+// Eventos pantallas táctiles
+// miCanvas.addEventListener('touchstart', empezarDibujo, false);
+// miCanvas.addEventListener('touchmove', dibujarLinea, false);
+</script>
 <script src="../../JS/crudModal/addMaterial/activeInput.js"></script>
 <script src="../../JS/crudModal/findMaterial/activateInputsFind.js"></script>
 <script src="../../JS/crudModal/activateOption.js"></script>
