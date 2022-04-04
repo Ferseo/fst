@@ -14,27 +14,31 @@
         .title-login{
             color: gray;
         }
-
+        body{
+            background: url("../../img/background-image/auditorio.png");
+            background-repeat: no-repeat;
+            background-size: 1366px 700px;
+        }
     </style>
     <title>Gestión Inventario Teatro</title>
 </head>
 <body>
-<div class="container-fluid vh-100" style="margin-top:150px">
+<div class="container-fluid vh-85" >
             <div class="" style="margin-top:100px">
                 <div class="rounded d-flex justify-content-center">
-                    <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+                    <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light" ">
                         <div class="text-center">
                             <h3 class="title-login">Gestión Inventario Teatro Auditorio Vícar</h3>
                         </div>
                         <form action="/fst/managementProyectTheatre/controller/procesingLogin.php" method="POST">
                             <div class="p-4">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text bg-secondary"><img src="./img/icons/usuario.png" alt="" srcset=""><i
+                                    <span class="input-group-text bg-secondary"><img src="../../img/icons/usuario.png" alt="" srcset=""><i
                                             class="bi bi-person-plus-fill text-white"></i></span>
                                     <input type="text" name="user" class="form-control" placeholder="Nombre de usuario.. ">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text bg-secondary"><img src="./img/icons/password.png" alt="" srcset=""><i
+                                    <span class="input-group-text bg-secondary"><img src="../../img/icons/password.png" alt="" srcset=""><i
                                             class="bi bi-key-fill text-white"></i></span>
                                     <input type="password" name="password" class="form-control" placeholder="Contraseña...">
                                 </div>

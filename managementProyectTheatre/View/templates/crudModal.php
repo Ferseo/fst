@@ -1,5 +1,5 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
 <style>
 
   .nav {
@@ -76,7 +76,7 @@
   canvas {
         width:90%;
         height:60%;
-        background-color:#0D0909;
+        background-color:#ffffff;
     } 
 </style>
 <div class="modal-content">
@@ -353,13 +353,14 @@
         <span class="input-group-text spanLend" id="inputGroup-sizing-sm">Observaciones: </span>
         <textarea type="text" class="form-control inputLend" id="observacionesLend" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:20%"></textarea>
         <div style="margin-left: 18.5%;"></div>
-        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdropNew1"  style="margin-bottom: 6%;">firmar</button> 
+        <!-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdropNew1"  style="margin-bottom: 6%;">firmar</button>  -->
       </div>
 
     </div>
     <div class="row ">
       <div class="col">
-        <button type="submit" class="btn btn-dark" onclick="lendMaterial()" style="margin-bottom: 6%;">Continuar</button> <!--añadimos la funcion al atributo onclick-->
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdropNew1"  style="margin-bottom: 6%;">firmar</button> 
+        <!-- <button type="submit" class="btn btn-dark" onclick="lendMaterial()" style="margin-bottom: 6%;">Continuar</button>  -->
       </div>
       <div class="col">
       <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdropNew" onclick="seeLendMatertial()" style="margin-bottom: 6%;">Ver préstamos</button> <!--añadimos el botón para ver materiales prestados-->
@@ -408,7 +409,8 @@
 </div>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="../../JS/jquery.js"></script>
 <script>
    //======================================================================
@@ -464,7 +466,7 @@ function dibujarLinea(event) {
         ctx.lineJoin = ctx.lineCap = 'round';
         ctx.lineWidth = 10;
         // Color de la linea
-        ctx.strokeStyle = "#ffffff";
+        ctx.strokeStyle = "#0D0909";
         // Marca el nuevo punto
         if (event.changedTouches == undefined) {
             // Versión ratón
@@ -497,7 +499,9 @@ function dibujarLinea(event) {
 function pararDibujar () {
     pintarLinea = false;
     guardarLinea();
-    lendMaterial(lineas);
+    var img    = miCanvas.toDataURL("image/png");
+    //img = encodeURI(img);
+    lendMaterial(img);
 }
 
 //======================================================================
