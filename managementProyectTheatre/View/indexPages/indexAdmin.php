@@ -9,21 +9,23 @@
     <title>Dashboard de Administrador</title>
 </head>
 <style>
-    .body{
-        /* background-color: #353535; */
-        background-color: #1f1f1f;
+    .body {
         width: 99%;
+        background: url("../../img/background-image/auditorio.png");
+        background-repeat: no-repeat;
+        background-size: 1366px auto;
     }
 </style>
+
 <body class="body">
 
-   <div class="row">
+    <div class="row">
         <div class="col-12">
-        <?php
-        include('../templates/header.php');
-        ?>
+            <?php
+            include('../templates/header.php');
+            ?>
         </div>
-        
+
     </div>
     <div class="row">
         <div class="col-9 crudContent">
@@ -36,7 +38,7 @@
             include('../templates/notifications.php')
             ?>
         </div>
-        </div>
+    </div>
 
 </body>
 

@@ -13,36 +13,40 @@
 </head>
 <style>
     .body {
-        /* background-color: #353535; */
-        background-color: #1f1f1f;
+        background: url("../../img/background-image/auditorio.png");
+        background-repeat: no-repeat;
+        background-size: 1366px auto;
         width: 99%;
     }
-    
-    .span{
+
+    .span {
         width: 90%;
     }
-    .box{
+
+    .box {
         margin: 0px;
         padding: 0px;
-        
+
         /*display: inline !important;*/
-        float:left;
-        height:auto;
+        float: left;
+        height: auto;
     }
-    .modal-content{
+
+    .modal-content {
         display: block !important;
     }
-    .rigth{
-        margin-top: 5%; 
+
+    .rigth {
+        margin-top: 5%;
         border: 1px solid black;
     }
 
-    .row > p{
+    .row>p {
         width: 70%;
     }
 
-    .row > button{
-        width:30%;
+    .row>button {
+        width: 30%;
     }
 </style>
 
@@ -56,9 +60,9 @@
     </div>
     <div class="row">
         <!-- <div class="col"> -->
-            <div class="container modal-content" style=" width:80%; text-align:center;">
-              
-                <div class="col-7 box">
+        <div class="container modal-content" style=" width:80%; text-align:center;">
+
+            <div class="col-7 box">
                 <h3>Registro de usuario</h3>
                 <div class="input-group input-group-sm mb-3" style="padding:1%; width:75%; ">
                     <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 20%;">DNI</span>
@@ -67,17 +71,17 @@
 
                 <div class="input-group input-group-sm mb-3" style="padding:1%; width:75%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 20%;">Nombre</span>
-                    <input type="text" class="form-control" id="nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                    <input type="text" class="form-control" id="nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" required>
                 </div>
 
                 <div class="input-group input-group-sm mb-3" style="padding:1%; width:75%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 20%;">Apellidos</span>
-                    <input type="text" class="form-control" id="apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                    <input type="text" class="form-control" id="apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" required>
                 </div>
 
                 <div class="input-group input-group-sm mb-3" style="padding:1%; width:75%;">
                     <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 20%;">Alias</span>
-                    <input type="text" class="form-control" id="user" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                    <input type="text" class="form-control" id="user" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" required>
                 </div>
 
                 <div class="input-group input-group-sm mb-3" style="padding:1%; width:75%;">
@@ -114,14 +118,14 @@
                         </div>
                     </div>
                 </div>
-                </div>
-                <div class="col-5 box "  >
-                    <h5>Usuarios registrados</h5>
-                    <div id="parent" class="rigth" >
-                        
-                    </div>
+            </div>
+            <div class="col-5 box ">
+                <h5>Usuarios registrados</h5>
+                <div id="parent" class="rigth">
+
                 </div>
             </div>
+        </div>
         <!-- </div> -->
     </div>
 

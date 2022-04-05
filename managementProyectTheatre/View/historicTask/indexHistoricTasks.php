@@ -10,46 +10,54 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="../../JS/jquery.js"></script>
+    <script src="../../JS/jquery.js"></script>
     <title>Histórico de Tareas</title>
 </head>
 <style>
-    .body{
-        /* background-color: #353535; */
-        background-color: #1f1f1f;
+    .body {
+        background: url("../../img/background-image/auditorio.png");
+        background-repeat: no-repeat;
+        background-size: 1366px auto;
         width: 99%;
     }
-    .container{
-        /* height: 70vh; */
-        height: auto;
+
+    .container {
+        height: 70vh;
+        overflow-y: scroll;
+        /* height: auto; */
     }
-    .border{
+
+    .border {
         border: 1px solid black;
     }
-    .col{
+
+    .col {
         width: 1%;
         padding: 0px !important;
     }
-    #bold{
+
+    #bold {
         font-weight: bold;
     }
 </style>
+
 <body class="body">
-   <div class="row">
+    <div class="row">
         <div class="col-12">
-        <?php
-        include('../templates/header.php');
-        ?>
-        </div>    
-    </div>
-    
-    <div class="container modal-content" id="container" style="align-content: center; width: 80%;text-align:center;">
-       <h2>Histórico de tareas realizadas</h2>          
-           
+            <?php
+            include('../templates/header.php');
+            ?>
+        </div>
     </div>
 
-           
+    <div class="container modal-content" id="container" style="align-content: center; width: 80%;text-align:center;">
+        <h2>Histórico de tareas realizadas</h2>
+
+    </div>
+
+
 </body>
+
 </html>
 <script src="../../JS/historicDatas/historicTask/findHistoricTasks.js"></script>
 <script src="../../JS/historicDatas/historicTask/deleteTasks.js"></script>

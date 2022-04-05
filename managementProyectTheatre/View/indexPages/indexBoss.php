@@ -9,21 +9,23 @@
     <title>Dashboard de Jefes</title>
 </head>
 <style>
-    .body{
-        /* background-color: #353535; */
-        background-color: #1f1f1f;
+    .body {
+        background: url("../../img/background-image/auditorio.png");
+        background-repeat: no-repeat;
+        background-size: 1366px auto;
         width: 99%;
     }
 </style>
+
 <body class="body">
 
-   <div class="row">
+    <div class="row">
         <div class="col-12">
-        <?php
-        include('../templates/header.php');
-        ?>
+            <?php
+            include('../templates/header.php');
+            ?>
         </div>
-        
+
     </div>
     <div class="row">
         <div class="col-9 crudContent">
@@ -37,7 +39,7 @@
             ?>
         </div>
 
-        </div>
+    </div>
 </body>
 
 

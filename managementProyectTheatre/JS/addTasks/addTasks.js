@@ -1,3 +1,7 @@
+/**
+ * Funcion que recoge los datos de los input de nueva tarea, los guarda en variables, 
+ * y posteriormente los manda al controlador a traves de una petición asincrona ajax.
+ */
 function addTasks(){
     var tipo_tarea = document.getElementById("tipo_tarea").value;
     var traba_tarea = document.getElementById("traba_tarea").value;

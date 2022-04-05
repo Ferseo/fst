@@ -13,6 +13,7 @@ $dataTask = $api->getTask($nombre, $date);
         text-align: center;
         height: 82vh;
         box-shadow: 2px 2px 2px 2px gray;
+        overflow-y: scroll;
         /*height: 100vh;*/ /*Si no funciona asi, probar a llamar a la propiedad desde el id*/
     }
 
@@ -23,10 +24,17 @@ $dataTask = $api->getTask($nombre, $date);
         font-weight: bold;
         height: 80px;
         opacity: 85%;
+        width: 100%;
     }
 
     .deleteNotifications{
       float: left;
+    }
+    tbody{
+        width: 100%;
+    }
+    table{
+        margin: 0px !important;
     }
 </style>
 <!-- <div class="col" style="padding: 0;">

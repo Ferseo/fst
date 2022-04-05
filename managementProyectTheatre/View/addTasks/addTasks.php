@@ -10,71 +10,75 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="../../JS/jquery.js"></script>
+    <script src="../../JS/jquery.js"></script>
     <title>Añadir Tareas</title>
 </head>
 <style>
-    .body{
-        /* background-color: #353535; */
-        background-color: #1f1f1f;
+    .body {
+        background: url("../../img/background-image/auditorio.png");
+        background-repeat: no-repeat;
+        background-size: 1366px 700px;
         width: 99%;
     }
-    .container{
+
+    .container {
         height: 70vh;
-    
+
     }
-    span{
+
+    span {
         width: 25%;
     }
 </style>
+
 <body class="body">
-   <div class="row">
+    <div class="row">
         <div class="col-12">
-        <?php
-        include('../templates/header.php');
-        ?>
-        </div>    
+            <?php
+            include('../templates/header.php');
+            ?>
+        </div>
     </div>
-    
+
     <div class="container modal-content" style="align-content: center; width: 60%;">
-                 <div class="col" style="width: 70%; margin-left:20%; margin-top: 4%;">
-                 <div class="input-group input-group-sm mb-3" style="padding:3%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Tipo de tarea</span>
-                    <input type="text" class="form-control" id="tipo_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
-                    </div>
-             
-                    <div class="input-group input-group-sm mb-3" style="padding:3%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Trabajador</span>
-                    <input type="text" class="form-control" id="traba_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >      
-                    </div>
+        <div class="col" style="width: 70%; margin-left:20%; margin-top: 4%;">
+            <div class="input-group input-group-sm mb-3" style="padding:3%; width:80%;">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Tipo de tarea</span>
+                <input type="text" class="form-control" id="tipo_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+            </div>
 
-                    <div class="input-group input-group-sm mb-3" style="padding:3%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Día</span>
-                    <input type="text" class="form-control" id="dia_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
-                    </div>
+            <div class="input-group input-group-sm mb-3" style="padding:3%; width:80%;">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Trabajador</span>
+                <input type="text" class="form-control" id="traba_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+            </div>
 
-                    <div class="input-group input-group-sm mb-3" style="padding:3%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Horario</span>
-                    <input type="text" class="form-control" id="horario_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
-                    </div>
+            <div class="input-group input-group-sm mb-3" style="padding:3%; width:80%;">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Día</span>
+                <input type="text" class="form-control" id="dia_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+            </div>
 
-                    <div class="input-group input-group-sm mb-3" style="padding:3%; width:80%;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Lugar</span>
-                    <input type="text" class="form-control" id="lugar_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%" >
-                    </div>
+            <div class="input-group input-group-sm mb-3" style="padding:3%; width:80%;">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Horario</span>
+                <input type="text" class="form-control" id="horario_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+            </div>
 
-                    <div class="row">
-                        <div class="col-5"><button type="submit" onclick="addTasks()" class="btn btn-secondary">Añadir tarea</button></div>
-                        <div class="col-2"></div>
-                        <!-- <div class="col-5"><button type="submit" onclick="findTasks()" class="btn btn-secondary">ver histórico</button></div> -->
-                    </div>
-                    
-                 </div>
+            <div class="input-group input-group-sm mb-3" style="padding:3%; width:80%;">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Lugar</span>
+                <input type="text" class="form-control" id="lugar_tarea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+            </div>
+
+            <div class="row">
+                <div class="col-5"><button type="submit" onclick="addTasks()" class="btn btn-secondary">Añadir tarea</button></div>
+                <div class="col-2"></div>
+                <!-- <div class="col-5"><button type="submit" onclick="findTasks()" class="btn btn-secondary">ver histórico</button></div> -->
+            </div>
+
+        </div>
 
 
-                 
- <!-- Modal que muestra la tabla con los resultados de la busqueda -->
- <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-target="#AvanzaModal">
+
+        <!-- Modal que muestra la tabla con los resultados de la busqueda -->
+        <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-target="#AvanzaModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -93,16 +97,16 @@
 
 
 
-            </div>
+    </div>
 
-           
+
 </body>
+
 </html>
 <script>
-    function refreshModal(){
+    function refreshModal() {
         window.location.reload();
     }
 </script>
 <script src="../../JS/addTasks/addTasks.js"></script>
 <script src="../../JS/addTasks/findHistoricTasks.js"></script>
-

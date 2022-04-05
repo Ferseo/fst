@@ -13,12 +13,15 @@
     box-shadow: 2px 2px 2px 2px gray;
   }
 
-
+  #modal_overflow{
+    height: 50vh;
+    overflow-y: scroll;
+  }
   
   .tab-content {
     background-color: #d2d7df;
-    /* height: 80vh;  */
-    height: auto;
+    height: 80vh; 
+    /* height: auto; */
     
   }
 
@@ -128,7 +131,7 @@
           <!--div para indicar la marca del material-->
           <div class="input-group input-group-sm mb-3" style="margin-top: 2%;  width:80%;">
             <span class="input-group-text" id="inputGroup-sizing-sm">Marca: </span>
-            <input type="text" class="form-control " id="marca" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
+            <input type="text" class="form-control " id="marca" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  >
           </div>
         </div>
       </div>
@@ -289,8 +292,8 @@
   </div>
 <!-- Modal que muestra la tabla con los resultados de la busqueda -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-target="#AvanzaModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <div class="modal-dialog" >
+    <div class="modal-content"  id="modal_overflow">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">MATERIAL ENCONTRADO</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -380,7 +383,7 @@
       <canvas id="pizarra"></canvas>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+        <button type="button" id="close_firma" class="btn btn-secondary" data-bs-dismiss="modal"
         onclick="refreshModal()">Cerrar</button>
       </div>
     </div>
@@ -391,9 +394,9 @@
 
 
   <!-- Modal que muestra los materiales prestados -->
-<div class="modal fade" id="staticBackdropNew" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+<div class="modal fade" id="staticBackdropNew" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"  >
+  <div class="modal-dialog" >
+    <div class="modal-content" id="modal_overflow">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">MATERIAL PRESTADO</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -413,7 +416,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="../../JS/jquery.js"></script>
 <script>
-   //======================================================================
+//======================================================================
 // VARIABLES
 //======================================================================
 let miCanvas = document.querySelector('#pizarra');
@@ -499,11 +502,12 @@ function dibujarLinea(event) {
 function pararDibujar () {
     pintarLinea = false;
     guardarLinea();
-    var img    = miCanvas.toDataURL("image/png");
-    //img = encodeURI(img);
-    lendMaterial(img);
 }
-
+document.getElementById("close_firma").addEventListener("click", function( event ) {
+      var img    = miCanvas.toDataURL("image/png");
+      //img = encodeURI(img);
+      lendMaterial(img);
+    },true);
 //======================================================================
 // EVENTOS
 //======================================================================
