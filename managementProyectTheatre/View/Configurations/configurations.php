@@ -24,10 +24,10 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
 </head>
 <style>
     .body {
-        background: url("../../img/background-image/auditorio.png");
-        background-repeat: no-repeat;
-        background-size: 1366px auto;
         width: 99%;
+        background: url("../../img/background-image/auditorio1_mo.jpg");
+        background-repeat: no-repeat;
+        background-size: auto;
     }
 
     #sincroDipu {

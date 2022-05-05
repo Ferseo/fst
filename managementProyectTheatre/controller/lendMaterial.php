@@ -11,7 +11,7 @@ $payload = json_decode($payload);
 $capturaLimpia = str_replace("data:image/png;base64,", "", urldecode($payload));
 $imagenDecodificada = base64_decode($capturaLimpia);
 $imagen = file_put_contents('../img/firma/firma.png', $imagenDecodificada);  
-
+echo $imagen;
 
 $data[0] = $_POST["tipo_materialLend"];
 $data[1] = $_POST["dia_retirada"];
@@ -56,4 +56,5 @@ $pdf->Cell(150, 7, '  Firma del Responsable                                     
 $pdf->Cell(150, 7, '  ' . $employee . '                                                                                             ' . $data[5] . '', 0, 1, 'L');   
 $pdf->Image('../img/firma/sello_cultura_2.png', 30, 175, -400);
 $pdf->Image('../img/firma/firma.png', 130, 165, -200,);
-$pdf->Output('F', 'C:\Users\sierr\Downloads\prestamo '.$date.'.pdf');
+//$pdf->Output('F', 'C:\Users\sierr\Downloads\prestamo '.$date.'.pdf');
+$pdf->Output('I', 'prestamo '.$date.'.pdf');

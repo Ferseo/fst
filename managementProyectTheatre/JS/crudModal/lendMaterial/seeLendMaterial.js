@@ -1,7 +1,7 @@
 function seeLendMatertial(){
     $.ajax({
         type: "POST",
-        url: "/fst/managementProyectTheatre/controller/seeLendMaterial.php",
+        url: "../../../controller/seeLendMaterial.php",
         data: {},
     success: function(response) {
         

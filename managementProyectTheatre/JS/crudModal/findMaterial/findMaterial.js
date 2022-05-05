@@ -29,7 +29,7 @@
         }
         $.ajax({
             type: "POST",
-            url: "/fst/managementProyectTheatre/controller/findMaterial.php",
+            url: "../../../controller/findMaterial.php",
             data: { 
                 "option": option,
                 "tipoMaterialFind": tipoMaterialFind,

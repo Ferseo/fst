@@ -1,0 +1,17 @@
+@media only screen and (max-width: 360px){
+    html{
+        min-width: 360px;
+        height: auto;
+    }
+    .icon{
+        display:none;
+    }
+    .crudContent{
+        width:100%;
+    }
+
+    .notificationsContent{
+        width: 100%;
+        vertical-align:top;
+    }  
+}

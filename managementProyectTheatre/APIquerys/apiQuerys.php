@@ -1,9 +1,9 @@
 <?php
 //include_once "../connection/connection.php";
 define("DB_NOMBRE", "managementtheatre");
-define("DB_HOST", "localhost");
+define("DB_HOST", "141.95.162.188");
 define("DB_USUARIO", "root");
-define("DB_PASSWORD", "");
+define("DB_PASSWORD", "MySQLServer2022.");
 class apiQuerys
 {
     /**
@@ -11,7 +11,19 @@ class apiQuerys
      */
     public function __construct()
     {
-        $dsn = "mysql:host=" . DB_HOST;
+        try{
+            echo "1";
+            $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
+            echo "2";
+            $this->conn = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NOMBRE,DB_USUARIO,DB_PASSWORD,$opc);
+            echo "3";
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "4";
+        //Y si no puede crearse la conexión, muestra el error.
+        }catch (Exception $ex){
+            echo "no se pudo hacer la conexion";
+            throw $ex;
+        /*$dsn = "mysql:host=" . DB_HOST;
         try {
             $this->conn = new PDO($dsn, DB_USUARIO); // Nueva instancia de PDO
             $sql = 'SHOW DATABASES LIKE "' . DB_NOMBRE . '";'; //SQL que comprueba si existe la base de datos
@@ -32,8 +44,8 @@ class apiQuerys
             }
         } catch (Exception $ex) {
             throw $ex;
-        }
-    }
+        }*/
+    }}
 
     /**
      * Método que ejecuta cualquier consulta

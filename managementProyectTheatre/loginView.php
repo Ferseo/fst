@@ -15,9 +15,10 @@
             color: gray;
         }
         body{
-            background: url("../../img/background-image/auditorio.png");
-            background-repeat: no-repeat;
-            background-size: 1366px 700px;
+            width: 99%;
+        background: url("../../img/background-image/auditorio1_mo.jpg");
+        background-repeat: no-repeat;
+        background-size: auto;
         }
     </style>
     <title>Gestión Inventario Teatro</title>
@@ -30,7 +31,7 @@
                         <div class="text-center">
                             <h3 class="title-login">Gestión Inventario Teatro Auditorio Vícar</h3>
                         </div>
-                        <form action="/fst/managementProyectTheatre/controller/procesingLogin.php" method="POST">
+                        <form action="./controller/procesingLogin.php" method="POST">
                             <div class="p-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text bg-secondary"><img src="../../img/icons/usuario.png" alt="" srcset=""><i

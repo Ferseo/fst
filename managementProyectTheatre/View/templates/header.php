@@ -13,11 +13,12 @@ session_write_close();
 ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="../../mediaQueries/global_Media_Queries.css">
 <style>
   .navbar {
-    background: url("../../img/background-image/auditorio.png");
+    /* background: url("../../img/background-image/auditorio.png");
     background-repeat: no-repeat;
-    background-size: 1366px 700px;
+    background-size: 1366px 700px; */
     height: 15vh;
   }
 
@@ -42,7 +43,7 @@ session_write_close();
     <img src="../../img/icons/EscudoVicar.jpg" class="icon" alt="logo vicar" style="margin-left: 4%;">
   </div>
   <div class="col-8" style="text-align: center;">
-    <a class="navbar-brand">Teatro Auditorio Ciudad de Vícar</a>
+  <h1 class="navbar-brand" style="color: #000000; font-size: 3em; margin-top: 4%;" >Teatro Auditorio Ciudad de Vícar</h1>
   </div>
   <div class="col-2 dropstart" style="text-align: right;">
     <img type="button" src="../../img/icons/userIcon.png" class="iconUser dropdown-toggle" alt="" style="margin: 2%;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,7 +54,7 @@ session_write_close();
       <li><a class="dropdown-item" href="../historicLend/indexHistoricLend.php"><img src="../../img/icons/icons-prestamo-devuelto.png">Prestamos devueltos</a></li>
       <li><a class="dropdown-item" href="../media-player/mediaPlayer.php"> <img src="../../img/icons/icons8-mp3-player-24.png"> Reproductor</a></li>
       <li><a class="dropdown-item" href="../../View/Configurations/configurations.php"> <img src="../../img/icons/icons8-configuration-and-setting-panel-in-computer-software-24.png">Ajustes</a></li>
-      <li><a class="dropdown-item" href="../login/loginView.php"> <img src="../../img/icons/icons8-exit-24.png"> Cerrar sesión</a></li>
+      <li><a class="dropdown-item" href="../../login/loginView.php"> <img src="../../img/icons/icons8-exit-24.png"> Cerrar sesión</a></li>
     </ul>
     <?php printf('<span style="color: white;">' . $user . '</span>') ?>
   </div>
@@ -72,7 +73,7 @@ con php la variable de sesion con la categoria, y dependiendo de la categoria cr
       a.className = "dropdown-item";
       a.href = "../registerUser/registerNewUser.php";
       var img = document.createElement("img");
-      img.src = "../../img/icons/icons8-añadir-usuario-masculino-24.png";
+      img.src = "../../img/icons/icons8-aniadir-usuario-masculino-24.png";
       var texto = document.createTextNode("Registro Usuario");
       a.appendChild(img);
       a.appendChild(texto);

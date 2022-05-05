@@ -9,7 +9,7 @@ function deleteMaterial(data){
         var option = document.getElementById("selectedOption").value;
         $.ajax({
             type: "POST",
-            url: "/fst/managementProyectTheatre/controller/deleteMaterial.php",
+            url: "../../../controller/deleteMaterial.php",
             data: {
                "option": option,
                 "count":count

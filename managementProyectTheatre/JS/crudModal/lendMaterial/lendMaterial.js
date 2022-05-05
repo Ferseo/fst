@@ -19,7 +19,7 @@ function lendMaterial(data){
     }
     $.ajax({
         type: "POST",
-        url: "/fst/managementProyectTheatre/controller/lendMaterial.php",
+        url: "../../../controller/lendMaterial.php",
         data: { 
             "tipo_materialLend":tipo_materialLend,
             "per_entiLend":per_entiLend,

@@ -12,7 +12,7 @@ function returnedLend(data){
     //   } else {
         $.ajax({
             type: "POST",
-            url: "/fst/managementProyectTheatre/controller/returnedLend.php",
+            url: "../../../controller/returnedLend.php",
             data: {
                 "count":count,
                 "text":text

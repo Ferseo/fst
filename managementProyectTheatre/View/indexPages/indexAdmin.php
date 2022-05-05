@@ -6,14 +6,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../mediaQueries/global_Media_Queries.css">
     <title>Dashboard de Administrador</title>
 </head>
 <style>
     .body {
         width: 99%;
-        background: url("../../img/background-image/auditorio.png");
+        background: url("../../img/background-image/auditorio1_mo.jpg");
         background-repeat: no-repeat;
-        background-size: 1366px auto;
+        background-size: auto;
     }
 </style>
 

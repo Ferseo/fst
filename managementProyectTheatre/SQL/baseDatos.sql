@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `managementtheatre`
 --
-CREATE DATABASE  `managementtheatre`;
+/*CREATE DATABASE  `managementtheatre` IF NOT EXISTS;*/
 USE  `managementtheatre`;
 
 CREATE TABLE `atrezzo` (
