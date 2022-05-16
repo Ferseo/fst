@@ -39,6 +39,17 @@
     #bold {
         font-weight: bold;
     }
+    @media only screen and (max-width: 600px){
+        .body{
+            height: 105vh !important;
+        }
+        .container{
+            margin-left:8% !important;
+            width: 90% !important;
+            height: 75vh !important;
+            font-size: 1% !important;
+        }
+    }
 </style>
 
 <body class="body">
