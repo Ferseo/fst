@@ -26,8 +26,6 @@
     .box {
         margin: 0px;
         padding: 0px;
-
-        /*display: inline !important;*/
         float: left;
         height: auto;
     }
@@ -47,6 +45,17 @@
 
     .row>button {
         width: 30%;
+    }
+    @media only screen and (max-width: 600px){
+        .body{
+            height: auto !important;
+        }
+        .container{
+            width: 90% !important;
+        }
+        span{
+            width: 100% !important;
+        }
     }
 </style>
 
