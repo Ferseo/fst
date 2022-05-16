@@ -37,6 +37,22 @@ session_write_close();
   .dropdown-menu {
     background-color: white;
   }
+   @media only screen and (max-width: 600px){
+    .main_icon{
+        display:none;
+    }
+    .fatherList{
+      position:absolute !important;
+      z-index:3 !important;
+      left:2.5em !important;
+      top:-15px !important;
+      width: 55% !important;
+    }
+    .dropdown-item{
+      background-color: white !important;
+      opacity: 1;
+    }
+}
 </style>
 <nav class="row navbar navbar-dark">
   <div class="col-2">
