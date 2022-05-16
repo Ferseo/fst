@@ -45,7 +45,7 @@ if ($queryLogin->checkUser($user, $pass)) {
         echo "<script> alert('⚠️  ⚠️ ¡¡ERROR!! SUS CREDENCIALES NO SON CORRECTAS ⚠️ ⚠️⚠️  '); </script>";
         ?>
         <script type="text/javascript">
-                window.location = "../View/login/loginView.php";
+                window.location = "../loginView.php";
         </script>
 <?php
 }
