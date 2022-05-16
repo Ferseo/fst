@@ -29,6 +29,19 @@
     span {
         width: 25%;
     }
+    @media only screen and (max-width: 600px){
+        .body{
+            height: 105vh !important;
+        }
+        .container{
+            margin-left:8% !important;
+            width: 90% !important;
+            height: 75vh !important;
+        }
+        span{
+            width: 100% !important;
+        }
+    }
 </style>
 
 <body class="body">
