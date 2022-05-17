@@ -1,15 +1,6 @@
 <?php
 session_start(['read_and_close'  => true,]);
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
-// header('Access-Control-Allow-Origin: *');
-// header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-// header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-// header("Allow: GET, POST, OPTIONS, PUT, DELETE");
-// $method = $_SERVER['REQUEST_METHOD'];
-// if($method == "OPTIONS") {
-//     die();
-// }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +29,31 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
         width: 100%;
         height: 80vh;
     }
+    @media only screen and (max-width: 600px){
+        .global_row{
+            flex-direction: column;
+        }
+        .body{
+            background-repeat: repeat;
+        }
+        .option_content{
+            width: 76% !important;
+            margin-left: 3% !important;
+        }
+        .container{
+            margin: 0px !important;
+            width: 95% !important;
+            margin-left: 5% !important;
+        }
+        .input_control{
+            width: 75% !important; 
+            margin: 0px !important;
+        }
+        .span_control{
+            width: 85% !important; 
+            margin: 0px !important;
+        }
+    }
 </style>
 
 <body class="body">
@@ -48,8 +64,8 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
             ?>
         </div>
     </div>
-    <div class="row">
-        <div class="col-2">
+    <div class="row global_row">
+        <div class=" col-sm-12 col-md-3 col-xs-12 option_content">
             <ul class="modal-content" style="font-weight: bold; margin-left:10%;margin-top:2%;">
                 <li id="fatherList"><a class="dropdown-item" onclick="miPerfil()">Mi perfil</a></li>
                 <li><a class="dropdown-item" onclick="sincroDipu()">Sincr. Diputación</a></li>
@@ -58,67 +74,63 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
                 <li><a class="dropdown-item" href="#">Notificaciones</a></li>
             </ul>
         </div>
-        <div class="col-10">
+        <div class="col-lg-9 col-sm-12 col-md-9 col-xs-auto config_content">
             <!-- div contenedor para todas las opciones -->
             <div class="container modal-content" style=" width:80%;" id="container">
-
-
-
-
                 <!-- div contenedor donde comienza la opcion de mi perfil -->
                 <div id="miPerfil">
-                    <div class="col ">
+                    <div class="col content_perfil">
                         <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">DNI</span>
-                            <input type="text" class="form-control" id="dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                            <span class="input-group-text span_control" id="inputGroup-sizing-sm">DNI</span>
+                            <input type="text" class="form-control input_control" id="dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
                             <button type="submit" class="btn" onclick="editInput(this)" id="dni">📝</button>
                         </div>
 
                         <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
-                            <input type="text" class="form-control" id="nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                            <span class="input-group-text span_control" id="inputGroup-sizing-sm">Nombre</span>
+                            <input type="text" class="form-control input_control" id="nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
                             <button type="submit" class="btn" onclick="editInput(this)" id="nombre">📝</button>
                         </div>
 
                         <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Apellidos</span>
-                            <input type="text" class="form-control" id="apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                            <span class="input-group-text span_control" id="inputGroup-sizing-sm">Apellidos</span>
+                            <input type="text" class="form-control input_control" id="apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
                             <button type="submit" class="btn" onclick="editInput(this)" id="apellidos">📝</button>
                         </div>
 
                         <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Alias</span>
-                            <input type="text" class="form-control" id="user" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                            <span class="input-group-text span_control" id="inputGroup-sizing-sm">Alias</span>
+                            <input type="text" class="form-control input_control" id="user" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
                             <button type="submit" class="btn" onclick="editInput(this)" id="user">📝</button>
                         </div>
 
                         <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Contraseña</span>
-                            <input type="password" class="form-control" id="pass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                            <span class="input-group-text span_control" id="inputGroup-sizing-sm">Contraseña</span>
+                            <input type="password" class="form-control input_control" id="pass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
                             <button type="submit" class="btn" onclick="editInput(this)" id="pass">📝</button>
                         </div>
 
                         <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Puesto</span>
-                            <input type="text" class="form-control" id="categoria" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                            <span class="input-group-text span_control" id="inputGroup-sizing-sm">Puesto</span>
+                            <input type="text" class="form-control input_control" id="categoria" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
                             <button type="submit" class="btn" onclick="editInput(this)" id="categoria">📝</button>
                         </div>
 
                         <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Año de ingreso</span>
-                            <input type="text" class="form-control" id="anio_ingreso" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                            <span class="input-group-text span_control" id="inputGroup-sizing-sm">Año de ingreso</span>
+                            <input type="text" class="form-control input_control" id="anio_ingreso" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
                             <button type="submit" class="btn" onclick="editInput(this)" id="anio_ingreso">📝</button>
                         </div>
 
                         <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Direccion</span>
-                            <input type="text" class="form-control" id="direccion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                            <span class="input-group-text span_control" id="inputGroup-sizing-sm">Direccion</span>
+                            <input type="text" class="form-control input_control" id="direccion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
                             <button type="submit" class="btn" onclick="editInput(this)" id="direccion">📝</button>
                         </div>
 
                         <div class="input-group input-group-sm mb-3" style="padding:1%; width:80%;">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Teléfono</span>
-                            <input type="text" class="form-control" id="telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
+                            <span class="input-group-text span_control" id="inputGroup-sizing-sm">Teléfono</span>
+                            <input type="text" class="form-control input_control" id="telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width:40%">
                             <button type="submit" class="btn" onclick="editInput(this)" id="telefono">📝</button>
                         </div>
                     </div>
@@ -173,13 +185,6 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : 'User';
     }
     window.onload = dateSetting();
 </script>
-<!-- <script>
-    function miPerfil(){
-    container_dipu = document.getElementById("sincroDipu");
-    container_dipu.style.display = "none";   
-}
-window.onload = miPerfil();
-</script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="../../JS/configurations/configurations.js"></script>
 <script src="../../JS/configurations/selectedOptionMenu.js"></script>
