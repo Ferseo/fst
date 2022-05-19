@@ -16,9 +16,9 @@
         background-size: auto;
     }
      @media only screen and (max-width: 600px){
-    h1{
-        display: none;
-    }
+   /* h1{
+        display: none !important;
+    } */
     .global_row{
         flex-direction: column;
     }
@@ -54,10 +54,10 @@
         width:100% !important;  
     }
     .content_lend{
-        margin-left:17% !important;
+        margin-left:4% !important;
     }
     .content_add{
-        margin-left:10% !important;
+        margin-left:8% !important;
     }
     .crudContent{
         width:100%;
@@ -66,6 +66,7 @@
     .navContent{
         height: 100vh !important;
     }
+    
 }
 </style>
 
