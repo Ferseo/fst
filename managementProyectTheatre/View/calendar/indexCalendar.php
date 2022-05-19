@@ -36,6 +36,12 @@ $credencial = isset($_SESSION['categoria']) ? $_SESSION['categoria'] : 'Categori
             width: 100% !important;
             padding: 0px !important;
         }
+        .hidden_column{
+            display:none !important;
+        }
+        .button{
+            margin-top: 5% !important;
+        }
     }
 </style>
 
@@ -54,8 +60,8 @@ $credencial = isset($_SESSION['categoria']) ? $_SESSION['categoria'] : 'Categori
         <iframe class="map" src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Europe%2FMadrid&src=dGVhdHJvYXVkaXRvcmlvdmljYXJAZ21haWwuY29t&color=%23C0CA33" style="border: 0; margin-left: 15%; margin-top: 3%; margin-bottom: 3%" width="600" height="570" frameborder="1" scrolling="no"></iframe>
     </div>
     <div class="row" id="hidden" style="margin-bottom: 4%;">
-        <div class="col-10"></div>
-        <div class="col-2" id="parent"></div>
+        <div class="col-10 hidden_column"></div>
+        <div class="col-2 button" id="parent"></div>
     </div>
 </body>
 
